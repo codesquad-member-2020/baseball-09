@@ -1,0 +1,7 @@
+logging:
+  pattern:
+    console: "%d{dd-MM-yyyy HH:mm:ss.SSS,Asia/Seoul} %magenta([%thread]) %highlight(%-5level) %logger.%M - %msg%n"
+  level:
+    org.springframework.web: error
+    com.codesquad.baseball09: debug
+    sql: debug
