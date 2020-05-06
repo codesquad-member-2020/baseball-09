@@ -25,7 +25,7 @@ module.exports = {
         use: ["babel-loader", "ts-loader"],
       },
       {
-        test: /\.jpg$/,
+        test: /\.(jpg|png)$/,
         loader: "file-loader",
         options: {
           name: "[name].[ext]?[hash]",
