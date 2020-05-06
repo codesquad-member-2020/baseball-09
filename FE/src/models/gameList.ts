@@ -7,17 +7,13 @@ interface IGame {
   isAvailable: boolean;
 }
 
-interface IGameList {
-  [index: number]: IGame;
-}
-
 const gameModel = (gameInfo: IGame) => {
   return gameInfo;
 };
 
-const gameList: IGameList = [];
+const gameList: IGame[] = [];
 gameListData.forEach((game: IGame, index: number) => {
   gameList[index] = gameModel(game);
 });
 
-export default gameList;
+export { IGame, gameList };
