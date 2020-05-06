@@ -14,7 +14,8 @@
     /* Module Resolution Options */
     "moduleResolution": "node",
     "baseUrl": "./",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "types": ["node"]
   },
   "exclude": ["**/*.test.*", "**/*.spec.*", "node_modules", "dist", "public"]
 }
