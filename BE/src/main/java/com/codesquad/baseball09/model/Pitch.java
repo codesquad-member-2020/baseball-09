@@ -33,28 +33,28 @@ public class Pitch {
       switch (number) {
 
         case 1:
-          if (strikeBallProbability >= dice) {
+          if (dice <= strikeBallProbability) {
             state = State.STRIKE;
             isGet = true;
           }
           break;
 
         case 2:
-          if (strikeBallProbability >= dice) {
+          if (dice <= strikeBallProbability) {
             state = State.BALL;
             isGet = true;
           }
           break;
 
         case 3:
-          if (outProbability >= dice) {
+          if (dice <= outProbability) {
             state = State.OUT;
             isGet = true;
           }
           break;
 
         case 4:
-          if (hitProbability >= dice) {
+          if (dice <= hitProbability) {
             state = State.HIT;
             isGet = true;
           }
