@@ -3,7 +3,7 @@ name: "FE 피쳐 개발 이슈 템플릿"
 about: FE 피쳐 개발 이슈 템플릿
 title: "[FE] Title"
 labels: "FE, Feature"
-assignees: "choisohyun"
+assignees: "choisohyun, sangwon21"
 ---
 
 ### 기능
