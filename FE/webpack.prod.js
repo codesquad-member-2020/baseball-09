@@ -31,6 +31,14 @@ module.exports = {
         test: /\.tsx?$/,
         use: ["babel-loader", "ts-loader"],
       },
+      {
+        test: /\.jpg$/,
+        loader: "file-loader",
+        options: {
+          publicPath: "./dist",
+          name: "[name].[ext]?[hash]",
+        },
+      },
     ],
   },
 
