@@ -10,7 +10,8 @@ CREATE TABLE `team`
 
 CREATE TABLE `player`
 (
-    `id`   BIGINT      NOT NULL AUTO_INCREMENT,
-    `name` VARCHAR(45) NULL,
+    `id`              BIGINT      NOT NULL AUTO_INCREMENT,
+    `name`            VARCHAR(45) NULL,
+    `batting_average` INT         NULL,
     PRIMARY KEY (`id`)
 );
