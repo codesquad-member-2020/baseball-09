@@ -1,11 +1,10 @@
 import React from "react";
+import MainPage from "@/components/MainPage/MainPage";
 
 const App = () => {
   return (
     <>
-      <div>Hello React!</div>
-      <h1>{process.env.TEST}</h1>
-      <h2>{process.env.DEV}</h2>
+      <MainPage />
     </>
   );
 };
