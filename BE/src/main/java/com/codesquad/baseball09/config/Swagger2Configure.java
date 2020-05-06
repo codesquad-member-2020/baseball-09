@@ -1,4 +1,4 @@
-package com.codesquad.baseball09;
+package com.codesquad.baseball09.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
