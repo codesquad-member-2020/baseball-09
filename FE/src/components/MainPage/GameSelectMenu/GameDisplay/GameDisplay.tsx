@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { IGame } from "@/models/gameList";
 
 const Wrapper = styled.div`
   align-items: space-around;
@@ -9,6 +10,9 @@ const Wrapper = styled.div`
   flex-direction: column;
   height: 100px;
   justify-content: center;
+  & + & {
+    margin: 50px 0;
+  }
 `;
 
 const Header = styled.header`
@@ -38,16 +42,14 @@ const TeamName = styled.span`
   width: 45%;
 `;
 
-interface IGameDisplay {
-  homeTeam: string;
-  awayTeam: string;
-}
+const GameDisplay = (props: IGame) => {
+  const { matchName, homeTeam, awayTeam, isAvailable } = props;
 
-const GameDisplay = (props: IGameDisplay) => {
-  const { homeTeam, awayTeam } = props;
   return (
     <Wrapper>
-      <Header>Game 1</Header>
+      <Header>
+        {matchName} {isAvailable}
+      </Header>
       <div>
         <TeamName>{homeTeam}</TeamName>
         <Versus>vs</Versus>

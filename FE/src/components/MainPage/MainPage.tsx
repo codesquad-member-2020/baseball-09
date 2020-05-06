@@ -14,6 +14,7 @@ const Wrapper = styled.section`
   height: 100vh;
   justify-content: space-around;
   width: 100vw;
+  justify-content: center;
 `;
 
 const Header = styled.header`
@@ -21,6 +22,7 @@ const Header = styled.header`
   font-size: 2rem;
   font-weight: 900;
   text-transform: uppercase;
+  height: 150px;
 `;
 
 const MainPage = () => {
