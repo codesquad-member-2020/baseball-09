@@ -1,4 +1,4 @@
-package com.codesquad.baseball09;
+package com.codesquad.baseball09.service;
 
 import org.springframework.stereotype.Service;
 

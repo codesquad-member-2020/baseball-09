@@ -1,4 +1,4 @@
-package com.codesquad.baseball09;
+package com.codesquad.baseball09.controller;
 
 import io.swagger.annotations.Api;
 import java.text.SimpleDateFormat;

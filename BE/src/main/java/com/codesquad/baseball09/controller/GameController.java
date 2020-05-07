@@ -1,4 +1,4 @@
-package com.codesquad.baseball09;
+package com.codesquad.baseball09.controller;
 
 import static com.codesquad.baseball09.model.State.BALL;
 import static com.codesquad.baseball09.model.State.OUT;

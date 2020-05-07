@@ -1,4 +1,4 @@
-package com.codesquad.baseball09;
+package com.codesquad.baseball09.repository;
 
 import org.springframework.stereotype.Repository;
 
