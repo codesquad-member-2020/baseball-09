@@ -3,7 +3,7 @@ name: "BE 피쳐 개발 이슈 템플릿"
 about: BE 피쳐 개발 이슈 템플릿
 title: "[BE] Title"
 labels: "BE, Feature"
-assignees: "beemiel, suhyunsim"
+assignees: "102092"
 ---
 
 ### 기능

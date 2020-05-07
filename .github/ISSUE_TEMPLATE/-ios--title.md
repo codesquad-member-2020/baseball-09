@@ -3,7 +3,7 @@ name: "iOS 피쳐 개발 이슈 템플릿"
 about: iOS 피쳐 개발 이슈 템플릿
 title: "[iOS] Title"
 labels: "iOS, Feature"
-assignees: "idevjinie"
+assignees: "Limwin94"
 ---
 
 ### 기능
