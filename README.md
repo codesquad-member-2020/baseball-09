@@ -12,6 +12,9 @@
 
 - [요구사항 기술서 링크](https://docs.google.com/spreadsheets/d/1XS7SDOg6mAPZycaIl2f_zDA7Z70g39mNdluZAI2cujM/edit?usp=sharing)
 
+## 배포
+- [Swagger](http://18.213.230.151/api/swagger-ui.html)
+
 ## Ground Rule
 
 ### 컨벤션
