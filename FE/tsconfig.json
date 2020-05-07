@@ -15,7 +15,11 @@
     "moduleResolution": "node",
     "baseUrl": "./",
     "esModuleInterop": true,
-    "types": ["node"]
+    "types": ["node"],
+
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
   "exclude": ["**/*.test.*", "**/*.spec.*", "node_modules", "dist", "public"]
 }
