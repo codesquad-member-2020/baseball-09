@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import GameDispaly from "./GameDisplay/GameDisplay";
 import { IGame, gameList } from "@/models/gameList";
@@ -20,9 +20,12 @@ const SelectText = styled.h2`
 `;
 
 const GameSelectMenu = () => {
+  const [isPossible, setIsPossible] = useState<boolean>(true);
+
   return (
     <>
-      <SelectText>참가할 게임을 선택하세요!</SelectText>
+      {isPossible && <SelectText>참가할 게임을 선택하세요!</SelectText>}
+      {!isPossible && <SelectText>이미 선택된 팀입니다. 다른 팀을 선택해주세요!</SelectText>}
       <Wrapper>
         <div className="visible-wrapper">
           {gameList &&
@@ -36,6 +39,7 @@ const GameSelectMenu = () => {
                   awayTeam={awayTeam}
                   isAvailable={isAvailable}
                   key={index}
+                  onClick={() => setIsPossible(isAvailable)}
                 />
               );
             })}
