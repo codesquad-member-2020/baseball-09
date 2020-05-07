@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import ScoreBoard from "@/components/GamePage/ScoreBoard/ScoreBoard";
+import CurrentTurn from "@/components/GamePage/CurrentTurn/CurrentTurn";
 
 const Wrapper = styled.div`
   background-color: #000000;
@@ -22,7 +23,7 @@ const ScoreBoardWrapper = styled.div`
   width: 70vw;
 `;
 
-const CurrentTurn = styled.div`
+const CurrentTurnWrapper = styled.div`
   background-color: skyblue;
   height: 100%;
   width: 30vw;
@@ -38,8 +39,8 @@ const PlayStatusSection = styled.section`
 const GameStatus = styled.div`
   background-color: green;
   border-right: 1px solid white;
-  width: 70vw;
   height: 100%;
+  width: 70vw;
 `;
 
 const PlayerInfo = styled.div`
@@ -55,7 +56,9 @@ const GamePage = () => {
         <ScoreBoardWrapper>
           <ScoreBoard />
         </ScoreBoardWrapper>
-        <CurrentTurn />
+        <CurrentTurnWrapper>
+          <CurrentTurn />
+        </CurrentTurnWrapper>
       </HeaderSection>
       <PlayStatusSection>
         <GameStatus></GameStatus>
