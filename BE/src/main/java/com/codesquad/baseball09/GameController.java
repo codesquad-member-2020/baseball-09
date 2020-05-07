@@ -14,6 +14,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -77,4 +79,8 @@ public class GameController {
     return board;
   }
 
+  @PostMapping("/pitch/{matchId}")
+  public String pitch(@PathVariable(value = "matchId") Long id) {
+    return "아직까진 구현이 안되었어요";
+  }
 }
