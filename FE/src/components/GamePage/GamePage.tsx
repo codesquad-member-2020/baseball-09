@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import ScoreBoard from "@/components/GamePage/ScoreBoard/ScoreBoard";
 
 const Wrapper = styled.div`
   background-color: #000000;
@@ -8,35 +9,35 @@ const Wrapper = styled.div`
 `;
 
 const HeaderSection = styled.section`
-  display: flex;
   border-bottom: 1px solid white;
+  display: flex;
   height: 30vh;
   width: 100vw;
 `;
 
-const ScoreBoard = styled.div`
+const ScoreBoardWrapper = styled.div`
+  background-color: #000000;
   border-right: 1px solid white;
-  background-color: red;
-  width: 70vw;
   height: 100%;
+  width: 70vw;
 `;
 
 const CurrentTurn = styled.div`
   background-color: skyblue;
-  width: 30vw;
   height: 100%;
+  width: 30vw;
 `;
 
 const PlayStatusSection = styled.section`
+  background-color: blue;
   display: flex;
   height: 70vh;
   width: 100vw;
-  background-color: blue;
 `;
 
 const GameStatus = styled.div`
-  border-right: 1px solid white;
   background-color: green;
+  border-right: 1px solid white;
   width: 70vw;
   height: 100%;
 `;
@@ -51,7 +52,9 @@ const GamePage = () => {
   return (
     <Wrapper>
       <HeaderSection>
-        <ScoreBoard />
+        <ScoreBoardWrapper>
+          <ScoreBoard />
+        </ScoreBoardWrapper>
         <CurrentTurn />
       </HeaderSection>
       <PlayStatusSection>
