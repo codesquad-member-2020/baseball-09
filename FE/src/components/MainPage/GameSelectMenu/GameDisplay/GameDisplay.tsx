@@ -7,6 +7,9 @@ const Header = styled.header`
   text-align: center;
   text-transform: uppercase;
   width: 100%;
+  &:hover {
+    cursor: default;
+  }
 `;
 
 const Versus = styled.span`
@@ -17,6 +20,9 @@ const Versus = styled.span`
   text-align: center;
   text-transform: uppercase;
   width: 10%;
+  &:hover {
+    cursor: default;
+  }
 `;
 
 const TeamName = styled.span`
@@ -25,11 +31,14 @@ const TeamName = styled.span`
   font-weight: 900;
   text-align: center;
   width: 45%;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
-const Wrapper = styled("div")<{ isAvailable: boolean }>`
+const Wrapper = styled("div")<IWrapperProp>`
   align-items: space-around;
-  background-color: #${(props: any) => (props.isAvailable ? `b4b5b6` : `b4b5b6a6`)};
+  background-color: #${(props) => (props.isAvailable ? `b4b5b6` : `b4b5b6a6`)};
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -40,23 +49,23 @@ const Wrapper = styled("div")<{ isAvailable: boolean }>`
   }
   ${Header},
   ${TeamName} {
-    color: #${(props: any) => (props.isAvailable ? `000` : `d32a34`)};
+    color: #${(props) => (props.isAvailable ? `000` : `d32a34`)};
   }
 `;
 
-interface IGameDisplayProps {
-  matchName: string;
-  awayTeam: string;
-  homeTeam: string;
+interface IGameDisplayProps extends IGame {
+  clickHandler: (event: React.MouseEvent<HTMLElement>) => void;
+}
+
+interface IWrapperProp {
   isAvailable: boolean;
-  onClick: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
 const GameDisplay = (props: IGameDisplayProps) => {
-  const { matchName, homeTeam, awayTeam, isAvailable, onClick } = props;
+  const { matchName, homeTeam, awayTeam, isAvailable, clickHandler } = props;
 
   return (
-    <Wrapper onClick={onClick} isAvailable={isAvailable}>
+    <Wrapper onClick={clickHandler} isAvailable={isAvailable}>
       <Header>{matchName}</Header>
       <div>
         <TeamName>{homeTeam}</TeamName>

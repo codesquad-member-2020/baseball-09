@@ -23,6 +23,9 @@ const Header = styled.header`
   font-weight: 900;
   text-transform: uppercase;
   height: 150px;
+  &:hover {
+    cursor: default;
+  }
 `;
 
 const MainPage = () => {
