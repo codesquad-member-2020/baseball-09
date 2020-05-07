@@ -44,11 +44,19 @@ const Wrapper = styled("div")<{ isAvailable: boolean }>`
   }
 `;
 
-const GameDisplay = (props: IGame) => {
-  const { matchName, homeTeam, awayTeam, isAvailable } = props;
+interface IGameDisplayProps {
+  matchName: string;
+  awayTeam: string;
+  homeTeam: string;
+  isAvailable: boolean;
+  onClick: (event: React.MouseEvent<HTMLElement>) => void;
+}
+
+const GameDisplay = (props: IGameDisplayProps) => {
+  const { matchName, homeTeam, awayTeam, isAvailable, onClick } = props;
 
   return (
-    <Wrapper isAvailable={isAvailable}>
+    <Wrapper onClick={onClick} isAvailable={isAvailable}>
       <Header>{matchName}</Header>
       <div>
         <TeamName>{homeTeam}</TeamName>
