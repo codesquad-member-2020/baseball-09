@@ -2,21 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { IGame } from "@/models/gameList";
 
-const Wrapper = styled.div`
-  align-items: space-around;
-  background-color: #b4b5b6;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  height: 100px;
-  justify-content: center;
-  & + & {
-    margin: 50px 0;
-  }
-`;
-
 const Header = styled.header`
-  color: #d32a34;
   font-size: 1rem;
   text-align: center;
   text-transform: uppercase;
@@ -34,7 +20,6 @@ const Versus = styled.span`
 `;
 
 const TeamName = styled.span`
-  color: #d32a34;
   display: inline-block;
   font-size: 2rem;
   font-weight: 900;
@@ -42,14 +27,29 @@ const TeamName = styled.span`
   width: 45%;
 `;
 
+const Wrapper = styled("div")<{ isAvailable: boolean }>`
+  align-items: space-around;
+  background-color: #${(props: any) => (props.isAvailable ? `b4b5b6` : `b4b5b6a6`)};
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  justify-content: center;
+  & + & {
+    margin: 50px 0;
+  }
+  ${Header},
+  ${TeamName} {
+    color: #${(props: any) => (props.isAvailable ? `000` : `d32a34`)};
+  }
+`;
+
 const GameDisplay = (props: IGame) => {
   const { matchName, homeTeam, awayTeam, isAvailable } = props;
 
   return (
-    <Wrapper>
-      <Header>
-        {matchName} {isAvailable}
-      </Header>
+    <Wrapper isAvailable={isAvailable}>
+      <Header>{matchName}</Header>
       <div>
         <TeamName>{homeTeam}</TeamName>
         <Versus>vs</Versus>
