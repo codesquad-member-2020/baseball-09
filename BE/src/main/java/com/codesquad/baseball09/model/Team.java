@@ -1,19 +1,18 @@
 package com.codesquad.baseball09.model;
 
-import java.util.List;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Team {
 
+  @JsonIgnore
   private final Long id;
   private final String name;
-  private final List<Player> players;
+  private final int score;
 
-  public Team(Long id, String name, List<Player> players) {
+  public Team(Long id, String name, int score) {
     this.id = id;
     this.name = name;
-    this.players = players;
+    this.score = score;
   }
 
   public Long getId() {
@@ -24,16 +23,8 @@ public class Team {
     return name;
   }
 
-  public List<Player> getPlayers() {
-    return players;
+  public int getScore() {
+    return score;
   }
 
-  @Override
-  public String toString() {
-    return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
-        .append("id", id)
-        .append("name", name)
-        .append("players", players)
-        .toString();
-  }
 }

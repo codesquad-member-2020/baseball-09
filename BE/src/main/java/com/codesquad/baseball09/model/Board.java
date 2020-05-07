@@ -1,80 +1,56 @@
 package com.codesquad.baseball09.model;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 public class Board {
 
-  private String homeName;
+  private final Team home;
+  private final Team away;
 
-  private String awayName;
+  private final int inning;
+  private final boolean inningStatus;
 
-  private int homeScore;
+  private final int strike;
+  private final int ball;
+  private final int out;
 
-  private int awayScore;
+  private final Game pitcherAndBatter;
+  private final List<BatterLog> batterLog = new ArrayList<>();
 
-  private int inning;
-
-  private int strike;
-
-  private int ball;
-
-  private int out;
-
-  public Board(String homeName, String awayName) {
-    this.homeName = homeName;
-    this.awayName = awayName;
-    this.homeScore = 0;
-    this.awayScore = 0;
-    this.inning = 1;
-    this.strike = 0;
-    this.ball = 0;
-    this.out = 0;
+  public Board(Team home, Team away, int inning, boolean inningStatus, int strike, int ball,
+      int out,
+      Game pitcherAndBatter) {
+    this.home = home;
+    this.away = away;
+    this.inning = inning;
+    this.inningStatus = inningStatus;
+    this.strike = strike;
+    this.ball = ball;
+    this.out = out;
+    this.pitcherAndBatter = pitcherAndBatter;
   }
 
-  public void addStrike() {
-    strike++;
-    if (strike == 3) {
-      addOut();
-      strike = 0;
-    }
+  public void addBatterLog(BatterLog log) {
+    batterLog.add(log);
   }
 
-  public void addBall() {
-    ball++;
-    if (ball == 4) {
-      ball = 0;
-    }
+  public Team getHome() {
+    return home;
   }
 
-  public void addOut() {
-    out++;
-    if (out == 3) {
-      strike = 0;
-      ball = 0;
-      out = 0;
-    }
-  }
-
-
-  public String getHomeName() {
-    return homeName;
-  }
-
-  public String getAwayName() {
-    return awayName;
-  }
-
-  public int getHomeScore() {
-    return homeScore;
-  }
-
-  public int getAwayScore() {
-    return awayScore;
+  public Team getAway() {
+    return away;
   }
 
   public int getInning() {
     return inning;
+  }
+
+  public boolean isInningStatus() {
+    return inningStatus;
   }
 
   public int getStrike() {
@@ -89,17 +65,11 @@ public class Board {
     return out;
   }
 
-  @Override
-  public String toString() {
-    return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
-        .append("homeName", homeName)
-        .append("awayName", awayName)
-        .append("homeScore", homeScore)
-        .append("awayScore", awayScore)
-        .append("inning", inning)
-        .append("strike", strike)
-        .append("ball", ball)
-        .append("out", out)
-        .toString();
+  public Game getPitcherAndBatter() {
+    return pitcherAndBatter;
+  }
+
+  public List<BatterLog> getBatterLog() {
+    return batterLog;
   }
 }
