@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import ScoreBoard from "@/components/GamePage/ScoreBoard/ScoreBoard";
 import CurrentTurn from "@/components/GamePage/CurrentTurn/CurrentTurn";
+import PlayerInfo from "@/components/GamePage/PlayerInfo/PlayerInfo";
 
 const Wrapper = styled.div`
   background-color: #000000;
@@ -43,7 +44,7 @@ const GameStatus = styled.div`
   width: 70vw;
 `;
 
-const PlayerInfo = styled.div`
+const PlayerInfoWrapper = styled.div`
   background-color: purple;
   height: 100%;
   width: 30vw;
@@ -62,7 +63,9 @@ const GamePage = () => {
       </HeaderSection>
       <PlayStatusSection>
         <GameStatus></GameStatus>
-        <PlayerInfo></PlayerInfo>
+        <PlayerInfoWrapper>
+          <PlayerInfo />
+        </PlayerInfoWrapper>
       </PlayStatusSection>
     </Wrapper>
   );
