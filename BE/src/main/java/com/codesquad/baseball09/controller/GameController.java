@@ -14,6 +14,8 @@ import com.codesquad.baseball09.model.Match;
 import com.codesquad.baseball09.model.PlayerList;
 import com.codesquad.baseball09.model.State;
 import com.codesquad.baseball09.model.Team;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -23,9 +25,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@Api(tags = "Game API")
 public class GameController {
 
   @GetMapping("/main")
+  @ApiOperation(value = "메인 페이지(팀 선택페이지)")
   public List<Match> main() {
     return Stream.of(
         new Match("Captin", "Marvel"),
@@ -36,6 +40,7 @@ public class GameController {
   }
 
   @GetMapping("/game")
+  @ApiOperation(value = "게임 진행 페이지")
   public Board getBoard() {
     BatterLog l1 = new BatterLog(
         "추신수",
@@ -84,12 +89,15 @@ public class GameController {
   }
 
   @PostMapping("/pitch/{matchId}")
+  @ApiOperation(value = "Pitch 버튼 클릭시")
   public String pitch(@PathVariable(value = "matchId") Long id) {
     return "아직까진 구현이 안되었어요";
   }
 
   @GetMapping("/detail/score/{matchId}")
-  public DetailScore detailScore(@PathVariable(value = "matchId") Long id) {
+  @ApiOperation(value = "상세 점수 팝업")
+  public DetailScore detailScore(
+      @PathVariable(value = "matchId") Long id) {
     DetailScore detailScore = new DetailScore(
         "Captin",
         "Marvel"
@@ -123,7 +131,9 @@ public class GameController {
   }
 
   @GetMapping("/detail/player/{matchId}")
-  public List<PlayerList> detailPlayerList(@PathVariable(value = "matchId") Long id) {
+  @ApiOperation(value = "상세 선수 명단 팝업")
+  public List<PlayerList> detailPlayerList(
+      @PathVariable(value = "matchId") Long id) {
     List<DetailPlayer> d1 = Stream.of(
         new DetailPlayer("김광진", 1, 1, 0),
         new DetailPlayer("이동규", 1, 0, 1),
@@ -133,10 +143,12 @@ public class GameController {
         new DetailPlayer("이용대", 1, 0, 1),
         new DetailPlayer("류현진", 1, 0, 1),
         new DetailPlayer("최동수", 1, 0, 1),
-        new DetailPlayer("한양범", 1, 1, 0)).collect(Collectors.toList());
+        new DetailPlayer("한양범", 1, 1, 0))
+        .collect(Collectors.toList());
 
     return Stream.of(
         new PlayerList("Captin", d1),
-        new PlayerList("Marvel", d1)).collect(Collectors.toList());
+        new PlayerList("Marvel", d1))
+        .collect(Collectors.toList());
   }
 }

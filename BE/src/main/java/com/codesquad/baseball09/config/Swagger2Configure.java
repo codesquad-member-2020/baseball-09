@@ -15,7 +15,7 @@ public class Swagger2Configure {
   public Docket api() {
     return new Docket(DocumentationType.SWAGGER_2)
         .select()
-        .apis(RequestHandlerSelectors.basePackage("com.codesquad.baseball09"))
+        .apis(RequestHandlerSelectors.basePackage("com.codesquad.baseball09.controller"))
         .build();
   }
 }
