@@ -44,12 +44,20 @@ const PitcherImg = styled.img`
   top: 56%;
 `;
 
+const Hit = keyframes`
+  100%{  
+    transform: translate(230px, -240px);
+  }
+`;
+
 const HitterWrap = styled.div`
   position: absolute;
   width: 50px;
   height: 50px;
   right: 48%;
   top: 86.5%;
+  animation: ${Hit} 3s 1.2s linear 1;
+  animation-fill-mode: forwards;
 `;
 
 const Hitter = styled.div`
