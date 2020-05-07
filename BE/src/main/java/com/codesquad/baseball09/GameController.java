@@ -6,7 +6,9 @@ import static com.codesquad.baseball09.model.State.STRIKE;
 
 import com.codesquad.baseball09.model.BatterLog;
 import com.codesquad.baseball09.model.Board;
+import com.codesquad.baseball09.model.DetailScore;
 import com.codesquad.baseball09.model.Game;
+import com.codesquad.baseball09.model.InningScore;
 import com.codesquad.baseball09.model.Match;
 import com.codesquad.baseball09.model.State;
 import com.codesquad.baseball09.model.Team;
@@ -83,4 +85,39 @@ public class GameController {
   public String pitch(@PathVariable(value = "matchId") Long id) {
     return "아직까진 구현이 안되었어요";
   }
+
+  @GetMapping("/detail/score/{matchId}")
+  public DetailScore detailScore(@PathVariable(value = "matchId") Long id) {
+    DetailScore detailScore = new DetailScore(
+        "Captin",
+        "Marvel"
+    );
+    InningScore i1 = new InningScore(
+        1,
+        1,
+        1
+    );
+    InningScore i2 = new InningScore(
+        2,
+        0,
+        2
+    );
+    InningScore i3 = new InningScore(
+        3,
+        0,
+        2
+    );
+
+    InningScore i4 = new InningScore(
+        4,
+        0,
+        0
+    );
+    detailScore.addInningScore(i1);
+    detailScore.addInningScore(i2);
+    detailScore.addInningScore(i3);
+    detailScore.addInningScore(i4);
+    return detailScore;
+  }
+
 }
