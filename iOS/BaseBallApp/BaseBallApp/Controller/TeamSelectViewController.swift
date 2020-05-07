@@ -1,67 +1,49 @@
 //
-//  ViewController.swift
+//  SelectTeamViewController.swift
 //  BaseBallApp
 //
-//  Created by 임승혁 on 2020/05/05.
+//  Created by 임승혁 on 2020/05/07.
 //  Copyright © 2020 임승혁. All rights reserved.
 //
 
 import UIKit
 
 class TeamSelectViewController: UIViewController {
-    @IBOutlet weak var GameListTableView: UITableView!
-
+    @IBOutlet weak var teamSelectModal: UIView!
+    
+    @IBOutlet weak var awayTeamButton: TeamSelectButton!
+    @IBOutlet weak var homeTeamButton: TeamSelectButton!
+    public var awayTeamButtonTitle: String?
+    public var homeTeamButtonTitle: String?
+    
+    private var teamSelectAlert: UIAlertController!
+    @IBAction func selectAwayTeam(_ sender: Any) {
+        performSegue(withIdentifier: "gameScreen", sender: self)
+    }
+    @IBAction func selectHomeTeam(_ sender: Any) {
+        present(teamSelectAlert, animated: true, completion: nil)
+        //performSegue(withIdentifier: "gameScreen", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUI()
         
-        GameListTableView.delegate = self
-        GameListTableView.dataSource = self
-        
-        registGameListTableViewCell()
+        teamSelectAlert = UIAlertController(title: "팀 선택 불가", message: "이미 선점된 팀입니다.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        teamSelectAlert.addAction(okAction)
     }
     
-    private func registGameListTableViewCell() {
-        let cellNib = UINib(nibName: "GameSelectView", bundle: nil)
-        GameListTableView.register(cellNib, forCellReuseIdentifier: "GameSelectCell")
+    private func setUI() {
+        awayTeamButton.setTitle(awayTeamButtonTitle, for: .normal)
+        homeTeamButton.setTitle(homeTeamButtonTitle, for: .normal)
+        
+        teamSelectModal.layer.cornerRadius = 20
+        
+        let blurEffect = UIBlurEffect(style: .dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = self.view.frame
+
+        self.view.insertSubview(blurEffectView, at: 0)
     }
 }
-
-extension TeamSelectViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        guard let sectionNum = DataManager().getTeamList()?.count else { return 0 }
-        
-        return sectionNum
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "GameSelectCell", for: indexPath) as? GameSelectView else { return UITableViewCell() }
-        
-        let allTeams = DataManager().getTeamList()
-        
-        cell.GameCountLabel.text = "GAME \(indexPath.section + 1)"
-        cell.AwayTeamLabel.text = allTeams![indexPath.section][0]
-        cell.HomeTeamLabel.text = allTeams![indexPath.section][1]
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 20
-    }
-
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        headerView.backgroundColor = .clear
-        return headerView
-    }
-
-}
-
-extension TeamSelectViewController: UITableViewDelegate {
-    
-}
-

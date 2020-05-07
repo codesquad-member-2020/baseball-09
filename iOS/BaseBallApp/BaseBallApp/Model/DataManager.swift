@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class DataManager {
+class DataManager {
     private var teamList: [[String]]? = [["Captin", "Marvel"], ["Twins", "Tigers"], ["Rockets", "Dodgers"], ["Heros", "Pintos"]]
     
     public func setTeamList(team: [[String]]) {

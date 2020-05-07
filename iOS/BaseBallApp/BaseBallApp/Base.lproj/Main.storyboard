@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Team Select View Controller-->
+        <!--Game Select View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="TeamSelectViewController" customModule="BaseBallApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="GameSelectViewController" customModule="BaseBallApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -40,20 +40,101 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="GameListTableView" destination="V2B-J6-Y2N" id="d8k-ZU-x17"/>
-                        <segue destination="hhj-9r-XIS" kind="showDetail" identifier="startGame" id="IiE-rl-Meo"/>
+                        <outlet property="GameListTableView" destination="V2B-J6-Y2N" id="Gy7-ag-2b1"/>
+                        <segue destination="hnt-DZ-5fC" kind="show" identifier="teamSelect" id="Tzb-Aj-6cV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="140.57971014492756" y="137.94642857142856"/>
+            <point key="canvasLocation" x="-532" y="26"/>
+        </scene>
+        <!--Team Select View Controller-->
+        <scene sceneID="qyN-FS-llY">
+            <objects>
+                <viewController modalPresentationStyle="formSheet" id="hnt-DZ-5fC" customClass="TeamSelectViewController" customModule="BaseBallApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cne-9E-UlN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1KI-c2-dQT">
+                                <rect key="frame" x="41.5" y="280" width="331" height="248"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="팀을 선택해 주세요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AU2-dn-xI7">
+                                        <rect key="frame" x="0.0" y="0.0" width="331" height="49.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="AU2-dn-xI7" secondAttribute="height" multiplier="1:0.15" id="sSR-ZY-Mp2"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="qjB-va-I7s">
+                                        <rect key="frame" x="30" y="79.5" width="271" height="138.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ic-lg-ZtH" customClass="TeamSelectButton" customModule="BaseBallApp" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="271" height="62"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                                <state key="normal" title="Away Team">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="selectAwayTeam:" destination="hnt-DZ-5fC" eventType="touchUpInside" id="q4i-7M-2iP"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n6I-6E-ivX" customClass="TeamSelectButton" customModule="BaseBallApp" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="77" width="271" height="61.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                                <state key="normal" title="Home team">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="selectHomeTeam:" destination="hnt-DZ-5fC" eventType="touchUpInside" id="aHR-ez-HYz"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="qjB-va-I7s" firstAttribute="leading" secondItem="1KI-c2-dQT" secondAttribute="leading" constant="30" id="4ar-BR-mZn"/>
+                                    <constraint firstItem="qjB-va-I7s" firstAttribute="top" secondItem="AU2-dn-xI7" secondAttribute="bottom" constant="30" id="AN3-st-kcX"/>
+                                    <constraint firstItem="AU2-dn-xI7" firstAttribute="centerX" secondItem="1KI-c2-dQT" secondAttribute="centerX" id="Da5-Vm-4qo"/>
+                                    <constraint firstAttribute="width" secondItem="1KI-c2-dQT" secondAttribute="height" multiplier="1:0.75" id="exD-gM-oIa"/>
+                                    <constraint firstAttribute="trailing" secondItem="qjB-va-I7s" secondAttribute="trailing" constant="30" id="huk-bs-z8V"/>
+                                    <constraint firstAttribute="bottom" secondItem="qjB-va-I7s" secondAttribute="bottom" constant="30" id="sIZ-7r-sc5"/>
+                                    <constraint firstItem="AU2-dn-xI7" firstAttribute="top" secondItem="1KI-c2-dQT" secondAttribute="top" id="uy4-F3-sMy"/>
+                                    <constraint firstItem="AU2-dn-xI7" firstAttribute="width" secondItem="1KI-c2-dQT" secondAttribute="width" id="vzy-06-aYr"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="1KI-c2-dQT" firstAttribute="centerX" secondItem="DiQ-g1-Apu" secondAttribute="centerX" id="DYD-tT-Aem"/>
+                            <constraint firstItem="1KI-c2-dQT" firstAttribute="width" secondItem="cne-9E-UlN" secondAttribute="width" multiplier="0.8" id="hjR-cQ-2ud"/>
+                            <constraint firstItem="1KI-c2-dQT" firstAttribute="centerY" secondItem="DiQ-g1-Apu" secondAttribute="centerY" id="n2Q-x3-CT1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DiQ-g1-Apu"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="lqg-97-Lpi"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="awayTeamButton" destination="3ic-lg-ZtH" id="ai0-2W-QpI"/>
+                        <outlet property="homeTeamButton" destination="n6I-6E-ivX" id="xUX-FE-O0z"/>
+                        <outlet property="teamSelectModal" destination="1KI-c2-dQT" id="vSv-fL-4l2"/>
+                        <segue destination="hhj-9r-XIS" kind="presentation" identifier="gameScreen" id="Ufb-OF-CqM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rjn-65-VBh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="211.59420289855075" y="24.776785714285712"/>
         </scene>
         <!--Item 2-->
         <scene sceneID="hu0-yU-dYr">
             <objects>
                 <viewController id="jla-6i-n2J" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="695-BB-mMZ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="ek4-fO-6Vx"/>
@@ -69,7 +150,7 @@
             <objects>
                 <viewController id="hF2-pJ-EBv" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qnP-0O-aPb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="L74-Y1-9an"/>
@@ -97,7 +178,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pLr-zj-lNj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1013" y="138"/>
+            <point key="canvasLocation" x="1000" y="25"/>
         </scene>
     </scenes>
 </document>
