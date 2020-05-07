@@ -1,9 +1,9 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import CurrentInfo from "@/components/GamePage/BaseballField/CurrentInfo/CurrentInfo";
-import Pitcher from "./fitcher.png";
+import PitcherImg from "./fitcher.png";
 import HitterImg from "./hitter.png";
-import Field from "./field.png";
+import FieldImg from "./field.png";
 
 const Wrapper = styled.div`
   margin: auto;
@@ -16,7 +16,7 @@ const Wrapper = styled.div`
   .field {
     position: relative;
     height: inherit;
-    background: url(${Field}) no-repeat center;
+    background: url(${FieldImg}) no-repeat center;
     background-size: contain;
   }
 `;
@@ -38,7 +38,7 @@ const Playball = styled.button`
   }
 `;
 
-const PitcherImg = styled.img`
+const Pitcher = styled.img`
   height: 50px;
   position: absolute;
   right: 48%;
@@ -77,7 +77,7 @@ const BaseballField = () => {
         <CurrentInfo />
         <div className="field">
           <Playball>PITCH!</Playball>
-          <PitcherImg src={Pitcher} />
+          <Pitcher src={PitcherImg} />
           <HitterWrap>
             <Hitter>
               <img className="hitter-img" src={HitterImg} />
