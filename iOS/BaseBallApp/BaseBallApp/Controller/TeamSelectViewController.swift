@@ -16,16 +16,22 @@ class TeamSelectViewController: UIViewController {
     public var awayTeamButtonTitle: String?
     public var homeTeamButtonTitle: String?
     
+    private var teamSelectAlert: UIAlertController!
     @IBAction func selectAwayTeam(_ sender: Any) {
-        
+        performSegue(withIdentifier: "gameScreen", sender: self)
     }
     @IBAction func selectHomeTeam(_ sender: Any) {
-        
+        present(teamSelectAlert, animated: true, completion: nil)
+        //performSegue(withIdentifier: "gameScreen", sender: self)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        
+        teamSelectAlert = UIAlertController(title: "팀 선택 불가", message: "이미 선점된 팀입니다.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        teamSelectAlert.addAction(okAction)
     }
     
     private func setUI() {
@@ -40,16 +46,4 @@ class TeamSelectViewController: UIViewController {
 
         self.view.insertSubview(blurEffectView, at: 0)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
