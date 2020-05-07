@@ -6,10 +6,12 @@ import static com.codesquad.baseball09.model.State.STRIKE;
 
 import com.codesquad.baseball09.model.BatterLog;
 import com.codesquad.baseball09.model.Board;
+import com.codesquad.baseball09.model.DetailPlayer;
 import com.codesquad.baseball09.model.DetailScore;
 import com.codesquad.baseball09.model.Game;
 import com.codesquad.baseball09.model.InningScore;
 import com.codesquad.baseball09.model.Match;
+import com.codesquad.baseball09.model.PlayerList;
 import com.codesquad.baseball09.model.State;
 import com.codesquad.baseball09.model.Team;
 import java.util.List;
@@ -120,4 +122,21 @@ public class GameController {
     return detailScore;
   }
 
+  @GetMapping("/detail/player/{matchId}")
+  public List<PlayerList> detailPlayerList(@PathVariable(value = "matchId") Long id) {
+    List<DetailPlayer> d1 = Stream.of(
+        new DetailPlayer("김광진", 1, 1, 0),
+        new DetailPlayer("이동규", 1, 0, 1),
+        new DetailPlayer("김진수", 1, 0, 1),
+        new DetailPlayer("박영권", 1, 1, 0),
+        new DetailPlayer("추신수", 1, 1, 0),
+        new DetailPlayer("이용대", 1, 0, 1),
+        new DetailPlayer("류현진", 1, 0, 1),
+        new DetailPlayer("최동수", 1, 0, 1),
+        new DetailPlayer("한양범", 1, 1, 0)).collect(Collectors.toList());
+
+    return Stream.of(
+        new PlayerList("Captin", d1),
+        new PlayerList("Marvel", d1)).collect(Collectors.toList());
+  }
 }
