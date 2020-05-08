@@ -51,12 +51,16 @@ const FourthHit = keyframes`
   }
 `;
 
-const HitterWrap = styled.div`
+const HitterWrap = styled("div")<IHitterProp>`
   position: absolute;
   width: 50px;
   height: 50px;
   right: 48%;
   top: 86.5%;
+  ${(props) => css`
+    animation: ${props.active} 3s 1.2s linear 1;
+    animation-fill-mode: forwards;
+  `}
 `;
 
 const Hitter = styled.div`
@@ -68,12 +72,25 @@ const Hitter = styled.div`
   }
 `;
 
+const Hits = [FirstHit, SecondHit, ThirdHit, FourthHit];
+
+interface IHitterProp {
+  active: Keyframes;
+}
+
 const Field = () => {
+  const [hit, setHit] = useState(-1);
+
+  const onClickHandler = () => {
+    if (hit + 1 === 4) setHit(-1);
+    else setHit(hit + 1);
+  };
+
   return (
     <>
-      <Playball>PITCH!</Playball>
+      <Playball onClick={onClickHandler}>PITCH!</Playball>
       <Pitcher src={PitcherImg} />
-      <HitterWrap>
+      <HitterWrap active={Hits[hit]}>
         <Hitter>
           <img className="hitter-img" src={HitterImg} />
         </Hitter>
