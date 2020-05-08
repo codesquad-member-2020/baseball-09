@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled, { keyframes, Keyframes, css } from "styled-components";
-import PitcherImg from "./fitcher.png";
+import PitcherImg from "./pitcher.png";
 import HitterImg from "./hitter.png";
 
 const Playball = styled.button`
