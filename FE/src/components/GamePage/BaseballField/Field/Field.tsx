@@ -59,7 +59,7 @@ const HitterWrap = styled("div")<IHitterProp>`
   top: 86.5%;
   ${(props) => css`
     animation: ${props.active} 3s 1.2s linear 1;
-    animation-fill-mode: forwards;
+    animation-fill-mode: both;
   `}
 `;
 
