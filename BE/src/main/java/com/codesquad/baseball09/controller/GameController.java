@@ -14,6 +14,7 @@ import com.codesquad.baseball09.model.Match;
 import com.codesquad.baseball09.model.PlayerList;
 import com.codesquad.baseball09.model.State;
 import com.codesquad.baseball09.model.Team;
+import com.codesquad.baseball09.service.GameService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import java.util.List;
@@ -28,15 +29,16 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(tags = "Game API")
 public class GameController {
 
+  private final GameService service;
+
+  public GameController(GameService service) {
+    this.service = service;
+  }
+
   @GetMapping("/main")
   @ApiOperation(value = "메인 페이지(팀 선택페이지)")
   public List<Match> main() {
-    return Stream.of(
-        new Match("Captin", "Marvel"),
-        new Match("Twins", "Tigers"),
-        new Match("Rockets", "Doggers"),
-        new Match("Lotte", "NC")
-    ).collect(Collectors.toList());
+    return service.main();
   }
 
   @GetMapping("/game")
