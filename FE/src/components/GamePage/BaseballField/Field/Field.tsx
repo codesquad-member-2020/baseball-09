@@ -93,12 +93,18 @@ interface IHitterProp {
   active: Keyframes;
 }
 
+enum FieldState {
+  InitState = -1,
+  MaxState = 4,
+  Increase = 1,
+}
+
 const Field = () => {
-  const [hit, setHit] = useState(-1);
+  const [hit, setHit] = useState(FieldState.InitState);
 
   const onClickHandler = () => {
-    if (hit + 1 === 4) setHit(-1);
-    else setHit(hit + 1);
+    if (hit + FieldState.Increase === FieldState.MaxState) setHit(FieldState.InitState);
+    else setHit(hit + FieldState.Increase);
   };
 
   return (
