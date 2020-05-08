@@ -1,5 +1,5 @@
-import React from "react";
-import styled, { keyframes } from "styled-components";
+import React, { useState } from "react";
+import styled, { keyframes, Keyframes, css } from "styled-components";
 import PitcherImg from "./fitcher.png";
 import HitterImg from "./hitter.png";
 
@@ -27,9 +27,27 @@ const Pitcher = styled.img`
   top: 56%;
 `;
 
-const Hit = keyframes`
-  100%{  
+const FirstHit = keyframes`
+  100% {  
     transform: translate(230px, -240px);
+  }
+`;
+
+const SecondHit = keyframes`
+  100% {  
+    transform: translate(-230px, -240px);
+  }
+`;
+
+const ThirdHit = keyframes`
+  100%{  
+    transform: translate(-230px, 240px);
+  }
+`;
+
+const FourthHit = keyframes`
+  100%{  
+    transform: translate(230px, 240px);
   }
 `;
 
@@ -39,8 +57,6 @@ const HitterWrap = styled.div`
   height: 50px;
   right: 48%;
   top: 86.5%;
-  animation: ${Hit} 3s 1.2s linear 1;
-  animation-fill-mode: forwards;
 `;
 
 const Hitter = styled.div`
