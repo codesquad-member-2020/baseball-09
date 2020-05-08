@@ -27,7 +27,7 @@ const Pitcher = styled.img`
   top: 56%;
 `;
 
-const FirstHit = keyframes`
+const FirstBase = keyframes`
   99% {
     transform: translate(230px, -240px);
   }
@@ -36,7 +36,7 @@ const FirstHit = keyframes`
   }
 `;
 
-const SecondHit = keyframes`
+const SecondBase = keyframes`
   0% {
     transform: translate(230px, -240px) scaleX(-1);
   }
@@ -45,7 +45,7 @@ const SecondHit = keyframes`
   }
 `;
 
-const ThirdHit = keyframes`
+const ThirdBase = keyframes`
   0% {
     transform: translate(0px, -450px)  scaleX(-1);
   }
@@ -57,7 +57,7 @@ const ThirdHit = keyframes`
   }
 `;
 
-const FourthHit = keyframes`
+const FourthBase = keyframes`
   0% {
     transform: translate(-200px, -220px);
   }
@@ -87,7 +87,7 @@ const Hitter = styled.div`
   }
 `;
 
-const Hits = [FirstHit, SecondHit, ThirdHit, FourthHit];
+const Bases = [FirstBase, SecondBase, ThirdBase, FourthBase];
 
 interface IHitterProp {
   active: Keyframes;
@@ -105,7 +105,7 @@ const Field = () => {
     <>
       <Playball onClick={onClickHandler}>PITCH!</Playball>
       <Pitcher src={PitcherImg} />
-      <HitterWrap active={Hits[hit]}>
+      <HitterWrap active={Bases[hit]}>
         <Hitter>
           <img className="hitter-img" src={HitterImg} />
         </Hitter>
