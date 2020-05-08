@@ -28,7 +28,7 @@ public class JdbcGameRepository implements GameRepository {
             rs.getLong("id"),
             rs.getString("home"),
             rs.getString("away"),
-            rs.getBoolean("selected")
+            rs.getBoolean("started")
         ));
   }
 }

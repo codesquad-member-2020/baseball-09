@@ -22,6 +22,6 @@ CREATE TABLE `match`
     `id`           BIGINT NOT NULL AUTO_INCREMENT,
     `home_team_id` BIGINT NOT NULL,
     `away_team_id` BIGINT NOT NULL,
-    `selected`     BOOLEAN DEFAULT FALSE,
+    `started`      BOOLEAN DEFAULT FALSE,
     PRIMARY KEY (`id`)
 );

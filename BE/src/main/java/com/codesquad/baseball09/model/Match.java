@@ -1,20 +1,17 @@
 package com.codesquad.baseball09.model;
 
-import org.springframework.data.annotation.Id;
-
 public class Match {
 
-  @Id
   private final Long id;
   private final String home;
   private final String away;
-  private final boolean selected;
+  private final boolean started;
 
-  public Match(Long id, String home, String away, boolean selected) {
+  public Match(Long id, String home, String away, boolean started) {
     this.id = id;
     this.home = home;
     this.away = away;
-    this.selected = selected;
+    this.started = started;
   }
 
   public Long getId() {
@@ -29,7 +26,7 @@ public class Match {
     return away;
   }
 
-  public boolean isSelected() {
-    return selected;
+  public boolean isStarted() {
+    return started;
   }
 }
