@@ -28,26 +28,41 @@ const Pitcher = styled.img`
 `;
 
 const FirstHit = keyframes`
-  100% {  
+  99% {
     transform: translate(230px, -240px);
+  }
+  100% {  
+    transform: translate(230px, -240px) scaleX(-1);
   }
 `;
 
 const SecondHit = keyframes`
+  0% {
+    transform: translate(230px, -240px) scaleX(-1);
+  }
   100% {  
-    transform: translate(-230px, -240px);
+    transform: translate(0px, -450px) scaleX(-1);
   }
 `;
 
 const ThirdHit = keyframes`
-  100%{  
-    transform: translate(-230px, 240px);
+  0% {
+    transform: translate(0px, -450px)  scaleX(-1);
+  }
+  99% {
+    transform: translate(-200px, -220px) scaleX(-1);
+  }
+  100% {  
+    transform: translate(-200px, -220px);
   }
 `;
 
 const FourthHit = keyframes`
-  100%{  
-    transform: translate(230px, 240px);
+  0% {
+    transform: translate(-200px, -220px);
+  }
+  100% {  
+    transform: translate(0px, 0px);
   }
 `;
 
