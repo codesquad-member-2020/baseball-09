@@ -21,16 +21,14 @@ public class JdbcGameRepository implements GameRepository {
   public List<Match> findAll() {
     return jdbcTemplate.query(
         "SELECT m.id, h.name as home, a.name as away, m.selected "
-            + "FROM MATCH m "
+            + "FROM `match` m "
             + "LEFT JOIN TEAM h ON m.home_team_id = h.id "
             + "LEFT JOIN TEAM a ON m.away_team_id = a.id"
-        , new Object[]{}, (rs, rowNum) -> new Match(
+        , (rs, rowNum) -> new Match(
             rs.getLong("id"),
             rs.getString("home"),
             rs.getString("away"),
             rs.getBoolean("selected")
         ));
   }
-
-
 }
