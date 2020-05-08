@@ -66,22 +66,17 @@ const FourthBase = keyframes`
   }
 `;
 
-const HitterWrap = styled("div")<IHitterProp>`
+const Hitter = styled("div")<IHitterProp>`
   position: absolute;
   width: 50px;
   height: 50px;
   right: 48%;
   top: 86.5%;
+  z-index: 100;
   ${(props) => css`
     animation: ${props.active} 3s 1.2s linear 1;
     animation-fill-mode: both;
   `}
-`;
-
-const Hitter = styled.div`
-  position: absolute;
-  height: 100%;
-  z-index: 100;
   .hitter-img {
     height: inherit;
   }
@@ -111,11 +106,9 @@ const Field = () => {
     <>
       <Playball onClick={onClickHandler}>PITCH!</Playball>
       <Pitcher src={PitcherImg} />
-      <HitterWrap active={Bases[hit]}>
-        <Hitter>
-          <img className="hitter-img" src={HitterImg} />
-        </Hitter>
-      </HitterWrap>
+      <Hitter active={Bases[hit]}>
+        <img className="hitter-img" src={HitterImg} />
+      </Hitter>
     </>
   );
 };
