@@ -16,7 +16,7 @@ public class GameService {
   }
 
   @Transactional
-  public List<Match> main() {
+  public List<Match> getMain() {
     return repository.findAll();
   }
 
