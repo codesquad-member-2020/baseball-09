@@ -22,6 +22,7 @@
 		ABF908CC24669ADF00F08D21 /* CurrentPlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908CB24669ADF00F08D21 /* CurrentPlayerCell.swift */; };
 		ABF908CE24669B3E00F08D21 /* GameLogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908CD24669B3E00F08D21 /* GameLogCell.swift */; };
 		ABF908D024669DC000F08D21 /* TeamScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908CF24669DC000F08D21 /* TeamScoreView.swift */; };
+		ABF908D22466A02800F08D21 /* GameScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908D12466A02800F08D21 /* GameScreenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		ABF908CB24669ADF00F08D21 /* CurrentPlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentPlayerCell.swift; sourceTree = "<group>"; };
 		ABF908CD24669B3E00F08D21 /* GameLogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogCell.swift; sourceTree = "<group>"; };
 		ABF908CF24669DC000F08D21 /* TeamScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamScoreView.swift; sourceTree = "<group>"; };
+		ABF908D12466A02800F08D21 /* GameScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,12 +101,9 @@
 		ABF908BA2462795300F08D21 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				ABF908C0246311E100F08D21 /* GameSelectView.swift */,
-				ABF908C1246311E100F08D21 /* GameSelectView.xib */,
-				ABF908C62463C7A800F08D21 /* TeamSelectButton.swift */,
-				ABF908CB24669ADF00F08D21 /* CurrentPlayerCell.swift */,
-				ABF908CD24669B3E00F08D21 /* GameLogCell.swift */,
-				ABF908CF24669DC000F08D21 /* TeamScoreView.swift */,
+				ABF908D32466A03D00F08D21 /* MainView */,
+				ABF908D42466A05100F08D21 /* GameView */,
+				ABF908D52466A07100F08D21 /* ScoreView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -124,6 +123,34 @@
 			children = (
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		ABF908D32466A03D00F08D21 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				ABF908C0246311E100F08D21 /* GameSelectView.swift */,
+				ABF908C1246311E100F08D21 /* GameSelectView.xib */,
+				ABF908C62463C7A800F08D21 /* TeamSelectButton.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		ABF908D42466A05100F08D21 /* GameView */ = {
+			isa = PBXGroup;
+			children = (
+				ABF908CF24669DC000F08D21 /* TeamScoreView.swift */,
+				ABF908D12466A02800F08D21 /* GameScreenView.swift */,
+				ABF908CB24669ADF00F08D21 /* CurrentPlayerCell.swift */,
+				ABF908CD24669B3E00F08D21 /* GameLogCell.swift */,
+			);
+			path = GameView;
+			sourceTree = "<group>";
+		};
+		ABF908D52466A07100F08D21 /* ScoreView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ScoreView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,6 +233,7 @@
 				ABF908C2246311E100F08D21 /* GameSelectView.swift in Sources */,
 				ABF908C72463C7A800F08D21 /* TeamSelectButton.swift in Sources */,
 				ABF9089E2461572400F08D21 /* AppDelegate.swift in Sources */,
+				ABF908D22466A02800F08D21 /* GameScreenView.swift in Sources */,
 				ABF908A02461572400F08D21 /* SceneDelegate.swift in Sources */,
 				ABF908D024669DC000F08D21 /* TeamScoreView.swift in Sources */,
 				ABF908B224625DA000F08D21 /* GameTabController.swift in Sources */,

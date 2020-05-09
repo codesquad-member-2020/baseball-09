@@ -219,8 +219,20 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sWN-QN-9ii" userLabel="GameScreen">
                                 <rect key="frame" x="0.0" y="92.666666666666686" width="375" height="300"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qx9-Qk-lry" customClass="GameScreenView" customModule="BaseBallApp" customModuleProvider="target">
+                                        <rect key="frame" x="47" y="9.3333333333333428" width="281" height="281.33333333333326"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="qx9-Qk-lry" secondAttribute="height" multiplier="1:1" id="oTp-jw-OfP"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="qx9-Qk-lry" firstAttribute="centerX" secondItem="sWN-QN-9ii" secondAttribute="centerX" id="515-Zy-fyh"/>
+                                    <constraint firstItem="qx9-Qk-lry" firstAttribute="centerY" secondItem="sWN-QN-9ii" secondAttribute="centerY" id="5dY-QJ-7qr"/>
+                                    <constraint firstItem="qx9-Qk-lry" firstAttribute="width" secondItem="sWN-QN-9ii" secondAttribute="width" multiplier="0.75" id="eGx-6U-2ID"/>
                                     <constraint firstAttribute="width" secondItem="sWN-QN-9ii" secondAttribute="height" multiplier="1:0.8" id="uSU-2u-B31"/>
                                 </constraints>
                             </view>
