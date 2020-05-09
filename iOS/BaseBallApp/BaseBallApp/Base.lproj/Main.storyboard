@@ -148,7 +148,7 @@
         <!--Item 1-->
         <scene sceneID="zGc-eW-Tvf">
             <objects>
-                <viewController id="hF2-pJ-EBv" sceneMemberID="viewController">
+                <viewController id="hF2-pJ-EBv" customClass="GameViewController" customModule="BaseBallApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qnP-0O-aPb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -220,6 +220,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sWN-QN-9ii" userLabel="GameScreen">
                                 <rect key="frame" x="0.0" y="92.666666666666686" width="375" height="300"/>
                                 <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="3cn-Wl-0CZ" userLabel="GameInfo">
+                                        <rect key="frame" x="15" y="15" width="93.666666666666671" height="75"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="3cn-Wl-0CZ" secondAttribute="height" multiplier="1:0.8" id="Ku9-hU-ZKr"/>
+                                        </constraints>
+                                    </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qx9-Qk-lry" customClass="GameScreenView" customModule="BaseBallApp" customModuleProvider="target">
                                         <rect key="frame" x="47" y="9.3333333333333428" width="281" height="281.33333333333326"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -230,8 +237,11 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="3cn-Wl-0CZ" firstAttribute="leading" secondItem="sWN-QN-9ii" secondAttribute="leading" constant="15" id="0V1-C1-nuB"/>
                                     <constraint firstItem="qx9-Qk-lry" firstAttribute="centerX" secondItem="sWN-QN-9ii" secondAttribute="centerX" id="515-Zy-fyh"/>
                                     <constraint firstItem="qx9-Qk-lry" firstAttribute="centerY" secondItem="sWN-QN-9ii" secondAttribute="centerY" id="5dY-QJ-7qr"/>
+                                    <constraint firstItem="3cn-Wl-0CZ" firstAttribute="height" secondItem="sWN-QN-9ii" secondAttribute="height" multiplier="0.25" id="FFx-Nd-2x8"/>
+                                    <constraint firstItem="3cn-Wl-0CZ" firstAttribute="top" secondItem="sWN-QN-9ii" secondAttribute="top" constant="15" id="WPS-iy-GKQ"/>
                                     <constraint firstItem="qx9-Qk-lry" firstAttribute="width" secondItem="sWN-QN-9ii" secondAttribute="width" multiplier="0.75" id="eGx-6U-2ID"/>
                                     <constraint firstAttribute="width" secondItem="sWN-QN-9ii" secondAttribute="height" multiplier="1:0.8" id="uSU-2u-B31"/>
                                 </constraints>
@@ -365,6 +375,12 @@
                         <viewLayoutGuide key="safeArea" id="L74-Y1-9an"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="u6U-sW-8vw"/>
+                    <connections>
+                        <outlet property="CurrentPlayerView" destination="CGO-xd-s2S" id="Fkm-nG-ROY"/>
+                        <outlet property="GameLogView" destination="F7h-Wd-88E" id="DoS-kE-QBY"/>
+                        <outlet property="GameScreenView" destination="sWN-QN-9ii" id="Hyg-MN-Sff"/>
+                        <outlet property="gameScoreView" destination="pmy-ei-Jjz" id="EQt-99-hkp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iVC-oE-wfM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
