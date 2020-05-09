@@ -19,6 +19,8 @@
 		ABF908C3246311E100F08D21 /* GameSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABF908C1246311E100F08D21 /* GameSelectView.xib */; };
 		ABF908C52463C5B300F08D21 /* TeamSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908C42463C5B300F08D21 /* TeamSelectViewController.swift */; };
 		ABF908C72463C7A800F08D21 /* TeamSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908C62463C7A800F08D21 /* TeamSelectButton.swift */; };
+		ABF908CC24669ADF00F08D21 /* CurrentPlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908CB24669ADF00F08D21 /* CurrentPlayerCell.swift */; };
+		ABF908CE24669B3E00F08D21 /* GameLogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908CD24669B3E00F08D21 /* GameLogCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		ABF908C1246311E100F08D21 /* GameSelectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameSelectView.xib; sourceTree = "<group>"; };
 		ABF908C42463C5B300F08D21 /* TeamSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamSelectViewController.swift; sourceTree = "<group>"; };
 		ABF908C62463C7A800F08D21 /* TeamSelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamSelectButton.swift; sourceTree = "<group>"; };
+		ABF908CB24669ADF00F08D21 /* CurrentPlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentPlayerCell.swift; sourceTree = "<group>"; };
+		ABF908CD24669B3E00F08D21 /* GameLogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,8 @@
 				ABF908C0246311E100F08D21 /* GameSelectView.swift */,
 				ABF908C1246311E100F08D21 /* GameSelectView.xib */,
 				ABF908C62463C7A800F08D21 /* TeamSelectButton.swift */,
+				ABF908CB24669ADF00F08D21 /* CurrentPlayerCell.swift */,
+				ABF908CD24669B3E00F08D21 /* GameLogCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -189,7 +195,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABF908CC24669ADF00F08D21 /* CurrentPlayerCell.swift in Sources */,
 				ABF908C52463C5B300F08D21 /* TeamSelectViewController.swift in Sources */,
+				ABF908CE24669B3E00F08D21 /* GameLogCell.swift in Sources */,
 				ABF908A22461572400F08D21 /* GameSelectViewController.swift in Sources */,
 				ABF908BD246279BD00F08D21 /* DataManager.swift in Sources */,
 				ABF908C2246311E100F08D21 /* GameSelectView.swift in Sources */,

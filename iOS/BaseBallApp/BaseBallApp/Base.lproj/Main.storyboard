@@ -171,7 +171,7 @@
                                     <constraint firstAttribute="height" constant="90" id="qW6-Aj-oaw"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MatchPlayerInfo" id="xqW-6v-aLS" userLabel="DetailCurrentPlayer">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MatchPlayerInfo" id="xqW-6v-aLS" userLabel="DetailCurrentPlayer" customClass="CurrentPlayerCell" customModule="BaseBallApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xqW-6v-aLS" id="Lb6-Vg-2po">
@@ -208,6 +208,11 @@
                                                 <constraint firstItem="FRU-iv-GWD" firstAttribute="leading" secondItem="42C-Ij-pat" secondAttribute="trailing" constant="20" id="wT0-fV-amZ"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="playerInfo" destination="IaL-4Q-iKL" id="xWI-4M-zdD"/>
+                                            <outlet property="playerName" destination="FRU-iv-GWD" id="BPr-jb-vA7"/>
+                                            <outlet property="playerType" destination="42C-Ij-pat" id="yqa-1T-YwW"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -215,7 +220,7 @@
                                 <rect key="frame" x="0.0" y="499" width="375" height="230"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GameLog" rowHeight="50" id="4FG-PH-gGX" userLabel="DeatilGameLog">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GameLog" rowHeight="50" id="4FG-PH-gGX" userLabel="DeatilGameLog" customClass="GameLogCell" customModule="BaseBallApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4FG-PH-gGX" id="yAV-JK-j8i">
@@ -258,6 +263,11 @@
                                                 <constraint firstItem="OOv-6E-jog" firstAttribute="leading" secondItem="Nys-gc-sd6" secondAttribute="trailing" constant="15" id="zch-Et-zJU"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="pitchCount" destination="Nys-gc-sd6" id="af8-n0-Wmc"/>
+                                            <outlet property="pitchResult" destination="OOv-6E-jog" id="SNh-By-fTn"/>
+                                            <outlet property="strikeBallCount" destination="tCZ-h6-QRy" id="cgV-R7-HxC"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
