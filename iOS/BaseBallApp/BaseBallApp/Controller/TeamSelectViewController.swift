@@ -27,14 +27,11 @@ class TeamSelectViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUI()
-        
-        teamSelectAlert = UIAlertController(title: "팀 선택 불가", message: "이미 선점된 팀입니다.", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        teamSelectAlert.addAction(okAction)
+        setModalUI()
+        setAlertController()
     }
     
-    private func setUI() {
+    private func setModalUI() {
         awayTeamButton.setTitle(awayTeamButtonTitle, for: .normal)
         homeTeamButton.setTitle(homeTeamButtonTitle, for: .normal)
         
@@ -43,7 +40,13 @@ class TeamSelectViewController: UIViewController {
         let blurEffect = UIBlurEffect(style: .dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = self.view.frame
-
+        
         self.view.insertSubview(blurEffectView, at: 0)
+    }
+    
+    private func setAlertController() {
+        teamSelectAlert = UIAlertController(title: "팀 선택 불가", message: "이미 선점된 팀입니다.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        teamSelectAlert.addAction(okAction)
     }
 }

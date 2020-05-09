@@ -10,6 +10,9 @@ import UIKit
 
 class GameSelectViewController: UIViewController {
     @IBOutlet weak var GameListTableView: UITableView!
+    
+    private let cellIdentifier = "GameSelectCell"
+    private let cellNibName = "GameSelectView"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,8 +24,8 @@ class GameSelectViewController: UIViewController {
     }
     
     private func registGameListTableViewCell() {
-        let cellNib = UINib(nibName: "GameSelectView", bundle: nil)
-        GameListTableView.register(cellNib, forCellReuseIdentifier: "GameSelectCell")
+        let cellNib = UINib(nibName: cellNibName, bundle: nil)
+        GameListTableView.register(cellNib, forCellReuseIdentifier: cellIdentifier)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -48,7 +51,7 @@ extension GameSelectViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "GameSelectCell", for: indexPath) as? GameSelectView else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? GameSelectView else { return UITableViewCell() }
         
         let allTeams = DataManager().getTeamList()
         
