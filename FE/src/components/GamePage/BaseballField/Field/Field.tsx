@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import styled, { keyframes, Keyframes, css } from "styled-components";
+import React, { useState, Dispatch } from "react";
+import styled from "styled-components";
+import Hitter from "@/components/GamePage/BaseballField/Field/Hitter/hitter";
 import PitcherImg from "./pitcher.png";
-import HitterImg from "./hitter.png";
 
 const Playball = styled.button`
   position: absolute;
@@ -27,67 +27,6 @@ const Pitcher = styled.img`
   top: 56%;
 `;
 
-const FirstBase = keyframes`
-  99% {
-    transform: translate(230px, -240px);
-  }
-  100% {  
-    transform: translate(230px, -240px) scaleX(-1);
-  }
-`;
-
-const SecondBase = keyframes`
-  0% {
-    transform: translate(230px, -240px) scaleX(-1);
-  }
-  100% {  
-    transform: translate(0px, -450px) scaleX(-1);
-  }
-`;
-
-const ThirdBase = keyframes`
-  0% {
-    transform: translate(0px, -450px)  scaleX(-1);
-  }
-  99% {
-    transform: translate(-200px, -220px) scaleX(-1);
-  }
-  100% {  
-    transform: translate(-200px, -220px);
-  }
-`;
-
-const FourthBase = keyframes`
-  0% {
-    transform: translate(-200px, -220px);
-  }
-  100% {  
-    transform: translate(0px, 0px);
-  }
-`;
-
-const Hitter = styled("div")<IHitterProp>`
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  right: 48%;
-  top: 86.5%;
-  z-index: 100;
-  ${(props) => css`
-    animation: ${props.active} 3s 1.2s linear 1;
-    animation-fill-mode: both;
-  `}
-  .hitter-img {
-    height: inherit;
-  }
-`;
-
-const Bases = [FirstBase, SecondBase, ThirdBase, FourthBase];
-
-interface IHitterProp {
-  active: Keyframes;
-}
-
 enum FieldState {
   InitState = -1,
   MaxState = 4,
@@ -106,9 +45,7 @@ const Field = () => {
     <>
       <Playball onClick={onClickHandler}>PITCH!</Playball>
       <Pitcher src={PitcherImg} />
-      <Hitter active={Bases[hit]}>
-        <img className="hitter-img" src={HitterImg} />
-      </Hitter>
+      <Hitter hit={hit} />
     </>
   );
 };
