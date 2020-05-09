@@ -21,6 +21,7 @@
 		ABF908C72463C7A800F08D21 /* TeamSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908C62463C7A800F08D21 /* TeamSelectButton.swift */; };
 		ABF908CC24669ADF00F08D21 /* CurrentPlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908CB24669ADF00F08D21 /* CurrentPlayerCell.swift */; };
 		ABF908CE24669B3E00F08D21 /* GameLogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908CD24669B3E00F08D21 /* GameLogCell.swift */; };
+		ABF908D024669DC000F08D21 /* TeamScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908CF24669DC000F08D21 /* TeamScoreView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		ABF908C62463C7A800F08D21 /* TeamSelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamSelectButton.swift; sourceTree = "<group>"; };
 		ABF908CB24669ADF00F08D21 /* CurrentPlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentPlayerCell.swift; sourceTree = "<group>"; };
 		ABF908CD24669B3E00F08D21 /* GameLogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogCell.swift; sourceTree = "<group>"; };
+		ABF908CF24669DC000F08D21 /* TeamScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamScoreView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				ABF908C62463C7A800F08D21 /* TeamSelectButton.swift */,
 				ABF908CB24669ADF00F08D21 /* CurrentPlayerCell.swift */,
 				ABF908CD24669B3E00F08D21 /* GameLogCell.swift */,
+				ABF908CF24669DC000F08D21 /* TeamScoreView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				ABF908C72463C7A800F08D21 /* TeamSelectButton.swift in Sources */,
 				ABF9089E2461572400F08D21 /* AppDelegate.swift in Sources */,
 				ABF908A02461572400F08D21 /* SceneDelegate.swift in Sources */,
+				ABF908D024669DC000F08D21 /* TeamScoreView.swift in Sources */,
 				ABF908B224625DA000F08D21 /* GameTabController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
