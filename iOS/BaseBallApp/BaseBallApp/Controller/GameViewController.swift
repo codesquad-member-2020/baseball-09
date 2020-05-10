@@ -10,13 +10,11 @@ import UIKit
 
 class GameViewController: UIViewController {
     @IBOutlet weak var gameScoreView: TeamScoreView!
-    @IBOutlet weak var GameScreenView: UIView!
-    @IBOutlet weak var CurrentPlayerView: UITableView!
-    @IBOutlet weak var GameLogView: UITableView!
+    @IBOutlet weak var gameScreenView: UIView!
+    @IBOutlet weak var currentPlayer: UITableView!
+    @IBOutlet weak var currentPlayLog: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 }

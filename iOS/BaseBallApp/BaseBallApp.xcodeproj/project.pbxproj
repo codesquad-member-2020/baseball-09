@@ -27,6 +27,7 @@
 		ABF908DB2466C3FD00F08D21 /* PitchingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908DA2466C3FD00F08D21 /* PitchingResult.swift */; };
 		ABF908DD2466C70A00F08D21 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908DC2466C70A00F08D21 /* CircleView.swift */; };
 		ABF908E02466CFFC00F08D21 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908DF2466CFFC00F08D21 /* GameViewController.swift */; };
+		ABF908E42467DD1B00F08D21 /* GameProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908E32467DD1B00F08D21 /* GameProgressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		ABF908DA2466C3FD00F08D21 /* PitchingResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchingResult.swift; sourceTree = "<group>"; };
 		ABF908DC2466C70A00F08D21 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		ABF908DF2466CFFC00F08D21 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		ABF908E32467DD1B00F08D21 /* GameProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 				ABF908DA2466C3FD00F08D21 /* PitchingResult.swift */,
 				ABF908D82466BEB200F08D21 /* PitchingResult.xib */,
 				ABF908DC2466C70A00F08D21 /* CircleView.swift */,
+				ABF908E32467DD1B00F08D21 /* GameProgressView.swift */,
 			);
 			path = GameScreen;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 				ABF908D22466A02800F08D21 /* GameScreenView.swift in Sources */,
 				ABF908DB2466C3FD00F08D21 /* PitchingResult.swift in Sources */,
 				ABF908E02466CFFC00F08D21 /* GameViewController.swift in Sources */,
+				ABF908E42467DD1B00F08D21 /* GameProgressView.swift in Sources */,
 				ABF908A02461572400F08D21 /* SceneDelegate.swift in Sources */,
 				ABF908D024669DC000F08D21 /* TeamScoreView.swift in Sources */,
 				ABF908DD2466C70A00F08D21 /* CircleView.swift in Sources */,

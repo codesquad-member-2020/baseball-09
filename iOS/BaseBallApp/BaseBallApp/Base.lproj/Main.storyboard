@@ -156,8 +156,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pmy-ei-Jjz" userLabel="GameScore" customClass="TeamScoreView" customModule="BaseBallApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44" width="375" height="48.666666666666657"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="uxh-1j-M2J" userLabel="AwayTeamScore">
-                                        <rect key="frame" x="10" y="0.0" width="146" height="48.666666666666664"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UgU-OU-HvZ">
+                                        <rect key="frame" x="177.66666666666666" y="15.333333333333336" width="20" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="uxh-1j-M2J" userLabel="AwayTeamScore">
+                                        <rect key="frame" x="10" y="0.0" width="141" height="48.666666666666664"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AwayTeam" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2J4-ij-p0w">
                                                 <rect key="frame" x="0.0" y="0.0" width="111" height="48.666666666666664"/>
@@ -166,14 +172,14 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cqh-Vq-4fZ">
-                                                <rect key="frame" x="121" y="0.0" width="25" height="48.666666666666664"/>
+                                                <rect key="frame" x="116" y="0.0" width="25" height="48.666666666666664"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yjG-UW-wOU" userLabel="HomeTeamScore">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yjG-UW-wOU" userLabel="HomeTeamScore">
                                         <rect key="frame" x="215.66666666666663" y="0.0" width="149.33333333333337" height="48.666666666666664"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9T-Y1-Hgb">
@@ -190,12 +196,6 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UgU-OU-HvZ">
-                                        <rect key="frame" x="177.66666666666666" y="15.333333333333336" width="20" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -234,6 +234,30 @@
                                             <constraint firstAttribute="width" secondItem="qx9-Qk-lry" secondAttribute="height" multiplier="1:1" id="oTp-jw-OfP"/>
                                         </constraints>
                                     </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="Fvw-E7-oUW" userLabel="GameProgressView" customClass="GameProgressView" customModule="BaseBallApp" customModuleProvider="target">
+                                        <rect key="frame" x="305" y="10" width="60" height="60"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1회 초" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="da1-ku-HUM">
+                                                <rect key="frame" x="18" y="0.0" width="42" height="30"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공격" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Wa-z6-oE2">
+                                                <rect key="frame" x="30.333333333333314" y="29.999999999999986" width="29.666666666666671" height="30"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Fvw-E7-oUW" secondAttribute="height" id="bLW-bm-2cF"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="gameProgress" destination="da1-ku-HUM" id="p74-ph-cH8"/>
+                                            <outlet property="gameRotate" destination="4Wa-z6-oE2" id="KLe-FG-FXM"/>
+                                        </connections>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -241,8 +265,11 @@
                                     <constraint firstItem="qx9-Qk-lry" firstAttribute="centerX" secondItem="sWN-QN-9ii" secondAttribute="centerX" id="515-Zy-fyh"/>
                                     <constraint firstItem="qx9-Qk-lry" firstAttribute="centerY" secondItem="sWN-QN-9ii" secondAttribute="centerY" id="5dY-QJ-7qr"/>
                                     <constraint firstItem="3cn-Wl-0CZ" firstAttribute="height" secondItem="sWN-QN-9ii" secondAttribute="height" multiplier="0.25" id="FFx-Nd-2x8"/>
+                                    <constraint firstItem="Fvw-E7-oUW" firstAttribute="height" secondItem="sWN-QN-9ii" secondAttribute="height" multiplier="0.2" id="NBA-7h-5oI"/>
                                     <constraint firstItem="3cn-Wl-0CZ" firstAttribute="top" secondItem="sWN-QN-9ii" secondAttribute="top" constant="15" id="WPS-iy-GKQ"/>
                                     <constraint firstItem="qx9-Qk-lry" firstAttribute="width" secondItem="sWN-QN-9ii" secondAttribute="width" multiplier="0.75" id="eGx-6U-2ID"/>
+                                    <constraint firstAttribute="trailing" secondItem="Fvw-E7-oUW" secondAttribute="trailing" constant="10" id="h9E-1l-oKF"/>
+                                    <constraint firstItem="Fvw-E7-oUW" firstAttribute="top" secondItem="sWN-QN-9ii" secondAttribute="top" constant="10" id="qvk-eS-KeL"/>
                                     <constraint firstAttribute="width" secondItem="sWN-QN-9ii" secondAttribute="height" multiplier="1:0.8" id="uSU-2u-B31"/>
                                 </constraints>
                             </view>
@@ -376,10 +403,10 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="u6U-sW-8vw"/>
                     <connections>
-                        <outlet property="CurrentPlayerView" destination="CGO-xd-s2S" id="Fkm-nG-ROY"/>
-                        <outlet property="GameLogView" destination="F7h-Wd-88E" id="DoS-kE-QBY"/>
-                        <outlet property="GameScreenView" destination="sWN-QN-9ii" id="Hyg-MN-Sff"/>
+                        <outlet property="currentPlayLog" destination="F7h-Wd-88E" id="A0s-xc-MOh"/>
+                        <outlet property="currentPlayer" destination="CGO-xd-s2S" id="qwd-Zv-NeR"/>
                         <outlet property="gameScoreView" destination="pmy-ei-Jjz" id="EQt-99-hkp"/>
+                        <outlet property="gameScreenView" destination="sWN-QN-9ii" id="9DJ-ge-3nB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iVC-oE-wfM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
