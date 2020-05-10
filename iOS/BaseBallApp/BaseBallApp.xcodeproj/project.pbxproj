@@ -19,6 +19,15 @@
 		ABF908C3246311E100F08D21 /* GameSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABF908C1246311E100F08D21 /* GameSelectView.xib */; };
 		ABF908C52463C5B300F08D21 /* TeamSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908C42463C5B300F08D21 /* TeamSelectViewController.swift */; };
 		ABF908C72463C7A800F08D21 /* TeamSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908C62463C7A800F08D21 /* TeamSelectButton.swift */; };
+		ABF908CC24669ADF00F08D21 /* CurrentPlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908CB24669ADF00F08D21 /* CurrentPlayerCell.swift */; };
+		ABF908CE24669B3E00F08D21 /* GameLogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908CD24669B3E00F08D21 /* GameLogCell.swift */; };
+		ABF908D024669DC000F08D21 /* TeamScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908CF24669DC000F08D21 /* TeamScoreView.swift */; };
+		ABF908D22466A02800F08D21 /* GameScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908D12466A02800F08D21 /* GameScreenView.swift */; };
+		ABF908D92466BEB200F08D21 /* PitchingResult.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABF908D82466BEB200F08D21 /* PitchingResult.xib */; };
+		ABF908DB2466C3FD00F08D21 /* PitchingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908DA2466C3FD00F08D21 /* PitchingResult.swift */; };
+		ABF908DD2466C70A00F08D21 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908DC2466C70A00F08D21 /* CircleView.swift */; };
+		ABF908E02466CFFC00F08D21 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908DF2466CFFC00F08D21 /* GameViewController.swift */; };
+		ABF908E42467DD1B00F08D21 /* GameProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908E32467DD1B00F08D21 /* GameProgressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +45,15 @@
 		ABF908C1246311E100F08D21 /* GameSelectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameSelectView.xib; sourceTree = "<group>"; };
 		ABF908C42463C5B300F08D21 /* TeamSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamSelectViewController.swift; sourceTree = "<group>"; };
 		ABF908C62463C7A800F08D21 /* TeamSelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamSelectButton.swift; sourceTree = "<group>"; };
+		ABF908CB24669ADF00F08D21 /* CurrentPlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentPlayerCell.swift; sourceTree = "<group>"; };
+		ABF908CD24669B3E00F08D21 /* GameLogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogCell.swift; sourceTree = "<group>"; };
+		ABF908CF24669DC000F08D21 /* TeamScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamScoreView.swift; sourceTree = "<group>"; };
+		ABF908D12466A02800F08D21 /* GameScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreenView.swift; sourceTree = "<group>"; };
+		ABF908D82466BEB200F08D21 /* PitchingResult.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PitchingResult.xib; sourceTree = "<group>"; };
+		ABF908DA2466C3FD00F08D21 /* PitchingResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchingResult.swift; sourceTree = "<group>"; };
+		ABF908DC2466C70A00F08D21 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		ABF908DF2466CFFC00F08D21 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		ABF908E32467DD1B00F08D21 /* GameProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +89,7 @@
 				ABF908BB2462796B00F08D21 /* Controller */,
 				ABF908BA2462795300F08D21 /* View */,
 				ABF908B92462794D00F08D21 /* Model */,
+				ABF908CA24651E3200F08D21 /* Util */,
 				ABF9089D2461572400F08D21 /* AppDelegate.swift */,
 				ABF9089F2461572400F08D21 /* SceneDelegate.swift */,
 				ABF908A32461572400F08D21 /* Main.storyboard */,
@@ -92,9 +111,9 @@
 		ABF908BA2462795300F08D21 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				ABF908C0246311E100F08D21 /* GameSelectView.swift */,
-				ABF908C1246311E100F08D21 /* GameSelectView.xib */,
-				ABF908C62463C7A800F08D21 /* TeamSelectButton.swift */,
+				ABF908D32466A03D00F08D21 /* MainView */,
+				ABF908D42466A05100F08D21 /* GameView */,
+				ABF908D52466A07100F08D21 /* ScoreView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -103,10 +122,58 @@
 			isa = PBXGroup;
 			children = (
 				ABF908A12461572400F08D21 /* GameSelectViewController.swift */,
-				ABF908B124625DA000F08D21 /* GameTabController.swift */,
 				ABF908C42463C5B300F08D21 /* TeamSelectViewController.swift */,
+				ABF908B124625DA000F08D21 /* GameTabController.swift */,
+				ABF908DF2466CFFC00F08D21 /* GameViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		ABF908CA24651E3200F08D21 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		ABF908D32466A03D00F08D21 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				ABF908C0246311E100F08D21 /* GameSelectView.swift */,
+				ABF908C1246311E100F08D21 /* GameSelectView.xib */,
+				ABF908C62463C7A800F08D21 /* TeamSelectButton.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		ABF908D42466A05100F08D21 /* GameView */ = {
+			isa = PBXGroup;
+			children = (
+				ABF908DE2466CEFD00F08D21 /* GameScreen */,
+				ABF908CF24669DC000F08D21 /* TeamScoreView.swift */,
+				ABF908CB24669ADF00F08D21 /* CurrentPlayerCell.swift */,
+				ABF908CD24669B3E00F08D21 /* GameLogCell.swift */,
+			);
+			path = GameView;
+			sourceTree = "<group>";
+		};
+		ABF908D52466A07100F08D21 /* ScoreView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ScoreView;
+			sourceTree = "<group>";
+		};
+		ABF908DE2466CEFD00F08D21 /* GameScreen */ = {
+			isa = PBXGroup;
+			children = (
+				ABF908D12466A02800F08D21 /* GameScreenView.swift */,
+				ABF908DA2466C3FD00F08D21 /* PitchingResult.swift */,
+				ABF908D82466BEB200F08D21 /* PitchingResult.xib */,
+				ABF908DC2466C70A00F08D21 /* CircleView.swift */,
+				ABF908E32467DD1B00F08D21 /* GameProgressView.swift */,
+			);
+			path = GameScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,6 +234,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABF908D92466BEB200F08D21 /* PitchingResult.xib in Resources */,
 				ABF908C3246311E100F08D21 /* GameSelectView.xib in Resources */,
 				ABF908AA2461572500F08D21 /* LaunchScreen.storyboard in Resources */,
 				ABF908A72461572500F08D21 /* Assets.xcassets in Resources */,
@@ -181,13 +249,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABF908CC24669ADF00F08D21 /* CurrentPlayerCell.swift in Sources */,
 				ABF908C52463C5B300F08D21 /* TeamSelectViewController.swift in Sources */,
+				ABF908CE24669B3E00F08D21 /* GameLogCell.swift in Sources */,
 				ABF908A22461572400F08D21 /* GameSelectViewController.swift in Sources */,
 				ABF908BD246279BD00F08D21 /* DataManager.swift in Sources */,
 				ABF908C2246311E100F08D21 /* GameSelectView.swift in Sources */,
 				ABF908C72463C7A800F08D21 /* TeamSelectButton.swift in Sources */,
 				ABF9089E2461572400F08D21 /* AppDelegate.swift in Sources */,
+				ABF908D22466A02800F08D21 /* GameScreenView.swift in Sources */,
+				ABF908DB2466C3FD00F08D21 /* PitchingResult.swift in Sources */,
+				ABF908E02466CFFC00F08D21 /* GameViewController.swift in Sources */,
+				ABF908E42467DD1B00F08D21 /* GameProgressView.swift in Sources */,
 				ABF908A02461572400F08D21 /* SceneDelegate.swift in Sources */,
+				ABF908D024669DC000F08D21 /* TeamScoreView.swift in Sources */,
+				ABF908DD2466C70A00F08D21 /* CircleView.swift in Sources */,
 				ABF908B224625DA000F08D21 /* GameTabController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
