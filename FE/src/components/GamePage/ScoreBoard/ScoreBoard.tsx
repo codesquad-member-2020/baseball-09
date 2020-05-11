@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   width: 100%;
   height: 100%;
-  background-color: #000000;
+  background-color: ${(props) => props.theme.colors.default.backgroundColor};
   text-transform: uppercase;
   font-size: 2rem;
   font-weight: 900;
@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 `;
 
 const Header = styled.header`
-  color: #ffffff;
+  color: ${(props) => props.theme.colors.default.fontColor};
 `;
 
 const Names = styled.div`
@@ -24,7 +24,7 @@ const Names = styled.div`
 `;
 
 const TeamName = styled.span`
-  color: #ffffff;
+  color: ${(props) => props.theme.colors.default.fontColor};
   display: inline-block;
   font-size: 3rem;
   font-weight: 900;
@@ -32,7 +32,7 @@ const TeamName = styled.span`
 `;
 
 const Versus = styled.span`
-  color: #ffffff;
+  color: ${(props) => props.theme.colors.default.fontColor};
   display: inline-block;
   font-size: 1.5rem;
   font-weight: 900;
@@ -41,7 +41,7 @@ const Versus = styled.span`
 `;
 
 const TeamScore = styled.span`
-  color: #ffffff;
+  color: ${(props) => props.theme.colors.default.fontColor};
   display: inline-block;
   font-size: 3rem;
   font-weight: 900;
@@ -57,7 +57,7 @@ const Teams = styled.div`
 `;
 
 const Selected = styled.span`
-  color: #cc0000;
+  color: ${(props) => props.theme.colors.default.playerSelected};
   width: 30%;
   position: absolute;
   top: 100%;

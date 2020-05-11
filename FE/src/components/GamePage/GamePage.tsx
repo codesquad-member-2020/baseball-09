@@ -6,27 +6,26 @@ import BaseballField from "@GamePage/BaseballField/BaseballField";
 import PlayerInfo from "@GamePage/PlayerInfo/PlayerInfo";
 
 const Wrapper = styled.div`
-  background-color: #000000;
+  background-color: ${(props) => props.theme.colors.default.backgroundColor};
   height: 100vh;
   width: 100vw;
 `;
 
 const HeaderSection = styled.section`
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid ${(props) => props.theme.colors.default.borderColor};
   display: flex;
   height: 30vh;
   width: 100vw;
 `;
 
 const ScoreBoardWrapper = styled.div`
-  background-color: #000000;
-  border-right: 1px solid white;
+  background-color: ${(props) => props.theme.colors.default.backgroundColor};
+  border-right: 1px solid ${(props) => props.theme.colors.default.borderColor};
   height: 100%;
   width: 70vw;
 `;
 
 const CurrentTurnWrapper = styled.div`
-  background-color: skyblue;
   height: 100%;
   width: 30vw;
 `;
@@ -38,7 +37,7 @@ const PlayStatusSection = styled.section`
 `;
 
 const GameStatus = styled.div`
-  border-right: 1px solid white;
+  border-right: 1px solid ${(props) => props.theme.colors.default.borderColor};
   height: 100%;
   width: 70vw;
   display: flex;
@@ -46,7 +45,6 @@ const GameStatus = styled.div`
 `;
 
 const PlayerInfoWrapper = styled.div`
-  background-color: purple;
   height: 100%;
   width: 30vw;
 `;

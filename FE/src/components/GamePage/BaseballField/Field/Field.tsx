@@ -5,18 +5,18 @@ import PitcherImg from "./pitcher.png";
 
 const Playball = styled.button`
   position: absolute;
-  color: white;
+  color: ${(props) => props.theme.colors.default.fontColor};
   font-family: sans-serif;
   font-size: 1.5em;
   cursor: pointer;
-  background-color: #4682b4;
+  background-color: ${(props) => props.theme.colors.default.buttonColor};
   border-radius: 5%;
   border: solid 1px #75b6ed;
   padding: 0.25em 1em;
   right: 43%;
   top: 47%;
   &:hover {
-    background-color: #00008b;
+    background-color: ${(props) => props.theme.colors.default.buttonFadeColor};
   }
 `;
 

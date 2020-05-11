@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const StatusWrapper = styled.div`
-  background-color: #000000;
+  background-color: ${(props) => props.theme.colors.default.backgroundColor};
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -11,7 +11,7 @@ const StatusWrapper = styled.div`
 `;
 
 const PlayerType = styled.span`
-  color: #e2dddd;
+  color: ${(props) => props.theme.colors.default.statPrimaryColor};
   font-size: 2rem;
 `;
 
@@ -21,12 +21,12 @@ const Player = styled.div`
 `;
 
 const PlayerName = styled.span`
-  color: #b4d1d7;
+  color: ${(props) => props.theme.colors.default.statSecondaryColor};
   font-size: 2rem;
 `;
 
 const PlayerStats = styled.span`
-  color: #36545f;
+  color: ${(props) => props.theme.colors.default.statFourthColor};
   font-size: 1.5rem;
 `;
 

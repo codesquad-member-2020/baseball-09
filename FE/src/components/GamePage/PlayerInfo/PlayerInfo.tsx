@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Info from "@GamePage/PlayerInfo/Info/Info";
 
 const Wrapper = styled.div`
-  background-color: #000000;
+  background-color: ${(props) => props.theme.colors.default.backgroundColor};
   height: 100%;
   overflow-y: scroll;
   &::-webkit-scrollbar {

@@ -12,7 +12,7 @@ const Header = styled.div`
   padding: 5px 20px;
   font-size: 24px;
   font-weight: 600;
-  color: #fff;
+  color: ${(props) => props.theme.colors.default.fontColor};
   .status-wrap {
     flex-direction: column;
   }
@@ -27,26 +27,38 @@ const Header = styled.div`
   }
 `;
 
+const Ball = styled.span`
+  color: ${(props) => props.theme.colors.default.ballColor};
+`;
+
+const Strike = styled.span`
+  color: ${(props) => props.theme.colors.default.strikeColor};
+`;
+
+const Out = styled.span`
+  color: ${(props) => props.theme.colors.default.outColor};
+`;
+
 const CurrentInfo = () => {
   return (
     <div>
       <Header>
         <div className="status-wrap">
           <div className="status">
-            <p className="title">S</p>
-            <span>●</span>
-            <span>●</span>
-            <span>●</span>
+            <Strike className="title">S</Strike>
+            <Strike>●</Strike>
+            <Strike>●</Strike>
+            <Strike>●</Strike>
           </div>
           <div className="status">
-            <p className="title">B</p>
-            <span>●</span>
-            <span>●</span>
+            <Ball className="title">B</Ball>
+            <Ball>●</Ball>
+            <Ball>●</Ball>
           </div>
           <div className="status">
-            <p className="title">O</p>
-            <span>●</span>
-            <span>●</span>
+            <Out className="title">O</Out>
+            <Out>●</Out>
+            <Out>●</Out>
           </div>
         </div>
         <p>2회초 수비</p>
