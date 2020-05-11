@@ -9,25 +9,32 @@ import com.codesquad.baseball09.model.Board;
 import com.codesquad.baseball09.model.DetailPlayer;
 import com.codesquad.baseball09.model.DetailScore;
 import com.codesquad.baseball09.model.Game;
+import com.codesquad.baseball09.model.request.GameRequest;
 import com.codesquad.baseball09.model.InningScore;
 import com.codesquad.baseball09.model.Match;
 import com.codesquad.baseball09.model.PlayerList;
 import com.codesquad.baseball09.model.State;
 import com.codesquad.baseball09.model.Team;
+import com.codesquad.baseball09.model.response.TeamSelectedResponse;
 import com.codesquad.baseball09.service.GameService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Api(tags = "Game API")
 public class GameController {
+
+  private final Logger log = LoggerFactory.getLogger(GameController.class);
 
   private final GameService service;
 
@@ -36,9 +43,22 @@ public class GameController {
   }
 
   @GetMapping("/main")
-  @ApiOperation(value = "메인 페이지(팀 선택페이지)")
+  @ApiOperation(value = "메인 페이지")
   public List<Match> main() {
-    return service.main();
+    return service.getMain();
+  }
+
+  @GetMapping("/match/{id}")
+  @ApiOperation(value = "팀 선택 화면")
+  public List<TeamSelectedResponse> main(@PathVariable(value = "id") Long matchId) {
+    return service.getTeamSelected(matchId);
+  }
+
+
+  @PostMapping("/game")
+  public void start(@RequestBody GameRequest request) {
+    log.debug("request : {}", request);
+
   }
 
   @GetMapping("/game")

@@ -1,6 +1,7 @@
 package com.codesquad.baseball09.repository;
 
 import com.codesquad.baseball09.model.Match;
+import com.codesquad.baseball09.model.response.TeamSelectedResponse;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +30,20 @@ public class JdbcGameRepository implements GameRepository {
             rs.getString("home"),
             rs.getString("away"),
             rs.getBoolean("is_started")
+        ));
+  }
+
+  @Override
+  public List<TeamSelectedResponse> findByMatchId(Long id) {
+    return jdbcTemplate.query(
+        "SELECT t.id, t.name, t.is_selected, t.match_id "
+            + "FROM `team` t "
+            + "WHERE t.match_id =?"
+        , new Object[]{id}, (rs, rowNum) -> new TeamSelectedResponse(
+            rs.getLong("id"),
+            rs.getLong("match_id"),
+            rs.getString("name"),
+            rs.getBoolean("is_selected")
         ));
   }
 }
