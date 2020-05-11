@@ -20,7 +20,7 @@ public class JdbcGameRepository implements GameRepository {
   @Override
   public List<Match> findAll() {
     return jdbcTemplate.query(
-        "SELECT m.id, h.name as home, a.name as away, m.selected "
+        "SELECT m.id, h.name as home, a.name as away, m.is_started "
             + "FROM `match` m "
             + "LEFT JOIN TEAM h ON m.home_team_id = h.id "
             + "LEFT JOIN TEAM a ON m.away_team_id = a.id"
@@ -28,7 +28,7 @@ public class JdbcGameRepository implements GameRepository {
             rs.getLong("id"),
             rs.getString("home"),
             rs.getString("away"),
-            rs.getBoolean("started")
+            rs.getBoolean("is_started")
         ));
   }
 }
