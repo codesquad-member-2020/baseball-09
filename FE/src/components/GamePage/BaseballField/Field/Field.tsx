@@ -27,11 +27,7 @@ const Pitcher = styled.img`
   top: 56%;
 `;
 
-enum EHit {
-  Increase = 1,
-}
-
-enum EBase {
+export enum EBase {
   HOME = 0,
   FIRST = 1,
   SECOND = 2,
@@ -40,14 +36,15 @@ enum EBase {
 }
 
 const Field = () => {
-  const [base, setBase] = useState(EBase.HOME);
+  const [base, setBase] = useState(0);
 
   const onClickHandler = () => {
-    if (base + EHit.Increase === EBase.FOURTH) {
-      setBase(EBase.HOME);
+    if (base + 1 === (EBase.FOURTH as number)) {
+      setBase(EBase.HOME as number);
       return;
     }
-    setBase(base + EHit.Increase);
+    const nextBase = base + 1;
+    setBase(nextBase);
   };
 
   return (

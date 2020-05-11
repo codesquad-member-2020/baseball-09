@@ -43,7 +43,7 @@ const FourthBase = keyframes`
   }
 `;
 
-const HitterWrap = styled("div")<IHitterProp>`
+const HitterWrap = styled("div")<IHitterWrapperProp>`
   position: absolute;
   width: 50px;
   height: 50px;
@@ -51,7 +51,7 @@ const HitterWrap = styled("div")<IHitterProp>`
   top: 86.5%;
   z-index: 100;
   ${(props) => css`
-    animation: ${props.active} 3s 1.2s linear 1;
+    animation: ${props.running} 1s 1.2s linear 1;
     animation-fill-mode: both;
   `}
   .hitter-img {
@@ -59,20 +59,20 @@ const HitterWrap = styled("div")<IHitterProp>`
   }
 `;
 
-interface IHitterProp {
-  active: Keyframes;
+interface IHitterWrapperProp {
+  running: Keyframes;
 }
 
-interface IBase {
+interface IHitterProp {
   base: number;
 }
 
-const Bases = [HomeBase, FirstBase, SecondBase, ThirdBase, FourthBase];
+const bases = [HomeBase, FirstBase, SecondBase, ThirdBase, FourthBase];
 
-const Hitter = (props: IBase) => {
+const Hitter = (props: IHitterProp) => {
   return (
     <div>
-      <HitterWrap active={Bases[props.base]}>
+      <HitterWrap running={bases[props.base]}>
         <img className="hitter-img" src={HitterImg} />
       </HitterWrap>
     </div>
