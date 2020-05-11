@@ -3,7 +3,7 @@
     /* Basic Options */
     "target": "esnext",
     "module": "esnext",
-    "jsx": "preserve",
+    "jsx": "react",
 
     /* Strict Type-Checking Options */
     "strict": true,
@@ -13,13 +13,14 @@
 
     /* Module Resolution Options */
     "moduleResolution": "node",
-    "baseUrl": "./",
+    "baseUrl": ".",
     "esModuleInterop": true,
-    "types": ["node"],
+    "types": ["node", "jest"],
+    "typeRoots": ["./node_modules/@types"],
 
     "paths": {
       "@/*": ["src/*"]
     }
   },
-  "exclude": ["**/*.test.*", "**/*.spec.*", "node_modules", "dist", "public"]
+  "exclude": ["node_modules", "dist", "public"]
 }

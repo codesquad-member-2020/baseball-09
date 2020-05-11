@@ -1,11 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import TrapCard from "./TrapCard.jpg";
 
 const Wrapper = styled.section`
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
-  background-image: url(${TrapCard});
+  background-image: url(TrapCard.jpg);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   color: #ffffff;
