@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   width: 800px;
   height: inherit;
   padding: 10px 0;
-  -webkit-perspective: 800px;
+  perspective: 800px;
   transform-style: preserve-3d;
   transition: transform 1s ease-in;
 `;

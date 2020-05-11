@@ -1,7 +1,7 @@
-import React from "react";
-import styled, { keyframes } from "styled-components";
-import PitcherImg from "./fitcher.png";
-import HitterImg from "./hitter.png";
+import React, { useState, Dispatch } from "react";
+import styled from "styled-components";
+import Hitter from "@/components/GamePage/BaseballField/Field/Hitter/hitter";
+import PitcherImg from "./pitcher.png";
 
 const Playball = styled.button`
   position: absolute;
@@ -27,41 +27,25 @@ const Pitcher = styled.img`
   top: 56%;
 `;
 
-const Hit = keyframes`
-  100%{  
-    transform: translate(230px, -240px);
-  }
-`;
-
-const HitterWrap = styled.div`
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  right: 48%;
-  top: 86.5%;
-  animation: ${Hit} 3s 1.2s linear 1;
-  animation-fill-mode: forwards;
-`;
-
-const Hitter = styled.div`
-  position: absolute;
-  height: 100%;
-  z-index: 100;
-  .hitter-img {
-    height: inherit;
-  }
-`;
+enum FieldState {
+  InitState = -1,
+  MaxState = 4,
+  Increase = 1,
+}
 
 const Field = () => {
+  const [hit, setHit] = useState(FieldState.InitState);
+
+  const onClickHandler = () => {
+    if (hit + FieldState.Increase === FieldState.MaxState) setHit(FieldState.InitState);
+    else setHit(hit + FieldState.Increase);
+  };
+
   return (
     <>
-      <Playball>PITCH!</Playball>
+      <Playball onClick={onClickHandler}>PITCH!</Playball>
       <Pitcher src={PitcherImg} />
-      <HitterWrap>
-        <Hitter>
-          <img className="hitter-img" src={HitterImg} />
-        </Hitter>
-      </HitterWrap>
+      <Hitter hit={hit} />
     </>
   );
 };
