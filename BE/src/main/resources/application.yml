@@ -31,9 +31,11 @@ spring:
     username: admin
     password: admin1234
     schema: classpath:schema.sql
+    data: classpath:data.sql
     initialization-mode: always
     hikari:
       maximum-pool-size: 10
+
 logging:
   level:
     root: debug
