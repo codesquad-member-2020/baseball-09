@@ -35,13 +35,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Api(tags = "Game API")
-public class GameController {
+public class GameRestController {
 
-  private final Logger log = LoggerFactory.getLogger(GameController.class);
+  private final Logger log = LoggerFactory.getLogger(GameRestController.class);
 
   private final GameService service;
 
-  public GameController(GameService service) {
+  public GameRestController(GameService service) {
     this.service = service;
   }
 
