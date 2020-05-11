@@ -67,3 +67,8 @@
 - 시간: 6시, 오늘 가기 전!
 - 방식: 슬랙으로 공유
 - 공유하는 내용: 스크럼에서 계획했던 할 일을 얼마나 했는지 정도
+- [0504-회고 || 0505-스크럼](https://github.com/codesquad-member-2020/baseball-09/wiki/0504-%ED%9A%8C%EA%B3%A0-%7C%7C-0505-%EC%8A%A4%ED%81%AC%EB%9F%BC)  
+- [0505-회고 || 0506-스크럼](https://github.com/codesquad-member-2020/baseball-09/wiki/0505-%ED%9A%8C%EA%B3%A0-%7C%7C-0506-%EC%8A%A4%ED%81%AC%EB%9F%BC)  
+- [0506-회고 || 0507-스크럼](https://github.com/codesquad-member-2020/baseball-09/wiki/0506-%ED%9A%8C%EA%B3%A0-%7C%7C-0507-%EC%8A%A4%ED%81%AC%EB%9F%BC)
+- [0507-회고 || 0508-스크럼](https://github.com/codesquad-member-2020/baseball-09/wiki/0507-%ED%9A%8C%EA%B3%A0-%7C%7C-0508-%EC%8A%A4%ED%81%AC%EB%9F%BC)
+
