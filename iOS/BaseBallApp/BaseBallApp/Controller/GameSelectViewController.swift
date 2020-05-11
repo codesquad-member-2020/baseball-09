@@ -11,11 +11,22 @@ import UIKit
 class GameSelectViewController: UIViewController {
     @IBOutlet weak var GameListTableView: UITableView!
     
+    private var viewModel: GameSelectViewModel?
+    private let dataUseCase = DataUseCase()
+    
     private let cellIdentifier = "GameSelectCell"
     private let cellNibName = "GameSelectView"
+    private let nextViewSegueIdentifier = "teamSelect"
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        dataUseCase.loadTeamList(manager: NetworkManager()) { (decodeData) in
+            self.viewModel = GameSelectViewModel(gameList: decodeData)
+            DispatchQueue.main.async {
+                self.GameListTableView.reloadData()
+            }
+        }
         
         GameListTableView.delegate = self
         GameListTableView.dataSource = self
@@ -33,9 +44,8 @@ class GameSelectViewController: UIViewController {
         guard let selectedCell = sender as? GameSelectView else { return }
         guard let selectIndexPath = GameListTableView.indexPath(for: selectedCell) else { return }
         
-        let allTeams = DataManager().getTeamList()
-        teamSelectView.awayTeamButtonTitle = allTeams?[selectIndexPath.section][0]
-        teamSelectView.homeTeamButtonTitle = allTeams?[selectIndexPath.section][1]
+        teamSelectView.awayTeamButtonTitle = viewModel?.awayTeamList[selectIndexPath.section]
+        teamSelectView.homeTeamButtonTitle = viewModel?.homeTeamList[selectIndexPath.section]
     }
 }
 
@@ -45,7 +55,7 @@ extension GameSelectViewController: UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        guard let sectionNum = DataManager().getTeamList()?.count else { return 0 }
+        guard let sectionNum = viewModel?.gameList.games.count else { return 0 }
         
         return sectionNum
     }
@@ -53,11 +63,9 @@ extension GameSelectViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? GameSelectView else { return UITableViewCell() }
         
-        let allTeams = DataManager().getTeamList()
-        
         cell.GameCountLabel.text = "GAME \(indexPath.section + 1)"
-        cell.AwayTeamLabel.text = allTeams?[indexPath.section][0] ?? "Away Team"
-        cell.HomeTeamLabel.text = allTeams?[indexPath.section][1] ?? "Home Team"
+        cell.AwayTeamLabel.text = viewModel?.awayTeamList[indexPath.section]
+        cell.HomeTeamLabel.text = viewModel?.homeTeamList[indexPath.section]
         
         return cell
     }
@@ -76,7 +84,7 @@ extension GameSelectViewController: UITableViewDataSource {
 
 extension GameSelectViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "teamSelect", sender: tableView.cellForRow(at: indexPath))
+        performSegue(withIdentifier: nextViewSegueIdentifier, sender: tableView.cellForRow(at: indexPath))
     }
 }
 

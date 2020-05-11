@@ -16,22 +16,6 @@
             <subviews>
                 <stackView opaque="NO" contentMode="left" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Qps-tH-oXc">
                     <rect key="frame" x="35" y="0.0" width="138" height="43"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P8X-xK-T4L" customClass="CircleView" customModule="BaseBallApp" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="4.5" width="34.5" height="34"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="P8X-xK-T4L" secondAttribute="height" multiplier="1:1" id="CQ0-Jy-9cG"/>
-                            </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="ftW-gK-XeY" userLabel="SpaceView">
-                            <rect key="frame" x="42.5" y="0.0" width="95.5" height="43"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </view>
-                    </subviews>
-                    <constraints>
-                        <constraint firstItem="P8X-xK-T4L" firstAttribute="height" secondItem="Qps-tH-oXc" secondAttribute="height" multiplier="0.8" id="1Je-9w-yuD"/>
-                    </constraints>
                 </stackView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dvL-cD-aLl">
                     <rect key="frame" x="0.0" y="9.5" width="30" height="24"/>
@@ -59,7 +43,6 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="circleStackView" destination="Qps-tH-oXc" id="ds1-oh-6fn"/>
-                <outlet property="circleView" destination="P8X-xK-T4L" id="0pl-3u-VYd"/>
                 <outlet property="pitchingResultType" destination="dvL-cD-aLl" id="hvG-e0-siB"/>
             </connections>
             <point key="canvasLocation" x="-58.695652173913047" y="-10.379464285714285"/>

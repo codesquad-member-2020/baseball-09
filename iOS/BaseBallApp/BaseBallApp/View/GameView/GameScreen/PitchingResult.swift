@@ -11,7 +11,6 @@ import UIKit
 class PitchingResult: UIView {
     @IBOutlet weak var pitchingResultType: UILabel!
     @IBOutlet weak var circleStackView: UIStackView!
-    @IBOutlet weak var circleView: CircleView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -19,9 +18,5 @@ class PitchingResult: UIView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-    }
-    
-    private func addCircleInStackView() {
-        circleStackView.addArrangedSubview(circleView)
     }
 }
