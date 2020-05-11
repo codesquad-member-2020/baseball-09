@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { IGame } from "@/models/gameList";
+import { IGame } from "@Model/gameList";
 
 const Header = styled.header`
   font-size: 1rem;

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import CurrentInfo from "@/components/GamePage/BaseballField/CurrentInfo/CurrentInfo";
-import Field from "@/components/GamePage/BaseballField/Field/Field";
+import CurrentInfo from "@GamePage/BaseballField/CurrentInfo/CurrentInfo";
+import Field from "@GamePage/BaseballField/Field/Field";
 import FieldImg from "./field.png";
 
 const Wrapper = styled.div`

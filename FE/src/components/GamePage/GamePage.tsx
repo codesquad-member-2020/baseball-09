@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import ScoreBoard from "@/components/GamePage/ScoreBoard/ScoreBoard";
-import CurrentTurn from "@/components/GamePage/CurrentTurn/CurrentTurn";
-import BaseballField from "@/components/GamePage/BaseballField/BaseballField";
-import PlayerInfo from "@/components/GamePage/PlayerInfo/PlayerInfo";
+import ScoreBoard from "@GamePage/ScoreBoard/ScoreBoard";
+import CurrentTurn from "@GamePage/CurrentTurn/CurrentTurn";
+import BaseballField from "@GamePage/BaseballField/BaseballField";
+import PlayerInfo from "@GamePage/PlayerInfo/PlayerInfo";
 
 const Wrapper = styled.div`
   background-color: #000000;

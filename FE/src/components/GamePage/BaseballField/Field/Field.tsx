@@ -1,6 +1,6 @@
 import React, { useState, Dispatch } from "react";
 import styled from "styled-components";
-import Hitter from "@/components/GamePage/BaseballField/Field/Hitter/hitter";
+import Hitter from "@GamePage/BaseballField/Field/Hitter/Hitter";
 import PitcherImg from "./pitcher.png";
 
 const Playball = styled.button`
@@ -37,7 +37,8 @@ const Field = () => {
   const [hit, setHit] = useState(FieldState.InitState);
 
   const onClickHandler = () => {
-    if (hit + FieldState.Increase === FieldState.MaxState) setHit(FieldState.InitState);
+    if (hit + FieldState.Increase === FieldState.MaxState)
+      setHit(FieldState.InitState);
     else setHit(hit + FieldState.Increase);
   };
 

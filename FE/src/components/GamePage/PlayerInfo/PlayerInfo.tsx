@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Info from "./Info/Info";
+import Info from "@GamePage/PlayerInfo/Info/Info";
 
 const Wrapper = styled.div`
   background-color: #000000;

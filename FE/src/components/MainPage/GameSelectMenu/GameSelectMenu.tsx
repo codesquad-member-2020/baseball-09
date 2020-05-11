@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import GameDispaly from "./GameDisplay/GameDisplay";
-import { IGame, gameList } from "@/models/gameList";
+import { IGame, gameList } from "@Model/gameList";
 
 const Wrapper = styled.div`
   height: 400px;
