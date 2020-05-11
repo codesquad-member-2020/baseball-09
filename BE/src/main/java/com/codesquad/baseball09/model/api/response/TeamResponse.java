@@ -1,13 +1,13 @@
-package com.codesquad.baseball09.model.response;
+package com.codesquad.baseball09.model.api.response;
 
-public class TeamSelectedResponse {
+public class TeamResponse {
 
   private Long id;
   private Long matchId;
   private String name;
   private boolean isSelected;
 
-  public TeamSelectedResponse(Long id, Long matchId, String name, boolean isSelected) {
+  public TeamResponse(Long id, Long matchId, String name, boolean isSelected) {
     this.id = id;
     this.matchId = matchId;
     this.name = name;
