@@ -22,5 +22,3 @@ struct TeamInfo: Codable {
     let id: Int
     let name: String
 }
-
-

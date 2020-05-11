@@ -217,14 +217,110 @@
                                     <outlet property="homeTeamScore" destination="A9T-Y1-Hgb" id="iiE-os-tNc"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sWN-QN-9ii" userLabel="GameScreen">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sWN-QN-9ii" userLabel="GameScreen" customClass="GameScreenTotalView" customModule="BaseBallApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92.666666666666686" width="375" height="300"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="3cn-Wl-0CZ" userLabel="GameInfo">
-                                        <rect key="frame" x="15" y="15" width="93.666666666666671" height="75"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="3cn-Wl-0CZ" userLabel="GameInfo">
+                                        <rect key="frame" x="15" y="15" width="85.666666666666671" height="60"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="23K-Rh-gPg">
+                                                <rect key="frame" x="0.0" y="0.0" width="85.666666666666671" height="18"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="68k-uA-Z9X">
+                                                        <rect key="frame" x="0.0" y="0.0" width="16.666666666666668" height="18"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="izV-ca-L7P" customClass="CircleView" customModule="BaseBallApp" customModuleProvider="target">
+                                                        <rect key="frame" x="21.666666666666664" y="0.0" width="18" height="18"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="izV-ca-L7P" secondAttribute="height" multiplier="1:1" id="uRK-c2-KgS"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IEI-Jf-bGC" customClass="CircleView" customModule="BaseBallApp" customModuleProvider="target">
+                                                        <rect key="frame" x="44.666666666666664" y="0.0" width="18" height="18"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2iS-rF-DDP">
+                                                        <rect key="frame" x="67.666666666666671" y="0.0" width="18" height="18"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </view>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="IEI-Jf-bGC" firstAttribute="width" secondItem="IEI-Jf-bGC" secondAttribute="height" multiplier="1:1" id="WRN-GI-GQp"/>
+                                                    <constraint firstItem="2iS-rF-DDP" firstAttribute="width" secondItem="2iS-rF-DDP" secondAttribute="height" multiplier="1:1" id="Y6e-Kc-T3M"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ckA-Se-wOy">
+                                                <rect key="frame" x="0.0" y="20.999999999999986" width="85.666666666666671" height="18"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLz-Gp-327">
+                                                        <rect key="frame" x="0.0" y="0.0" width="16.666666666666668" height="18"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ut4-h2-kaS" customClass="CircleView" customModule="BaseBallApp" customModuleProvider="target">
+                                                        <rect key="frame" x="21.666666666666664" y="0.0" width="18" height="18"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="Ut4-h2-kaS" secondAttribute="height" multiplier="1:1" id="PWI-sm-paz"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hzc-eT-j8r" customClass="CircleView" customModule="BaseBallApp" customModuleProvider="target">
+                                                        <rect key="frame" x="44.666666666666664" y="0.0" width="18" height="18"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="hzc-eT-j8r" secondAttribute="height" multiplier="1:1" id="CLd-L7-3qd"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IQv-5a-4bq" customClass="CircleView" customModule="BaseBallApp" customModuleProvider="target">
+                                                        <rect key="frame" x="67.666666666666671" y="0.0" width="18" height="18"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="IQv-5a-4bq" secondAttribute="height" multiplier="1:1" id="bGu-YL-jpN"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="BPJ-Qz-oFp">
+                                                <rect key="frame" x="0.0" y="41.999999999999986" width="85.666666666666671" height="18"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="O" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JHO-8o-vAp">
+                                                        <rect key="frame" x="0.0" y="0.0" width="16.666666666666668" height="18"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hkA-wG-u3n" customClass="CircleView" customModule="BaseBallApp" customModuleProvider="target">
+                                                        <rect key="frame" x="21.666666666666664" y="0.0" width="18" height="18"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="hkA-wG-u3n" secondAttribute="height" multiplier="1:1" id="u1J-j4-3YX"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RSO-sa-p6b" customClass="CircleView" customModule="BaseBallApp" customModuleProvider="target">
+                                                        <rect key="frame" x="44.666666666666664" y="0.0" width="18" height="18"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="RSO-sa-p6b" secondAttribute="height" multiplier="1:1" id="zfh-Rc-agw"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pQx-qY-9ke">
+                                                        <rect key="frame" x="67.666666666666671" y="0.0" width="18" height="18"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="pQx-qY-9ke" secondAttribute="height" multiplier="1:1" id="s9U-GX-e2I"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="3cn-Wl-0CZ" secondAttribute="height" multiplier="1:0.8" id="Ku9-hU-ZKr"/>
+                                            <constraint firstAttribute="width" secondItem="3cn-Wl-0CZ" secondAttribute="height" multiplier="1:0.7" id="Ku9-hU-ZKr"/>
                                         </constraints>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qx9-Qk-lry" customClass="GameScreenView" customModule="BaseBallApp" customModuleProvider="target">
@@ -264,7 +360,7 @@
                                     <constraint firstItem="3cn-Wl-0CZ" firstAttribute="leading" secondItem="sWN-QN-9ii" secondAttribute="leading" constant="15" id="0V1-C1-nuB"/>
                                     <constraint firstItem="qx9-Qk-lry" firstAttribute="centerX" secondItem="sWN-QN-9ii" secondAttribute="centerX" id="515-Zy-fyh"/>
                                     <constraint firstItem="qx9-Qk-lry" firstAttribute="centerY" secondItem="sWN-QN-9ii" secondAttribute="centerY" id="5dY-QJ-7qr"/>
-                                    <constraint firstItem="3cn-Wl-0CZ" firstAttribute="height" secondItem="sWN-QN-9ii" secondAttribute="height" multiplier="0.25" id="FFx-Nd-2x8"/>
+                                    <constraint firstItem="3cn-Wl-0CZ" firstAttribute="height" secondItem="sWN-QN-9ii" secondAttribute="height" multiplier="0.2" id="FFx-Nd-2x8"/>
                                     <constraint firstItem="Fvw-E7-oUW" firstAttribute="height" secondItem="sWN-QN-9ii" secondAttribute="height" multiplier="0.2" id="NBA-7h-5oI"/>
                                     <constraint firstItem="3cn-Wl-0CZ" firstAttribute="top" secondItem="sWN-QN-9ii" secondAttribute="top" constant="15" id="WPS-iy-GKQ"/>
                                     <constraint firstItem="qx9-Qk-lry" firstAttribute="width" secondItem="sWN-QN-9ii" secondAttribute="width" multiplier="0.75" id="eGx-6U-2ID"/>
@@ -272,6 +368,12 @@
                                     <constraint firstItem="Fvw-E7-oUW" firstAttribute="top" secondItem="sWN-QN-9ii" secondAttribute="top" constant="10" id="qvk-eS-KeL"/>
                                     <constraint firstAttribute="width" secondItem="sWN-QN-9ii" secondAttribute="height" multiplier="1:0.8" id="uSU-2u-B31"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="ballInfo" destination="ckA-Se-wOy" id="dEo-QK-7mV"/>
+                                    <outlet property="gameInfo" destination="3cn-Wl-0CZ" id="aPe-ti-J83"/>
+                                    <outlet property="outInfo" destination="BPJ-Qz-oFp" id="ugY-EA-tOh"/>
+                                    <outlet property="strikeInfo" destination="23K-Rh-gPg" id="iO0-pG-hSa"/>
+                                </connections>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CGO-xd-s2S" userLabel="CurrentPlayer">
                                 <rect key="frame" x="0.0" y="392.66666666666669" width="375" height="90"/>
@@ -406,7 +508,7 @@
                         <outlet property="currentPlayLog" destination="F7h-Wd-88E" id="A0s-xc-MOh"/>
                         <outlet property="currentPlayer" destination="CGO-xd-s2S" id="qwd-Zv-NeR"/>
                         <outlet property="gameScoreView" destination="pmy-ei-Jjz" id="EQt-99-hkp"/>
-                        <outlet property="gameScreenView" destination="sWN-QN-9ii" id="9DJ-ge-3nB"/>
+                        <outlet property="gameScreenView" destination="sWN-QN-9ii" id="c5r-5V-vgU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iVC-oE-wfM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
