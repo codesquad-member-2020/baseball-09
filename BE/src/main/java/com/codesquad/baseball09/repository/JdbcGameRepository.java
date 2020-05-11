@@ -24,8 +24,8 @@ public class JdbcGameRepository implements GameRepository {
     return jdbcTemplate.query(
         "SELECT m.id, h.name as home, a.name as away, m.is_started "
             + "FROM `match` m "
-            + "LEFT JOIN TEAM h ON m.home_team_id = h.id "
-            + "LEFT JOIN TEAM a ON m.away_team_id = a.id"
+            + "LEFT JOIN `team` h ON m.home_team_id = h.id "
+            + "LEFT JOIN `team` a ON m.away_team_id = a.id"
         , (rs, rowNum) -> new Match(
             rs.getLong("id"),
             rs.getString("home"),
