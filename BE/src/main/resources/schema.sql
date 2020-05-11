@@ -45,3 +45,15 @@ CREATE TABLE `game`
     PRIMARY KEY (`id`)
 );
 
+CREATE TABLE `score_board`
+(
+    `id`        BIGINT NOT NULL AUTO_INCREMENT,
+    `game_id`   BIGINT,
+    `team_id`   BIGINT,
+    `inning`    INT,
+    `score`     INT,
+    `is_bottom` BOOLEAN DEFAULT FALSE,
+    PRIMARY KEY (`id`)
+);
+
+
