@@ -1,9 +1,10 @@
 package com.codesquad.baseball09.service;
 
-import com.codesquad.baseball09.model.Board;
 import com.codesquad.baseball09.model.Match;
+import com.codesquad.baseball09.model.ScoreBoard;
 import com.codesquad.baseball09.model.api.request.GameRequest;
 import com.codesquad.baseball09.model.api.request.TeamRequest;
+import com.codesquad.baseball09.model.api.response.GameResponse;
 import com.codesquad.baseball09.repository.JdbcGameRepository;
 import java.util.List;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,12 @@ public class GameService {
   }
 
   @Transactional
-  public Board start(GameRequest request) {
+  public GameResponse start(GameRequest request) {
     return repository.start(request);
+  }
+
+  @Transactional(readOnly = true)
+  public List<ScoreBoard> getScoreBoard(Long gameId) {
+    return repository.getScoreByGameId(gameId);
   }
 }

@@ -1,10 +1,11 @@
 package com.codesquad.baseball09.repository;
 
 import com.codesquad.baseball09.error.AlreadySelectedException;
-import com.codesquad.baseball09.model.Board;
 import com.codesquad.baseball09.model.Match;
+import com.codesquad.baseball09.model.ScoreBoard;
 import com.codesquad.baseball09.model.api.request.GameRequest;
 import com.codesquad.baseball09.model.api.request.TeamRequest;
+import com.codesquad.baseball09.model.api.response.GameResponse;
 import com.codesquad.baseball09.model.api.response.TeamResponse;
 import java.util.List;
 import org.slf4j.Logger;
@@ -63,7 +64,7 @@ public class JdbcGameRepository implements GameRepository {
   }
 
   @Override
-  public Board start(GameRequest request) {
+  public GameResponse start(GameRequest request) {
     jdbcTemplate.update("UPDATE `match` SET is_started=? WHERE id=?",
         request.getIsStarted(),
         request.getId()
@@ -71,6 +72,31 @@ public class JdbcGameRepository implements GameRepository {
 
     jdbcTemplate.update("INSERT INTO `game` (id, match_id) VALUES (null,?)"
         , request.getId());
-    return null;
+
+    return jdbcTemplate.queryForObject(
+        "SELECT g.id "
+            + "FROM `game` g "
+            + "WHERE g.match_id=?",
+        new Object[]{request.getId()}, (rs, rowNum) -> new GameResponse(
+            rs.getLong("id")
+        )
+    );
+  }
+
+  @Override
+  public List<ScoreBoard> getScoreByGameId(Long gameId) {
+    return jdbcTemplate.query(
+        "SELECT s.id, s.game_id, s.team_id, s.inning, s.score, s.is_bottom "
+            + "FROM `score_board` s "
+            + "WHERE s.game_id=?",
+        new Object[]{gameId}, (rs, rowNum) -> new ScoreBoard(
+            rs.getLong("id"),
+            rs.getLong("game_id"),
+            rs.getLong("team_id"),
+            rs.getInt("inning"),
+            rs.getInt("score"),
+            rs.getBoolean("is_bottom")
+        )
+    );
   }
 }

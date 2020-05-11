@@ -7,15 +7,15 @@ public class DetailScore {
 
   private String home;
   private String away;
-  private List<InningScore> inningScores = new ArrayList<>();
+  private List<ScoreBoard> scoreBoards = new ArrayList<>();
 
   public DetailScore(String home, String away) {
     this.home = home;
     this.away = away;
   }
 
-  public void addInningScore(InningScore score) {
-    inningScores.add(score);
+  public void addInningScore(ScoreBoard score) {
+    scoreBoards.add(score);
   }
 
   public String getHome() {
@@ -26,7 +26,7 @@ public class DetailScore {
     return away;
   }
 
-  public List<InningScore> getInningScores() {
-    return inningScores;
+  public List<ScoreBoard> getScoreBoards() {
+    return scoreBoards;
   }
 }
