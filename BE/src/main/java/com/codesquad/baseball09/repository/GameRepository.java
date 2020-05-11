@@ -1,13 +1,16 @@
 package com.codesquad.baseball09.repository;
 
+import com.codesquad.baseball09.model.Board;
 import com.codesquad.baseball09.model.Match;
+import com.codesquad.baseball09.model.api.request.GameRequest;
 import com.codesquad.baseball09.model.api.request.TeamRequest;
-import com.codesquad.baseball09.model.api.response.TeamResponse;
 import java.util.List;
 
 public interface GameRepository {
 
   List<Match> findAll();
 
-  void updateTeam(TeamRequest teamRequest);
+  void updateTeamStatus(TeamRequest request);
+
+  Board start(GameRequest request);
 }

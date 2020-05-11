@@ -1,6 +1,8 @@
 package com.codesquad.baseball09.service;
 
+import com.codesquad.baseball09.model.Board;
 import com.codesquad.baseball09.model.Match;
+import com.codesquad.baseball09.model.api.request.GameRequest;
 import com.codesquad.baseball09.model.api.request.TeamRequest;
 import com.codesquad.baseball09.repository.JdbcGameRepository;
 import java.util.List;
@@ -23,6 +25,11 @@ public class GameService {
 
   @Transactional
   public void selectTeam(TeamRequest request) {
-    repository.updateTeam(request);
+    repository.updateTeamStatus(request);
+  }
+
+  @Transactional
+  public Board start(GameRequest request) {
+    return repository.start(request);
   }
 }

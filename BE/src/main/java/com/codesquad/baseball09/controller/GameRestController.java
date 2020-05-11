@@ -18,7 +18,6 @@ import com.codesquad.baseball09.model.Team;
 import com.codesquad.baseball09.model.api.ApiResult;
 import com.codesquad.baseball09.model.api.request.GameRequest;
 import com.codesquad.baseball09.model.api.request.TeamRequest;
-import com.codesquad.baseball09.model.api.response.TeamResponse;
 import com.codesquad.baseball09.service.GameService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -58,11 +57,9 @@ public class GameRestController {
     return OK(true);
   }
 
-
   @PostMapping("/game")
-  public void start(@RequestBody GameRequest request) {
-    log.debug("request : {}", request);
-
+  public void startGame(@RequestBody GameRequest request) {
+    service.start(request);
   }
 
   @GetMapping("/game")

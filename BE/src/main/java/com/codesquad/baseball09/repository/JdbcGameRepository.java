@@ -1,7 +1,9 @@
 package com.codesquad.baseball09.repository;
 
 import com.codesquad.baseball09.error.AlreadySelectedException;
+import com.codesquad.baseball09.model.Board;
 import com.codesquad.baseball09.model.Match;
+import com.codesquad.baseball09.model.api.request.GameRequest;
 import com.codesquad.baseball09.model.api.request.TeamRequest;
 import com.codesquad.baseball09.model.api.response.TeamResponse;
 import java.util.List;
@@ -38,7 +40,7 @@ public class JdbcGameRepository implements GameRepository {
   }
 
   @Override
-  public void updateTeam(TeamRequest request) {
+  public void updateTeamStatus(TeamRequest request) {
     TeamResponse response = jdbcTemplate.queryForObject(
         "SELECT t.id, t.name, t.is_selected, t.match_id "
             + "FROM `team` t "
@@ -50,13 +52,25 @@ public class JdbcGameRepository implements GameRepository {
             rs.getBoolean("is_selected")
         ));
 
-    if (response.isSelected()) {
+    if (response.isSelected().equals(request.getIsSelected())) {
       throw new AlreadySelectedException(response.getName());
     }
 
-    jdbcTemplate.update("UPDATE team SET is_selected=? WHERE id=?",
+    jdbcTemplate.update("UPDATE `team` SET is_selected=? WHERE id=?",
         request.getIsSelected(),
         request.getId()
     );
+  }
+
+  @Override
+  public Board start(GameRequest request) {
+    jdbcTemplate.update("UPDATE `match` SET is_started=? WHERE id=?",
+        request.getIsStarted(),
+        request.getId()
+    );
+
+    jdbcTemplate.update("INSERT INTO `game` (id, match_id) VALUES (null,?)"
+        , request.getId());
+    return null;
   }
 }
