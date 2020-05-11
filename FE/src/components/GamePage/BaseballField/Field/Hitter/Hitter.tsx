@@ -2,6 +2,8 @@ import React from "react";
 import styled, { keyframes, Keyframes, css } from "styled-components";
 import HitterImg from "./hitter.png";
 
+const HomeBase = keyframes``;
+
 const FirstBase = keyframes`
   99% {
     transform: translate(230px, -240px);
@@ -61,16 +63,16 @@ interface IHitterProp {
   active: Keyframes;
 }
 
-interface IHit {
-  hit: number;
+interface IBase {
+  base: number;
 }
 
-const Bases = [FirstBase, SecondBase, ThirdBase, FourthBase];
+const Bases = [HomeBase, FirstBase, SecondBase, ThirdBase, FourthBase];
 
-const Hitter = (props: IHit) => {
+const Hitter = (props: IBase) => {
   return (
     <div>
-      <HitterWrap active={Bases[props.hit]}>
+      <HitterWrap active={Bases[props.base]}>
         <img className="hitter-img" src={HitterImg} />
       </HitterWrap>
     </div>

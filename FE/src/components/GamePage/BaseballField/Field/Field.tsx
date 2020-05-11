@@ -27,26 +27,34 @@ const Pitcher = styled.img`
   top: 56%;
 `;
 
-enum FieldState {
-  InitState = -1,
-  MaxState = 4,
+enum EHit {
   Increase = 1,
 }
 
+enum EBase {
+  HOME = 0,
+  FIRST = 1,
+  SECOND = 2,
+  THIRD = 3,
+  FOURTH = 4,
+}
+
 const Field = () => {
-  const [hit, setHit] = useState(FieldState.InitState);
+  const [base, setBase] = useState(EBase.HOME);
 
   const onClickHandler = () => {
-    if (hit + FieldState.Increase === FieldState.MaxState)
-      setHit(FieldState.InitState);
-    else setHit(hit + FieldState.Increase);
+    if (base + EHit.Increase === EBase.FOURTH) {
+      setBase(EBase.HOME);
+      return;
+    }
+    setBase(base + EHit.Increase);
   };
 
   return (
     <>
       <Playball onClick={onClickHandler}>PITCH!</Playball>
       <Pitcher src={PitcherImg} />
-      <Hitter hit={hit} />
+      <Hitter base={base} />
     </>
   );
 };
