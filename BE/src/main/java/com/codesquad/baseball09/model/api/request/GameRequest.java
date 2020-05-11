@@ -2,20 +2,14 @@ package com.codesquad.baseball09.model.api.request;
 
 public class GameRequest {
 
-  private Long matchId;
-  private Long homeUserId;
-  private Long awayUserId;
+  private Long id;
+  private Boolean isStarted;
 
-  public Long getMatchId() {
-    return matchId;
+  public Long getId() {
+    return id;
   }
 
-  public Long getHomeUserId() {
-    return homeUserId;
+  public Boolean getIsStarted() {
+    return isStarted;
   }
-
-  public Long getAwayUserId() {
-    return awayUserId;
-  }
-
 }
