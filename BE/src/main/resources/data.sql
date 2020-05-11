@@ -23,3 +23,9 @@ INSERT INTO `match` (`home_team_id`, `away_team_id`)
 VALUES (5, 6);
 INSERT INTO `match` (`home_team_id`, `away_team_id`)
 VALUES (7, 8);
+
+INSERT INTO `user` (`email`)
+VALUES ('home@gmail.com');
+INSERT INTO `user` (`email`)
+VALUES ('away@gmail.com');
+
