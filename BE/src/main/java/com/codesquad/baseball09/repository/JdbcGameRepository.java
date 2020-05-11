@@ -1,5 +1,6 @@
 package com.codesquad.baseball09.repository;
 
+import com.codesquad.baseball09.error.AlreadySelectedException;
 import com.codesquad.baseball09.model.Match;
 import com.codesquad.baseball09.model.api.request.TeamRequest;
 import com.codesquad.baseball09.model.api.response.TeamResponse;
@@ -37,21 +38,22 @@ public class JdbcGameRepository implements GameRepository {
   }
 
   @Override
-  public List<TeamResponse> findByMatchId(Long id) {
-    return jdbcTemplate.query(
+  public void updateTeam(TeamRequest request) {
+    TeamResponse response = jdbcTemplate.queryForObject(
         "SELECT t.id, t.name, t.is_selected, t.match_id "
             + "FROM `team` t "
-            + "WHERE t.match_id =?"
-        , new Object[]{id}, (rs, rowNum) -> new TeamResponse(
+            + "WHERE t.id=?",
+        new Object[]{request.getId()}, (rs, rowNum) -> new TeamResponse(
             rs.getLong("id"),
             rs.getLong("match_id"),
             rs.getString("name"),
             rs.getBoolean("is_selected")
         ));
-  }
 
-  @Override
-  public void updateTeam(TeamRequest request) {
+    if (response.isSelected()) {
+      throw new AlreadySelectedException(response.getName());
+    }
+
     jdbcTemplate.update("UPDATE team SET is_selected=? WHERE id=?",
         request.getIsSelected(),
         request.getId()

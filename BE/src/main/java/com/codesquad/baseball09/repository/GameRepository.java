@@ -9,7 +9,5 @@ public interface GameRepository {
 
   List<Match> findAll();
 
-  List<TeamResponse> findByMatchId(Long matchId);
-
   void updateTeam(TeamRequest teamRequest);
 }

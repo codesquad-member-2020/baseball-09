@@ -51,12 +51,6 @@ public class GameRestController {
     return OK(service.getMain());
   }
 
-  @GetMapping("/match/{id}")
-  @ApiOperation(value = "팀 선택 화면")
-  public ApiResult<List<TeamResponse>> main(@PathVariable(value = "id") Long matchId) {
-    return OK(service.getTeam(matchId));
-  }
-
   @PostMapping("/team")
   @ApiOperation(value = "팀 선택")
   public ApiResult<Boolean> selectTeam(@RequestBody TeamRequest request) {
