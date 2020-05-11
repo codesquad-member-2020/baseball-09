@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS `team`;
 DROP TABLE IF EXISTS `player`;
 DROP TABLE IF EXISTS `match`;
 DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `game`;
 
 CREATE TABLE `team`
 (
@@ -17,6 +18,7 @@ CREATE TABLE `player`
     `id`              BIGINT      NOT NULL AUTO_INCREMENT,
     `name`            VARCHAR(45) NULL,
     `batting_average` INT         NULL,
+    `is_pitcher`      BOOLEAN DEFAULT FALSE,
     PRIMARY KEY (`id`)
 );
 
@@ -35,3 +37,11 @@ CREATE TABLE `user`
     `email` VARCHAR(100) NULL,
     PRIMARY KEY (`id`)
 );
+
+CREATE TABLE `game`
+(
+    `id`       BIGINT NOT NULL AUTO_INCREMENT,
+    `match_id` BIGINT NOT NULL,
+    PRIMARY KEY (`id`)
+);
+
