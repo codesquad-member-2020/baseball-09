@@ -1,5 +1,6 @@
 package com.codesquad.baseball09.repository;
 
+import com.codesquad.baseball09.error.AlreadySelectedException;
 import com.codesquad.baseball09.model.Match;
 import com.codesquad.baseball09.model.api.request.TeamRequest;
 import com.codesquad.baseball09.model.api.response.TeamResponse;
@@ -22,12 +23,14 @@ public class JdbcGameRepository implements GameRepository {
   @Override
   public List<Match> findAll() {
     return jdbcTemplate.query(
-        "SELECT m.id, h.name as home, a.name as away, m.is_started "
+        "SELECT m.id, h.name as home, h.id as home_id, a.name as away, a.id as away_id, m.is_started "
             + "FROM `match` m "
-            + "LEFT JOIN TEAM h ON m.home_team_id = h.id "
-            + "LEFT JOIN TEAM a ON m.away_team_id = a.id"
+            + "LEFT JOIN `team` h ON m.home_team_id = h.id "
+            + "LEFT JOIN `team` a ON m.away_team_id = a.id"
         , (rs, rowNum) -> new Match(
             rs.getLong("id"),
+            rs.getLong("home_id"),
+            rs.getLong("away_id"),
             rs.getString("home"),
             rs.getString("away"),
             rs.getBoolean("is_started")
@@ -35,25 +38,25 @@ public class JdbcGameRepository implements GameRepository {
   }
 
   @Override
-  public List<TeamResponse> findByMatchId(Long id) {
-    return jdbcTemplate.query(
+  public void updateTeam(TeamRequest request) {
+    TeamResponse response = jdbcTemplate.queryForObject(
         "SELECT t.id, t.name, t.is_selected, t.match_id "
             + "FROM `team` t "
-            + "WHERE t.match_id =?"
-        , new Object[]{id}, (rs, rowNum) -> new TeamResponse(
+            + "WHERE t.id=?",
+        new Object[]{request.getId()}, (rs, rowNum) -> new TeamResponse(
             rs.getLong("id"),
             rs.getLong("match_id"),
             rs.getString("name"),
             rs.getBoolean("is_selected")
         ));
-  }
 
-  @Override
-  public void updateTeam(TeamRequest request) {
+    if (response.isSelected()) {
+      throw new AlreadySelectedException(response.getName());
+    }
+
     jdbcTemplate.update("UPDATE team SET is_selected=? WHERE id=?",
         request.getIsSelected(),
         request.getId()
-        );
+    );
   }
-
 }

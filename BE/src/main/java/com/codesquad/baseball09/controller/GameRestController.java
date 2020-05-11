@@ -35,13 +35,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Api(tags = "Game API")
-public class GameController {
+public class GameRestController {
 
-  private final Logger log = LoggerFactory.getLogger(GameController.class);
+  private final Logger log = LoggerFactory.getLogger(GameRestController.class);
 
   private final GameService service;
 
-  public GameController(GameService service) {
+  public GameRestController(GameService service) {
     this.service = service;
   }
 
@@ -49,12 +49,6 @@ public class GameController {
   @ApiOperation(value = "메인 페이지")
   public ApiResult<List<Match>> main() {
     return OK(service.getMain());
-  }
-
-  @GetMapping("/match/{id}")
-  @ApiOperation(value = "팀 선택 화면")
-  public ApiResult<List<TeamResponse>> main(@PathVariable(value = "id") Long matchId) {
-    return OK(service.getTeam(matchId));
   }
 
   @PostMapping("/team")
