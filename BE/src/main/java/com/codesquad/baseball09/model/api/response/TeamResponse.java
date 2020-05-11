@@ -5,9 +5,9 @@ public class TeamResponse {
   private Long id;
   private Long matchId;
   private String name;
-  private boolean isSelected;
+  private Boolean isSelected;
 
-  public TeamResponse(Long id, Long matchId, String name, boolean isSelected) {
+  public TeamResponse(Long id, Long matchId, String name, Boolean isSelected) {
     this.id = id;
     this.matchId = matchId;
     this.name = name;
@@ -26,7 +26,7 @@ public class TeamResponse {
     return name;
   }
 
-  public boolean isSelected() {
+  public Boolean isSelected() {
     return isSelected;
   }
 }
