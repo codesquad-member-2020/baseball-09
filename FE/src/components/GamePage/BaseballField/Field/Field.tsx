@@ -1,22 +1,22 @@
 import React, { useState, Dispatch } from "react";
 import styled from "styled-components";
-import Hitter from "@/components/GamePage/BaseballField/Field/Hitter/hitter";
+import Hitter from "@GamePage/BaseballField/Field/Hitter/Hitter";
 import PitcherImg from "./pitcher.png";
 
 const Playball = styled.button`
   position: absolute;
-  color: white;
+  color: ${(props) => props.theme.colors.default.fontColor};
   font-family: sans-serif;
   font-size: 1.5em;
   cursor: pointer;
-  background-color: #4682b4;
+  background-color: ${(props) => props.theme.colors.default.buttonColor};
   border-radius: 5%;
   border: solid 1px #75b6ed;
   padding: 0.25em 1em;
   right: 43%;
   top: 47%;
   &:hover {
-    background-color: #00008b;
+    background-color: ${(props) => props.theme.colors.default.buttonFadeColor};
   }
 `;
 
@@ -27,25 +27,31 @@ const Pitcher = styled.img`
   top: 56%;
 `;
 
-enum FieldState {
-  InitState = -1,
-  MaxState = 4,
-  Increase = 1,
+export enum EBase {
+  HOME = 0,
+  FIRST = 1,
+  SECOND = 2,
+  THIRD = 3,
+  FOURTH = 4,
 }
 
 const Field = () => {
-  const [hit, setHit] = useState(FieldState.InitState);
+  const [base, setBase] = useState(0);
 
   const onClickHandler = () => {
-    if (hit + FieldState.Increase === FieldState.MaxState) setHit(FieldState.InitState);
-    else setHit(hit + FieldState.Increase);
+    if (base + 1 === (EBase.FOURTH as number)) {
+      setBase(EBase.HOME as number);
+      return;
+    }
+    const nextBase = base + 1;
+    setBase(nextBase);
   };
 
   return (
     <>
       <Playball onClick={onClickHandler}>PITCH!</Playball>
       <Pitcher src={PitcherImg} />
-      <Hitter hit={hit} />
+      <Hitter base={base} />
     </>
   );
 };

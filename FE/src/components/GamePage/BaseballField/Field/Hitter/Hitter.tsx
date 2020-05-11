@@ -2,6 +2,8 @@ import React from "react";
 import styled, { keyframes, Keyframes, css } from "styled-components";
 import HitterImg from "./hitter.png";
 
+const HomeBase = keyframes``;
+
 const FirstBase = keyframes`
   99% {
     transform: translate(230px, -240px);
@@ -41,7 +43,7 @@ const FourthBase = keyframes`
   }
 `;
 
-const HitterWrap = styled("div")<IHitterProp>`
+const HitterWrap = styled("div")<IHitterWrapperProp>`
   position: absolute;
   width: 50px;
   height: 50px;
@@ -49,7 +51,7 @@ const HitterWrap = styled("div")<IHitterProp>`
   top: 86.5%;
   z-index: 100;
   ${(props) => css`
-    animation: ${props.active} 3s 1.2s linear 1;
+    animation: ${props.running} 1s 1.2s linear 1;
     animation-fill-mode: both;
   `}
   .hitter-img {
@@ -57,20 +59,20 @@ const HitterWrap = styled("div")<IHitterProp>`
   }
 `;
 
+interface IHitterWrapperProp {
+  running: Keyframes;
+}
+
 interface IHitterProp {
-  active: Keyframes;
+  base: number;
 }
 
-interface IHit {
-  hit: number;
-}
+const bases = [HomeBase, FirstBase, SecondBase, ThirdBase, FourthBase];
 
-const Bases = [FirstBase, SecondBase, ThirdBase, FourthBase];
-
-const Hitter = (props: IHit) => {
+const Hitter = (props: IHitterProp) => {
   return (
     <div>
-      <HitterWrap active={Bases[props.hit]}>
+      <HitterWrap running={bases[props.base]}>
         <img className="hitter-img" src={HitterImg} />
       </HitterWrap>
     </div>

@@ -9,7 +9,7 @@ const Wrapper = styled.div`
 `;
 
 const PlayerName = styled.span`
-  color: #9fb8be;
+  color: ${(props) => props.theme.colors.default.statSecondaryColor};
   font-size: 2rem;
   margin-bottom: 1rem;
 `;
@@ -21,8 +21,9 @@ const InfoWrapper = styled.div`
 `;
 
 const NumberCount = styled.div`
-  background-color: #bbbbbb;
+  background-color: ${(props) => props.theme.colors.default.statThirdColorFade};
   border-radius: 50%;
+  color: ${(props) => props.theme.colors.default.statThirdColor};
   display: inline-block;
   font-weight: 900;
   height: 25px;
@@ -36,7 +37,7 @@ const NumberWrapper = styled.div`
 `;
 
 const Judge = styled.span`
-  color: #bbbbbb;
+  color: ${(props) => props.theme.colors.default.statThirdColor};
   font-size: 1.5rem;
   font-weight: 900;
   text-align: center;
@@ -44,7 +45,7 @@ const Judge = styled.span`
 `;
 
 const Result = styled.span`
-  color: #bbbbbb;
+  color: ${(props) => props.theme.colors.default.statThirdColor};
   font-size: 1.5rem;
   font-weight: 900;
   text-align: right;
@@ -52,7 +53,7 @@ const Result = styled.span`
 `;
 
 const LastResult = styled.span`
-  color: #77b3cb;
+  color: ${(props) => props.theme.colors.default.statFourthColor};
   font-size: 1.5rem;
   text-align: center;
   width: 40%;

@@ -9,4 +9,11 @@ describe("<ErrorPage />", () => {
     const body = getByText("잘못된 경로입니다");
     expect(body).toBeInTheDocument();
   });
+
+  it("renders 잘못된 경로입니다", () => {
+    const { getByText } = render(<ErrorPage />);
+    const line = getByText(/^잘못된/);
+
+    expect(line).toHaveTextContent("잘못된 경로입니다");
+  });
 });

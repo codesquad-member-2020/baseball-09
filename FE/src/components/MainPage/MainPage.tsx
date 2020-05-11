@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import GameSelectMenu from "@/components/MainPage/GameSelectMenu/GameSelectMenu";
+import GameSelectMenu from "@MainPage/GameSelectMenu/GameSelectMenu";
 import BenchClearing from "./bench-clearing.jpg";
 
 const Wrapper = styled.section`

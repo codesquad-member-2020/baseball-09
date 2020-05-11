@@ -19,7 +19,11 @@
     "typeRoots": ["./node_modules/@types"],
 
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@GamePage/*": ["src/components/GamePage/*"],
+      "@ErrorPage/*": ["src/components/ErrorPage/*"],
+      "@MainPage/*": ["src/components/MainPage/*"],
+      "@Model/*": ["src/models/*"]
     }
   },
   "exclude": ["node_modules", "dist", "public"]
