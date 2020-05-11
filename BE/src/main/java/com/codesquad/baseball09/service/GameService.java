@@ -1,7 +1,8 @@
 package com.codesquad.baseball09.service;
 
 import com.codesquad.baseball09.model.Match;
-import com.codesquad.baseball09.model.response.TeamSelectedResponse;
+import com.codesquad.baseball09.model.api.request.TeamRequest;
+import com.codesquad.baseball09.model.api.response.TeamResponse;
 import com.codesquad.baseball09.repository.JdbcGameRepository;
 import java.util.List;
 import org.springframework.stereotype.Service;
@@ -22,13 +23,12 @@ public class GameService {
   }
 
   @Transactional(readOnly = true)
-  public List<TeamSelectedResponse> getTeamSelected(Long matchId) {
+  public List<TeamResponse> getTeam(Long matchId) {
     return repository.findByMatchId(matchId);
   }
 
   @Transactional
-  public void start() {
-
+  public void selectTeam(TeamRequest request) {
+    repository.updateTeam(request);
   }
-
 }

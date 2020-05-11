@@ -1,4 +1,4 @@
-package com.codesquad.baseball09.model.request;
+package com.codesquad.baseball09.model.api.request;
 
 public class GameRequest {
 

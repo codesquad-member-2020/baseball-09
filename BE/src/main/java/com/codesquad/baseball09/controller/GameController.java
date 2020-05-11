@@ -3,19 +3,22 @@ package com.codesquad.baseball09.controller;
 import static com.codesquad.baseball09.model.State.BALL;
 import static com.codesquad.baseball09.model.State.OUT;
 import static com.codesquad.baseball09.model.State.STRIKE;
+import static com.codesquad.baseball09.model.api.ApiResult.OK;
 
 import com.codesquad.baseball09.model.BatterLog;
 import com.codesquad.baseball09.model.Board;
 import com.codesquad.baseball09.model.DetailPlayer;
 import com.codesquad.baseball09.model.DetailScore;
 import com.codesquad.baseball09.model.Game;
-import com.codesquad.baseball09.model.request.GameRequest;
 import com.codesquad.baseball09.model.InningScore;
 import com.codesquad.baseball09.model.Match;
 import com.codesquad.baseball09.model.PlayerList;
 import com.codesquad.baseball09.model.State;
 import com.codesquad.baseball09.model.Team;
-import com.codesquad.baseball09.model.response.TeamSelectedResponse;
+import com.codesquad.baseball09.model.api.ApiResult;
+import com.codesquad.baseball09.model.api.request.GameRequest;
+import com.codesquad.baseball09.model.api.request.TeamRequest;
+import com.codesquad.baseball09.model.api.response.TeamResponse;
 import com.codesquad.baseball09.service.GameService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -44,14 +47,21 @@ public class GameController {
 
   @GetMapping("/main")
   @ApiOperation(value = "메인 페이지")
-  public List<Match> main() {
-    return service.getMain();
+  public ApiResult<List<Match>> main() {
+    return OK(service.getMain());
   }
 
   @GetMapping("/match/{id}")
   @ApiOperation(value = "팀 선택 화면")
-  public List<TeamSelectedResponse> main(@PathVariable(value = "id") Long matchId) {
-    return service.getTeamSelected(matchId);
+  public ApiResult<List<TeamResponse>> main(@PathVariable(value = "id") Long matchId) {
+    return OK(service.getTeam(matchId));
+  }
+
+  @PostMapping("/team")
+  @ApiOperation(value = "팀 선택")
+  public ApiResult<Boolean> selectTeam(@RequestBody TeamRequest request) {
+    service.selectTeam(request);
+    return OK(true);
   }
 
 
