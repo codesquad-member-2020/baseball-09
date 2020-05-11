@@ -8,6 +8,7 @@ CREATE TABLE `team`
     `id`          BIGINT      NOT NULL AUTO_INCREMENT,
     `name`        VARCHAR(45) NULL,
     `is_selected` BOOLEAN DEFAULT FALSE,
+    `match_id`    BIGINT      NOT NULL,
     PRIMARY KEY (`id`)
 );
 
