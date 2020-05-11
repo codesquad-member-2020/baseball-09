@@ -22,12 +22,14 @@ public class JdbcGameRepository implements GameRepository {
   @Override
   public List<Match> findAll() {
     return jdbcTemplate.query(
-        "SELECT m.id, h.name as home, a.name as away, m.is_started "
+        "SELECT m.id, h.name as home, h.id as home_id, a.name as away, a.id as away_id, m.is_started "
             + "FROM `match` m "
             + "LEFT JOIN `team` h ON m.home_team_id = h.id "
             + "LEFT JOIN `team` a ON m.away_team_id = a.id"
         , (rs, rowNum) -> new Match(
             rs.getLong("id"),
+            rs.getLong("home_id"),
+            rs.getLong("away_id"),
             rs.getString("home"),
             rs.getString("away"),
             rs.getBoolean("is_started")
@@ -53,7 +55,6 @@ public class JdbcGameRepository implements GameRepository {
     jdbcTemplate.update("UPDATE team SET is_selected=? WHERE id=?",
         request.getIsSelected(),
         request.getId()
-        );
+    );
   }
-
 }
