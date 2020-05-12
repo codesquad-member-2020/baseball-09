@@ -9,7 +9,7 @@ const Wrapper = styled.div`
 `;
 
 const PlayerName = styled.span`
-  color: ${(props) => props.theme.colors.default.statSecondaryColor};
+  color: ${(props) => props.theme.colors.default.secondaryStatColor};
   font-size: 2rem;
   margin-bottom: 1rem;
 `;
@@ -21,9 +21,9 @@ const InfoWrapper = styled.div`
 `;
 
 const NumberCount = styled.div`
-  background-color: ${(props) => props.theme.colors.default.statThirdColorFade};
+  background-color: ${(props) => props.theme.colors.default.thirdStatColorFade};
   border-radius: 50%;
-  color: ${(props) => props.theme.colors.default.statThirdColor};
+  color: ${(props) => props.theme.colors.default.thirdStatColor};
   display: inline-block;
   font-weight: 900;
   height: 25px;
@@ -37,7 +37,7 @@ const NumberWrapper = styled.div`
 `;
 
 const Judge = styled.span`
-  color: ${(props) => props.theme.colors.default.statThirdColor};
+  color: ${(props) => props.theme.colors.default.thirdStatColor};
   font-size: 1.5rem;
   font-weight: 900;
   text-align: center;
@@ -45,7 +45,7 @@ const Judge = styled.span`
 `;
 
 const Result = styled.span`
-  color: ${(props) => props.theme.colors.default.statThirdColor};
+  color: ${(props) => props.theme.colors.default.thirdStatColor};
   font-size: 1.5rem;
   font-weight: 900;
   text-align: right;
@@ -53,7 +53,7 @@ const Result = styled.span`
 `;
 
 const LastResult = styled.span`
-  color: ${(props) => props.theme.colors.default.statFourthColor};
+  color: ${(props) => props.theme.colors.default.fourthStatColor};
   font-size: 1.5rem;
   text-align: center;
   width: 40%;

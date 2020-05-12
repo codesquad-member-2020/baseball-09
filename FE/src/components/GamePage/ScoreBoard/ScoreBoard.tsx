@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 `;
 
 const Header = styled.header`
-  color: ${(props) => props.theme.colors.default.fontColor};
+  color: ${(props) => props.theme.colors.default.primaryFontColor};
 `;
 
 const Names = styled.div`
@@ -24,7 +24,7 @@ const Names = styled.div`
 `;
 
 const TeamName = styled.span`
-  color: ${(props) => props.theme.colors.default.fontColor};
+  color: ${(props) => props.theme.colors.default.primaryFontColor};
   display: inline-block;
   font-size: 3rem;
   font-weight: 900;
@@ -32,7 +32,7 @@ const TeamName = styled.span`
 `;
 
 const Versus = styled.span`
-  color: ${(props) => props.theme.colors.default.fontColor};
+  color: ${(props) => props.theme.colors.default.primaryFontColor};
   display: inline-block;
   font-size: 1.5rem;
   font-weight: 900;
@@ -41,7 +41,7 @@ const Versus = styled.span`
 `;
 
 const TeamScore = styled.span`
-  color: ${(props) => props.theme.colors.default.fontColor};
+  color: ${(props) => props.theme.colors.default.primaryFontColor};
   display: inline-block;
   font-size: 3rem;
   font-weight: 900;
