@@ -145,10 +145,10 @@ public class JdbcGameRepository implements GameRepository {
   @Override
   public List<Score> findScoreByGameId(Long id) {
     return jdbcTemplate.query(
-        "SELECT s.game_id ,s.team_id, t.name, s.sum(score) as score "
-            + "FROM `score_board` s  "
+        "SELECT s.game_id ,s.team_id, t.name, sum(s.score) as score "
+            + "FROM `score_board` s "
             + "LEFT JOIN `team` t ON t.id = s.team_id "
-            + "WHERE s.game_id=?"
+            + "WHERE s.game_id=? "
             + "GROUP BY team_id ", new Object[]{id}, (rs, rowNum) -> new Score(
             rs.getLong("game_id"),
             rs.getLong("team_id"),
