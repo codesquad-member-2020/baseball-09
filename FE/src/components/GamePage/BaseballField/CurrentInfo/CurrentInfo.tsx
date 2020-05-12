@@ -12,7 +12,7 @@ const Header = styled.div`
   padding: 5px 20px;
   font-size: 24px;
   font-weight: 600;
-  color: ${(props) => props.theme.colors.default.fontColor};
+  color: ${(props) => props.theme.colors.default.primaryFontColor};
   .status-wrap {
     flex-direction: column;
   }

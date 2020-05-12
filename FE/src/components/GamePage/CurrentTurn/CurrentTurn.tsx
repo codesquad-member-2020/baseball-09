@@ -11,7 +11,7 @@ const StatusWrapper = styled.div`
 `;
 
 const PlayerType = styled.span`
-  color: ${(props) => props.theme.colors.default.statPrimaryColor};
+  color: ${(props) => props.theme.colors.default.primaryStatColor};
   font-size: 2rem;
 `;
 
@@ -21,12 +21,12 @@ const Player = styled.div`
 `;
 
 const PlayerName = styled.span`
-  color: ${(props) => props.theme.colors.default.statSecondaryColor};
+  color: ${(props) => props.theme.colors.default.secondaryStatColor};
   font-size: 2rem;
 `;
 
 const PlayerStats = styled.span`
-  color: ${(props) => props.theme.colors.default.statFourthColor};
+  color: ${(props) => props.theme.colors.default.fourthStatColor};
   font-size: 1.5rem;
 `;
 

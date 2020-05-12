@@ -5,7 +5,7 @@ import PitcherImg from "./pitcher.png";
 
 const Playball = styled.button`
   position: absolute;
-  color: ${(props) => props.theme.colors.default.fontColor};
+  color: ${(props) => props.theme.colors.default.primaryFontColor};
   font-family: sans-serif;
   font-size: 1.5em;
   cursor: pointer;
