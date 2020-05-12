@@ -1,6 +1,7 @@
 package com.codesquad.baseball09.repository;
 
 import com.codesquad.baseball09.error.AlreadySelectedException;
+import com.codesquad.baseball09.model.DetailScore;
 import com.codesquad.baseball09.model.Match;
 import com.codesquad.baseball09.model.Player;
 import com.codesquad.baseball09.model.Score;
@@ -22,7 +23,7 @@ public class JdbcGameRepository implements GameRepository {
   }
 
   @Override
-  public List<Match> findAll() {
+  public List<Match> findAllMatches() {
     return jdbcTemplate.query(
         "SELECT m.id, h.name as home, h.id as home_id, a.name as away, a.id as away_id, m.is_started "
             + "FROM `match` m "
@@ -83,12 +84,12 @@ public class JdbcGameRepository implements GameRepository {
   }
 
   @Override
-  public List<Score> getScoreByGameId(Long gameId) {
+  public List<DetailScore> findDetailScoreByGameId(Long gameId) {
     return jdbcTemplate.query(
         "SELECT s.id, s.game_id, s.team_id, s.inning, s.score, s.is_bottom "
             + "FROM `score_board` s "
             + "WHERE s.game_id=?",
-        new Object[]{gameId}, (rs, rowNum) -> new Score(
+        new Object[]{gameId}, (rs, rowNum) -> new DetailScore(
             rs.getLong("id"),
             rs.getLong("game_id"),
             rs.getLong("team_id"),
@@ -112,7 +113,7 @@ public class JdbcGameRepository implements GameRepository {
   }
 
   @Override
-  public List<Player> findAllByTeamId(Long id) {
+  public List<Player> findAllPlayersByTeamId(Long id) {
     return jdbcTemplate.query(
         "SELECT p.id, p.team_id, p.name, p.batting_average, p.is_pitcher "
             + "FROM `player` p "
@@ -127,16 +128,32 @@ public class JdbcGameRepository implements GameRepository {
   }
 
   @Override
-  public void insertTeamScore(Score score) {
-    jdbcTemplate
-        .update(
-            "INSERT INTO `score_board` (`game_id`, `team_id`, `inning`, `score`, `is_bottom`) VALUES (?, ?, ?, ?, ?) ",
-            score.getGameId(),
-            score.getTeamId(),
-            score.getInning(),
-            score.getScore(),
-            score.getBottom()
-        );
+  public void insertOrUpdateScore(DetailScore detailScore) {
+    jdbcTemplate.update(
+        "INSERT INTO `score_board` (game_id, team_id, inning, score, is_bottom) "
+            + "VALUES (?, ?, ?, ?, ?) "
+            + "ON DUPLICATE KEY UPDATE score=?",
+        detailScore.getGameId(),
+        detailScore.getTeamId(),
+        detailScore.getInning(),
+        detailScore.getScore(),
+        detailScore.getBottom(),
+        detailScore.getScore()
+    );
+  }
 
+  @Override
+  public List<Score> findScoreByGameId(Long id) {
+    return jdbcTemplate.query(
+        "SELECT s.game_id ,s.team_id, t.name, s.sum(score) as score "
+            + "FROM `score_board` s  "
+            + "LEFT JOIN `team` t ON t.id = s.team_id "
+            + "WHERE s.game_id=?"
+            + "GROUP BY team_id ", new Object[]{id}, (rs, rowNum) -> new Score(
+            rs.getLong("game_id"),
+            rs.getLong("team_id"),
+            rs.getString("name"),
+            rs.getInt("score")
+        ));
   }
 }
