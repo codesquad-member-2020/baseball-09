@@ -19,75 +19,84 @@ public class SBO {
     this.hit = hit;
   }
 
-  public void refresh() {
-
-  }
-
-  public void plus(State state) {
+  public int plus(State state) {
+    int value = 0;
 
     if (STRIKE.equals(state)) {
       strike++;
-    }
-    if (BALL.equals(state)) {
+      value = checkThreeStrike();
+    } else if (BALL.equals(state)) {
       ball++;
-    }
-    if (OUT.equals(state)) {
+      value = checkFourBall();
+    } else if (OUT.equals(state)) {
       out++;
-    }
-    if (HIT.equals(state)) {
+      resetStrikeAndBall();
+      value = checkThreeOut();
+    } else if (HIT.equals(state)) {
       hit++;
+      resetStrikeAndBall();
+      value = checkFourHit();
     }
+    return value;
   }
 
-  public void minus(State state) {
+  private void resetStrikeAndBall() {
+    this.strike = 0;
+    this.ball = 0;
+  }
 
-    if (STRIKE.equals(state)) {
-      strike--;
+  private void resetAll() {
+    resetStrikeAndBall();
+    this.out = 0;
+    this.hit = 0;
+  }
+
+  private int checkFourHit() {
+    if (this.hit == 4) {
+      resetStrikeAndBall();
+      this.hit--;
+      return 1;
     }
-    if (BALL.equals(state)) {
-      ball--;
+    return 0;
+  }
+
+  private int checkThreeOut() {
+    if (this.out == 3) {
+      resetAll();
+      return -1;
     }
-    if (OUT.equals(state)) {
-      out--;
+    return 0;
+  }
+
+  private int checkFourBall() {
+    if (this.ball == 4) {
+      resetStrikeAndBall();
+      plus(HIT);
     }
-    if (HIT.equals(state)) {
-      hit--;
+    return 0;
+  }
+
+  private int checkThreeStrike() {
+    if (this.strike == 3) {
+      resetStrikeAndBall();
+      plus(OUT);
     }
+    return 0;
   }
 
   public int getStrike() {
     return strike;
   }
 
-  public SBO setStrike(int strike) {
-    this.strike = strike;
-    return this;
-  }
-
   public int getBall() {
     return ball;
-  }
-
-  public SBO setBall(int ball) {
-    this.ball = ball;
-    return this;
   }
 
   public int getOut() {
     return out;
   }
 
-  public SBO setOut(int out) {
-    this.out = out;
-    return this;
-  }
-
   public int getHit() {
     return hit;
-  }
-
-  public SBO setHit(int hit) {
-    this.hit = hit;
-    return this;
   }
 }
