@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS `player`;
 DROP TABLE IF EXISTS `match`;
 DROP TABLE IF EXISTS `user`;
 DROP TABLE IF EXISTS `game`;
+DROP TABLE IF EXISTS `score_board`;
 
 CREATE TABLE `team`
 (
