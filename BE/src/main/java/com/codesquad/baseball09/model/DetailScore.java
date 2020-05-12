@@ -1,32 +1,58 @@
 package com.codesquad.baseball09.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class DetailScore {
 
-  private String home;
-  private String away;
-  private List<InningScore> inningScores = new ArrayList<>();
+  @JsonIgnore
+  private Long id;
+  private final Long gameId;
+  private final Long teamId;
+  private final int inning;
+  private final int score;
+  private final Boolean isBottom;
 
-  public DetailScore(String home, String away) {
-    this.home = home;
-    this.away = away;
+  public DetailScore(Long id, Long gameId, Long teamId, int inning, int score,
+      Boolean isBottom) {
+    this.id = id;
+    this.gameId = gameId;
+    this.teamId = teamId;
+    this.inning = inning;
+    this.score = score;
+    this.isBottom = isBottom;
   }
 
-  public void addInningScore(InningScore score) {
-    inningScores.add(score);
+  public DetailScore(Long gameId, Long teamId, int inning, int score,
+      Boolean isBottom) {
+    this.gameId = gameId;
+    this.teamId = teamId;
+    this.inning = inning;
+    this.score = score;
+    this.isBottom = isBottom;
   }
 
-  public String getHome() {
-    return home;
+
+  public Long getId() {
+    return id;
   }
 
-  public String getAway() {
-    return away;
+  public Long getGameId() {
+    return gameId;
   }
 
-  public List<InningScore> getInningScores() {
-    return inningScores;
+  public Long getTeamId() {
+    return teamId;
+  }
+
+  public int getInning() {
+    return inning;
+  }
+
+  public int getScore() {
+    return score;
+  }
+
+  public Boolean getBottom() {
+    return isBottom;
   }
 }
