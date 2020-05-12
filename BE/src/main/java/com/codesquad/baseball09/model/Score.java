@@ -1,39 +1,19 @@
 package com.codesquad.baseball09.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class Score {
 
-  @JsonIgnore
-  private Long id;
-  private final Long gameId;
-  private final Long teamId;
-  private final int inning;
-  private final int score;
-  private final Boolean isBottom;
+  private Long gameId;
+  private Long teamId;
+  private String name;
+  private int score;
 
-  public Score(Long id, Long gameId, Long teamId, int inning, int score,
-      Boolean isBottom) {
-    this.id = id;
+  public Score(Long gameId, Long teamId, String name, int score) {
     this.gameId = gameId;
     this.teamId = teamId;
-    this.inning = inning;
+    this.name = name;
     this.score = score;
-    this.isBottom = isBottom;
-  }
-
-  public Score(Long gameId, Long teamId, int inning, int score,
-      Boolean isBottom) {
-    this.gameId = gameId;
-    this.teamId = teamId;
-    this.inning = inning;
-    this.score = score;
-    this.isBottom = isBottom;
-  }
-
-
-  public Long getId() {
-    return id;
   }
 
   public Long getGameId() {
@@ -44,15 +24,21 @@ public class Score {
     return teamId;
   }
 
-  public int getInning() {
-    return inning;
+  public String getName() {
+    return name;
   }
 
   public int getScore() {
     return score;
   }
 
-  public Boolean getBottom() {
-    return isBottom;
+  @Override
+  public String toString() {
+    return new ToStringBuilder(this)
+        .append("gameId", gameId)
+        .append("teamId", teamId)
+        .append("name", name)
+        .append("score", score)
+        .toString();
   }
 }

@@ -1,6 +1,6 @@
 package com.codesquad.baseball09.model;
 
-import java.util.ArrayList;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
@@ -8,12 +8,14 @@ public class Board {
 
   private final Long gameId;
   private int inning;
+  private List<Score> scores;
+  @JsonIgnore
   private int homeScore;
+  @JsonIgnore
   private int awayScore;
   private boolean isBottom;
   private SBO sbo;
   private Game game;
-  private List<Score> scores = new ArrayList<>();
 
   public Board(Long gameId) {
     this.gameId = gameId;
@@ -31,7 +33,8 @@ public class Board {
     } else {
       this.isBottom = true;
     }
-    this.sbo = new SBO(0, 0, 0, 0);
+    this.homeScore = 0;
+    this.awayScore = 0;
   }
 
 
@@ -55,16 +58,16 @@ public class Board {
     return game;
   }
 
-  public List<Score> getScores() {
-    return scores;
-  }
-
   public int getHomeScore() {
     return homeScore;
   }
 
   public int getAwayScore() {
     return awayScore;
+  }
+
+  public List<Score> getScores() {
+    return scores;
   }
 
   public void addInning() {
@@ -80,24 +83,27 @@ public class Board {
     this.awayScore++;
   }
 
-  public Board addPlayers(List<Player> home, List<Player> away) {
-    this.game = Game.of(home, away);
+  public Board addScore(List<Score> score) {
+    this.scores = score;
     return this;
   }
 
-  public Board addScoreList(List<Score> scores) {
-    this.scores = scores;
+  public Board addPlayers(List<Player> home, List<Player> away) {
+    this.game = Game.of(home, away);
     return this;
   }
 
   @Override
   public String toString() {
     return new ToStringBuilder(this)
+        .append("gameId", gameId)
         .append("inning", inning)
+        .append("score", scores)
+        .append("homeScore", homeScore)
+        .append("awayScore", awayScore)
         .append("isBottom", isBottom)
         .append("sbo", sbo)
         .append("game", game)
-        .append("scores", scores)
         .toString();
   }
 }
