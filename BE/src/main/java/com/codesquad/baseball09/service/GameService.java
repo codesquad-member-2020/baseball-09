@@ -3,6 +3,7 @@ package com.codesquad.baseball09.service;
 import static com.codesquad.baseball09.model.Pitch.rollDice;
 
 import com.codesquad.baseball09.model.Board;
+import com.codesquad.baseball09.model.DetailScore;
 import com.codesquad.baseball09.model.Match;
 import com.codesquad.baseball09.model.Player;
 import com.codesquad.baseball09.model.Score;
@@ -34,7 +35,7 @@ public class GameService {
 
   @Transactional(readOnly = true)
   public List<Match> getMain() {
-    return repository.findAll();
+    return repository.findAllMatches();
   }
 
   @Transactional
@@ -52,115 +53,74 @@ public class GameService {
 
   @Transactional(readOnly = true)
   public Board getBoard(Long gameId) {
-    board.addScoreList(repository.getScoreByGameId(gameId));
+    board.addScore(getScore(gameId));
     return board;
   }
 
   @Transactional(readOnly = true)
   public void getPlayer(Long gameId) {
     Match match = repository.findById(gameId);
-    List<Player> home = repository.findAllByTeamId(match.getHomeId());
-    List<Player> away = repository.findAllByTeamId(match.getAwayId());
+    List<Player> home = repository.findAllPlayersByTeamId(match.getHomeId());
+    List<Player> away = repository.findAllPlayersByTeamId(match.getAwayId());
     board.addPlayers(home, away);
+  }
+
+  @Transactional(readOnly = true)
+  public List<Score> getScore(Long gameId) {
+    return repository.findScoreByGameId(gameId);
+  }
+
+  @Transactional(readOnly = true)
+  public List<DetailScore> getDetailScore(Long gameId) {
+    return repository.findDetailScoreByGameId(gameId);
   }
 
   public State pitch() {
     if (!board.isBottom()) {
       state = rollDice(board.getGame().getAway().getBattingAverage());
       if (state.equals(State.OUT) || state.equals(State.HIT)) {
-        board.getSbo().setStrike(0);
-        board.getSbo().setBall(0);
         board.getGame().nextAway();
       }
-    }
-
-    if (board.isBottom()) {
+    } else if (board.isBottom()) {
       state = rollDice(board.getGame().getHome().getBattingAverage());
       if (state.equals(State.OUT) || state.equals(State.HIT)) {
-        board.getSbo().setStrike(0);
-        board.getSbo().setBall(0);
         board.getGame().nextHome();
       }
     }
-    addSBO(state);
-    checkThreeStrike();
-    checkThreeOut();
-    checkFourBall();
-    checkFourHit();
+    checkValue(addSBO(state));
     return state;
   }
 
-  private void addSBO(State state) {
-    board.getSbo().plus(state);
+  private int addSBO(State state) {
+    return board.getSbo().plus(state);
   }
 
-  private void checkThreeStrike() {
-    if (board.getSbo().getStrike() == 3) {
-      board.getSbo().plus(State.OUT);
-      board.getSbo().setStrike(0);
-      board.getSbo().setBall(0);
-    }
-  }
-
-  private void checkFourHit() {
-    if (board.getSbo().getHit() == 4) {
+  private void checkValue(int value) {
+    if (value == 1) {
       if (!board.isBottom()) {
         board.addAwayScore();
-        board.getSbo().minus(State.HIT);
-        board.getSbo().setStrike(0);
-        board.getSbo().setBall(0);
-      }
-      if (board.isBottom()) {
-        board.addHomeScore();
-        board.getSbo().minus(State.HIT);
-        board.getSbo().setStrike(0);
-        board.getSbo().setBall(0);
-      }
-    }
-  }
-
-  private void checkFourBall() {
-    if (board.getSbo().getBall() == 4) {
-      if (!board.isBottom()) {
-        board.getSbo().plus(State.HIT);
-        board.getSbo().setStrike(0);
-        board.getSbo().setBall(0);
-      }
-      if (board.isBottom()) {
-        board.getSbo().plus(State.HIT);
-        board.getSbo().setStrike(0);
-        board.getSbo().setBall(0);
-      }
-    }
-  }
-
-  private void checkThreeOut() {
-    if (board.getSbo().getOut() == 3) {
-      getPlayer(board.getGameId());
-      Score score = null;
-
-      if (!board.isBottom()) {
-        score = new Score(
+        DetailScore awayScore = new DetailScore(
             board.getGameId(),
             board.getGame().getAway().getTeamId(),
             board.getInning(),
             board.getAwayScore(),
             board.isBottom()
         );
-
+        repository.insertOrUpdateScore(awayScore);
       }
-
       if (board.isBottom()) {
-        score = new Score(
+        board.addHomeScore();
+        DetailScore homeScore = new DetailScore(
             board.getGameId(),
             board.getGame().getHome().getTeamId(),
             board.getInning(),
             board.getHomeScore(),
             board.isBottom()
         );
-
+        repository.insertOrUpdateScore(homeScore);
       }
-      repository.insertTeamScore(score);
+    }
+    if (value == -1) {
       board.change();
     }
   }
