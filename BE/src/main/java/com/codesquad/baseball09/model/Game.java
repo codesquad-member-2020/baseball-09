@@ -10,9 +10,9 @@ public class Game {
   private Player away;
 
   @JsonIgnore
-  private List<Player> homePlayers;
+  private final List<Player> homePlayers;
   @JsonIgnore
-  private List<Player> awayPlayers;
+  private final List<Player> awayPlayers;
 
   @JsonIgnore
   private int homeOrder;
@@ -42,7 +42,7 @@ public class Game {
   }
 
   public void nextAway() {
-    if (awayPlayers.size() -1 == awayOrder) {
+    if (awayPlayers.size() - 1 == awayOrder) {
       awayOrder = -1;
     }
 

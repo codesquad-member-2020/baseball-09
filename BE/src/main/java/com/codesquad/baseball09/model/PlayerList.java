@@ -4,8 +4,8 @@ import java.util.List;
 
 public class PlayerList {
 
-  private String teamName;
-  private List<DetailPlayer> players;
+  private final String teamName;
+  private final List<DetailPlayer> players;
 
   public PlayerList(String teamName, List<DetailPlayer> players) {
     this.teamName = teamName;

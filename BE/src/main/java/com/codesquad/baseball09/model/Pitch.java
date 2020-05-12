@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 
 public class Pitch {
 
-  private static Logger logger = LoggerFactory.getLogger(Pitch.class);
+  private static final Logger logger = LoggerFactory.getLogger(Pitch.class);
 
   public static State rollDice(int battingAverage) {
 

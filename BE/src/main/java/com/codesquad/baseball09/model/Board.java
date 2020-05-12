@@ -6,7 +6,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class Board {
 
-  private Long gameId;
+  private final Long gameId;
   private int inning;
   private int homeScore;
   private int awayScore;

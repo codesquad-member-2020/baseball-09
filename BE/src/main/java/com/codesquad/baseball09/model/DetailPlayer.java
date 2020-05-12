@@ -2,10 +2,10 @@ package com.codesquad.baseball09.model;
 
 public class DetailPlayer {
 
-  private String name;
-  private int atBat;
-  private int hits;
-  private int outs;
+  private final String name;
+  private final int atBat;
+  private final int hits;
+  private final int outs;
 
   public DetailPlayer(String name, int atBat, int hits, int outs) {
     this.name = name;

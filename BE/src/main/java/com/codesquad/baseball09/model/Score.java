@@ -6,11 +6,11 @@ public class Score {
 
   @JsonIgnore
   private Long id;
-  private Long gameId;
-  private Long teamId;
-  private int inning;
-  private int score;
-  private Boolean isBottom;
+  private final Long gameId;
+  private final Long teamId;
+  private final int inning;
+  private final int score;
+  private final Boolean isBottom;
 
   public Score(Long id, Long gameId, Long teamId, int inning, int score,
       Boolean isBottom) {

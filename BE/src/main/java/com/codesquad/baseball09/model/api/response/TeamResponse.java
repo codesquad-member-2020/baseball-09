@@ -2,10 +2,10 @@ package com.codesquad.baseball09.model.api.response;
 
 public class TeamResponse {
 
-  private Long id;
-  private Long matchId;
-  private String name;
-  private Boolean isSelected;
+  private final Long id;
+  private final Long matchId;
+  private final String name;
+  private final Boolean isSelected;
 
   public TeamResponse(Long id, Long matchId, String name, Boolean isSelected) {
     this.id = id;

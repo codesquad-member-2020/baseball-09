@@ -2,9 +2,9 @@ package com.codesquad.baseball09.model;
 
 public class Match {
 
-  private Long id;
-  private Long homeId;
-  private Long awayId;
+  private final Long id;
+  private final Long homeId;
+  private final Long awayId;
   private String home;
   private String away;
   private Boolean isStarted;

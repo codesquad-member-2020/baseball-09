@@ -59,21 +59,13 @@ public class SBO {
     return strike;
   }
 
-  public int getBall() {
-    return ball;
-  }
-
-  public int getOut() {
-    return out;
-  }
-
-  public int getHit() {
-    return hit;
-  }
-
   public SBO setStrike(int strike) {
     this.strike = strike;
     return this;
+  }
+
+  public int getBall() {
+    return ball;
   }
 
   public SBO setBall(int ball) {
@@ -81,9 +73,17 @@ public class SBO {
     return this;
   }
 
+  public int getOut() {
+    return out;
+  }
+
   public SBO setOut(int out) {
     this.out = out;
     return this;
+  }
+
+  public int getHit() {
+    return hit;
   }
 
   public SBO setHit(int hit) {

@@ -5,9 +5,9 @@ import java.util.List;
 
 public class DetailScore {
 
-  private String home;
-  private String away;
-  private List<Score> scores = new ArrayList<>();
+  private final String home;
+  private final String away;
+  private final List<Score> scores = new ArrayList<>();
 
   public DetailScore(String home, String away) {
     this.home = home;
