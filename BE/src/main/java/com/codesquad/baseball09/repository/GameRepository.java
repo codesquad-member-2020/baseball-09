@@ -1,7 +1,8 @@
 package com.codesquad.baseball09.repository;
 
 import com.codesquad.baseball09.model.Match;
-import com.codesquad.baseball09.model.ScoreBoard;
+import com.codesquad.baseball09.model.Player;
+import com.codesquad.baseball09.model.Score;
 import com.codesquad.baseball09.model.api.request.GameRequest;
 import com.codesquad.baseball09.model.api.request.TeamRequest;
 import com.codesquad.baseball09.model.api.response.GameResponse;
@@ -15,7 +16,11 @@ public interface GameRepository {
 
   GameResponse start(GameRequest request);
 
-  List<ScoreBoard> getScoreByGameId(Long gameId);
+  List<Score> getScoreByGameId(Long gameId);
 
+  Match findById(Long id);
 
+  List<Player> findAllByTeamId(Long id);
+
+  void insertTeamScore(Score score);
 }

@@ -1,7 +1,6 @@
 package com.codesquad.baseball09.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
@@ -11,9 +10,9 @@ public class Game {
   private Player away;
 
   @JsonIgnore
-  private List<Player> homePlayers = new ArrayList<>();
+  private List<Player> homePlayers;
   @JsonIgnore
-  private List<Player> awayPlayers = new ArrayList<>();
+  private List<Player> awayPlayers;
 
   @JsonIgnore
   private int homeOrder;
@@ -30,21 +29,24 @@ public class Game {
     this.awayOrder = 0;
   }
 
-  private Game(Player home, Player away) {
-    this.home = home;
-    this.away = away;
-  }
-
   public static Game of(List<Player> home, List<Player> away) {
     return new Game(home.get(0), away.get(0), home, away);
   }
 
   public void nextHome() {
+    if (homePlayers.size() - 1 == homeOrder) {
+      homeOrder = -1;
+    }
+
     this.home = homePlayers.get(++homeOrder);
   }
 
   public void nextAway() {
-    this.home = awayPlayers.get(++awayOrder);
+    if (awayPlayers.size() -1 == awayOrder) {
+      awayOrder = -1;
+    }
+
+    this.away = awayPlayers.get(++awayOrder);
   }
 
   public Player getHome() {

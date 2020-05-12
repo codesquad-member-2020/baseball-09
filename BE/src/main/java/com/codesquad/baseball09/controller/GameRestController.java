@@ -2,8 +2,9 @@ package com.codesquad.baseball09.controller;
 
 import static com.codesquad.baseball09.model.api.ApiResult.OK;
 
+import com.codesquad.baseball09.model.Board;
 import com.codesquad.baseball09.model.Match;
-import com.codesquad.baseball09.model.ScoreBoard;
+import com.codesquad.baseball09.model.State;
 import com.codesquad.baseball09.model.api.ApiResult;
 import com.codesquad.baseball09.model.api.request.GameRequest;
 import com.codesquad.baseball09.model.api.request.TeamRequest;
@@ -51,9 +52,15 @@ public class GameRestController {
   }
 
   @GetMapping("/game/{id}")
-  public ApiResult<List<ScoreBoard>> getGame(@PathVariable(value = "id") Long gameId) {
-    return OK(service.getScoreBoard(gameId));
+  public ApiResult<Board> getGame(@PathVariable(value = "id") Long gameId) {
+    return OK(service.getBoard(gameId));
   }
+
+  @PostMapping("/pitch")
+  public ApiResult<State> pitch() {
+    return OK(service.pitch());
+  }
+
 
 //  @GetMapping("/game")
 //  @ApiOperation(value = "게임 진행 페이지")

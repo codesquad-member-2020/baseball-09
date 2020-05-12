@@ -19,7 +19,12 @@ public class SBO {
     this.hit = hit;
   }
 
-  public void add(State state) {
+  public void refresh() {
+
+  }
+
+  public void plus(State state) {
+
     if (STRIKE.equals(state)) {
       strike++;
     }
@@ -31,6 +36,22 @@ public class SBO {
     }
     if (HIT.equals(state)) {
       hit++;
+    }
+  }
+
+  public void minus(State state) {
+
+    if (STRIKE.equals(state)) {
+      strike--;
+    }
+    if (BALL.equals(state)) {
+      ball--;
+    }
+    if (OUT.equals(state)) {
+      out--;
+    }
+    if (HIT.equals(state)) {
+      hit--;
     }
   }
 
@@ -48,5 +69,25 @@ public class SBO {
 
   public int getHit() {
     return hit;
+  }
+
+  public SBO setStrike(int strike) {
+    this.strike = strike;
+    return this;
+  }
+
+  public SBO setBall(int ball) {
+    this.ball = ball;
+    return this;
+  }
+
+  public SBO setOut(int out) {
+    this.out = out;
+    return this;
+  }
+
+  public SBO setHit(int hit) {
+    this.hit = hit;
+    return this;
   }
 }
