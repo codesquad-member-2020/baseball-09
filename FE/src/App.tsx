@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import MainPage from "@MainPage/MainPage";
 import GamePage from "@GamePage/GamePage";
 import ErrorPage from "@ErrorPage/ErrorPage";
-import ScoreBoard from "@/components/ScoreBoard/ScoreBoard";
+import ScoreBoard from "@GamePage/ScoreBoard/ScoreBoard";
 import { ThemeProvider } from "styled-components";
 import theme from "@/theme/theme";
 

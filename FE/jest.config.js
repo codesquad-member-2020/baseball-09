@@ -4,6 +4,7 @@ module.exports = {
   preset: "ts-jest",
   transform: {
     "^.+\\.tsx$": "babel-jest",
+    "\\.(jpg|png)": "<rootDir>/fileTransformer.js",
   },
   setupFilesAfterEnv: ["@testing-library/jest-dom/extend-expect"],
   testRegex: "\\.test\\.tsx$",
