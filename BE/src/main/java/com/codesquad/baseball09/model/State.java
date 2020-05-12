@@ -6,7 +6,7 @@ public enum State {
   OUT(3),
   HIT(4);
 
-  private int value;
+  private final int value;
 
   State(int value) {
     this.value = value;
