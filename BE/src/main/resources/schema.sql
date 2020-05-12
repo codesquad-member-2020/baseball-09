@@ -55,7 +55,8 @@ CREATE TABLE `score_board`
     `inning`    INT,
     `score`     INT,
     `is_bottom` BOOLEAN DEFAULT FALSE,
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`id`),
+    UNIQUE (`game_id`,`team_id`, `inning`)
 );
 
 
