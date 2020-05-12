@@ -32,16 +32,6 @@ VALUES ('away@gmail.com');
 INSERT INTO `game` (`match_id`)
 VALUES (1);
 
-INSERT INTO `score_board` (`game_id`, `team_id`, `inning`, `score`)
-VALUES (1, 1, 1, 1);
-INSERT INTO `score_board` (`game_id`, `team_id`, `inning`, `score`, `is_bottom`)
-VALUES (1, 2, 1, 3, true);
-INSERT INTO `score_board` (`game_id`, `team_id`, `inning`, `score`)
-VALUES (1, 1, 2, 3);
-INSERT INTO `score_board` (`game_id`, `team_id`, `inning`, `score`, `is_bottom`)
-VALUES (1, 2, 2, 0, true);
-
--- 한화 --
 INSERT INTO player (`team_id`, `name`, `batting_average`, `is_pitcher`)
 VALUES (1, '양성우', 168, true);
 INSERT INTO `player` (`team_id`, `name`, `batting_average`, `is_pitcher`)
@@ -53,7 +43,6 @@ VALUES (1, '정진호', 167, false);
 INSERT INTO `player` (`team_id`, `name`, `batting_average`, `is_pitcher`)
 VALUES (1, '하주석', 167, false);
 
--- 두산 --
 INSERT INTO `player` (team_id, name, batting_average, is_pitcher)
 VALUES (2, '박건우', 319, true);
 INSERT INTO `player` (team_id, name, batting_average, is_pitcher)
