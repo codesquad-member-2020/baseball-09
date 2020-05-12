@@ -1,7 +1,10 @@
 package com.codesquad.baseball09.model;
 
-public class ScoreBoard {
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+public class Score {
+
+  @JsonIgnore
   private Long id;
   private Long gameId;
   private Long teamId;
@@ -9,7 +12,7 @@ public class ScoreBoard {
   private int score;
   private Boolean isBottom;
 
-  public ScoreBoard(Long id, Long gameId, Long teamId, int inning, int score,
+  public Score(Long id, Long gameId, Long teamId, int inning, int score,
       Boolean isBottom) {
     this.id = id;
     this.gameId = gameId;
@@ -18,6 +21,16 @@ public class ScoreBoard {
     this.score = score;
     this.isBottom = isBottom;
   }
+
+  public Score(Long gameId, Long teamId, int inning, int score,
+      Boolean isBottom) {
+    this.gameId = gameId;
+    this.teamId = teamId;
+    this.inning = inning;
+    this.score = score;
+    this.isBottom = isBottom;
+  }
+
 
   public Long getId() {
     return id;
