@@ -16,6 +16,7 @@ CREATE TABLE `team`
 CREATE TABLE `player`
 (
     `id`              BIGINT      NOT NULL AUTO_INCREMENT,
+    `team_id`         BIGINT      NOT NULL,
     `name`            VARCHAR(45) NULL,
     `batting_average` INT         NULL,
     `is_pitcher`      BOOLEAN DEFAULT FALSE,

@@ -41,5 +41,26 @@ VALUES (1, 1, 2, 3);
 INSERT INTO `score_board` (`game_id`, `team_id`, `inning`, `score`, `is_bottom`)
 VALUES (1, 2, 2, 0, true);
 
+-- 한화 --
+INSERT INTO player (`team_id`, `name`, `batting_average`, `is_pitcher`)
+VALUES (1, '양성우', 168, true);
+INSERT INTO `player` (`team_id`, `name`, `batting_average`, `is_pitcher`)
+VALUES (1, '손광민', 714, false);
+INSERT INTO `player` (`team_id`, `name`, `batting_average`, `is_pitcher`)
+VALUES (1, '김태균', 400, false);
+INSERT INTO `player` (`team_id`, `name`, `batting_average`, `is_pitcher`)
+VALUES (1, '정진호', 167, false);
+INSERT INTO `player` (`team_id`, `name`, `batting_average`, `is_pitcher`)
+VALUES (1, '하주석', 167, false);
 
-
+-- 두산 --
+INSERT INTO `player` (team_id, name, batting_average, is_pitcher)
+VALUES (2, '박건우', 319, true);
+INSERT INTO `player` (team_id, name, batting_average, is_pitcher)
+VALUES (2, '이홍련', 310, false);
+INSERT INTO `player` (team_id, name, batting_average, is_pitcher)
+VALUES (2, '오재일', 293, false);
+INSERT INTO `player` (team_id, name, batting_average, is_pitcher)
+VALUES (2, '허경민', 288, false);
+INSERT INTO `player` (team_id, name, batting_average, is_pitcher)
+VALUES (2, '김재환', 283, false);
