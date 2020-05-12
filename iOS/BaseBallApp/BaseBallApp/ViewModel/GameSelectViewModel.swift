@@ -9,16 +9,9 @@
 import Foundation
 
 class GameSelectViewModel {
-    let gameList: GameList
-    var homeTeamList = [String]()
-    var awayTeamList = [String]()
+    let gameList: [Game]
     
-    init(gameList: GameList) {
-        self.gameList = gameList
-        
-        gameList.games.forEach { (teamList) in
-            self.awayTeamList.append(teamList.away_team.name)
-            self.homeTeamList.append(teamList.home_team.name)
-        }
+    init(gameList: MainGameList) {
+        self.gameList = gameList.response
     }
 }

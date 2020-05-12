@@ -9,9 +9,7 @@
 import UIKit
 
 class GameScreenTotalView: UIView {
-    
     @IBOutlet weak var gameInfo: UIStackView!
-    
     @IBOutlet weak var strikeInfo: UIStackView!
     @IBOutlet weak var ballInfo: UIStackView!
     @IBOutlet weak var outInfo: UIStackView!

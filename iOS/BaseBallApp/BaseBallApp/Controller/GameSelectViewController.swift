@@ -14,10 +14,12 @@ class GameSelectViewController: UIViewController {
     private var viewModel: GameSelectViewModel?
     private let dataUseCase = DataUseCase()
     
+    private var gameSelectAlert: UIAlertController!
+    
     private let cellIdentifier = "GameSelectCell"
     private let cellNibName = "GameSelectView"
     private let nextViewSegueIdentifier = "teamSelect"
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,6 +34,8 @@ class GameSelectViewController: UIViewController {
         GameListTableView.dataSource = self
         
         registGameListTableViewCell()
+        
+        setAlertController()
     }
     
     private func registGameListTableViewCell() {
@@ -44,8 +48,22 @@ class GameSelectViewController: UIViewController {
         guard let selectedCell = sender as? GameSelectView else { return }
         guard let selectIndexPath = GameListTableView.indexPath(for: selectedCell) else { return }
         
-        teamSelectView.awayTeamButtonTitle = viewModel?.awayTeamList[selectIndexPath.section]
-        teamSelectView.homeTeamButtonTitle = viewModel?.homeTeamList[selectIndexPath.section]
+        if viewModel?.gameList[selectIndexPath.section].started == true {
+            present(gameSelectAlert, animated: true, completion: nil)
+            return
+        }
+        
+        teamSelectView.awayTeamButtonTitle = viewModel?.gameList[selectIndexPath.section].away
+        teamSelectView.homeTeamButtonTitle = viewModel?.gameList[selectIndexPath.section].home
+        
+        teamSelectView.awayTeamId = viewModel?.gameList[selectIndexPath.section].awayId
+        teamSelectView.homeTeamId = viewModel?.gameList[selectIndexPath.section].homeId
+    }
+    
+    private func setAlertController() {
+        gameSelectAlert = UIAlertController(title: "게임 선택 불가", message: "이미 진행중인 게임입니다.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        gameSelectAlert.addAction(okAction)
     }
 }
 
@@ -55,7 +73,7 @@ extension GameSelectViewController: UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        guard let sectionNum = viewModel?.gameList.games.count else { return 0 }
+        guard let sectionNum = viewModel?.gameList.count else { return 0 }
         
         return sectionNum
     }
@@ -64,8 +82,8 @@ extension GameSelectViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? GameSelectView else { return UITableViewCell() }
         
         cell.GameCountLabel.text = "GAME \(indexPath.section + 1)"
-        cell.AwayTeamLabel.text = viewModel?.awayTeamList[indexPath.section]
-        cell.HomeTeamLabel.text = viewModel?.homeTeamList[indexPath.section]
+        cell.AwayTeamLabel.text = viewModel?.gameList[indexPath.section].away
+        cell.HomeTeamLabel.text = viewModel?.gameList[indexPath.section].home
         
         return cell
     }
@@ -73,13 +91,13 @@ extension GameSelectViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 20
     }
-
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
         headerView.backgroundColor = .clear
         return headerView
     }
-
+    
 }
 
 extension GameSelectViewController: UITableViewDelegate {

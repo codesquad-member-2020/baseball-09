@@ -16,7 +16,11 @@ class TeamSelectViewController: UIViewController {
     public var awayTeamButtonTitle: String?
     public var homeTeamButtonTitle: String?
     
+    public var awayTeamId: Int?
+    public var homeTeamId: Int?
+    
     private var teamSelectAlert: UIAlertController!
+    
     @IBAction func selectAwayTeam(_ sender: Any) {
         performSegue(withIdentifier: "gameScreen", sender: self)
     }

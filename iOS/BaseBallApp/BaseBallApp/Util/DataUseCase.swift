@@ -9,13 +9,15 @@
 import Foundation
 
 class DataUseCase {
-    private let teamListEndPoint = "https://a2ce38a7-8dc6-4960-847e-fd40393fe743.mock.pstmn.io/games"
+    private let basicEndPoint = "http://18.213.230.151/api/"
+    private let gameList = "main"
     
-    func loadTeamList(manager: NetworkManager, completion: @escaping (GameList) -> ()) {
-        manager.requestData(url: teamListEndPoint) { (data, error) in
+    
+    func loadTeamList(manager: NetworkManager, completion: @escaping (MainGameList) -> ()) {
+        manager.requestData(url: basicEndPoint + gameList) { (data, error) in
             guard let data = data else { return }
             do {
-                let json = try JSONDecoder().decode(GameList.self, from: data)
+                let json = try JSONDecoder().decode(MainGameList.self, from: data)
                 completion(json)
             } catch {
                 print(error)

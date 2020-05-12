@@ -26,10 +26,17 @@ class GameViewController: UIViewController {
         setOutInfo(count: 1)
     }
     
+    // 상단 게임 스코어
     private func setGameScore() {
-        
+        /*
+        gameScoreView.awayTeamName.text
+        gameScoreView.homeTeamName.text
+        gameScoreView.awayTeamScore.text
+        gameScoreView.homeTeamScore.text
+         */
     }
     
+    // SBO 상태
     private func setStrikeInfo(count: Int) {
         for index in 1...count {
             gameScreenView.strikeInfo.arrangedSubviews[index].backgroundColor = .yellow
