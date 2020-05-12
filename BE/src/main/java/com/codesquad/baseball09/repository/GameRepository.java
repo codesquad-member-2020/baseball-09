@@ -1,5 +1,6 @@
 package com.codesquad.baseball09.repository;
 
+import com.codesquad.baseball09.model.DetailScore;
 import com.codesquad.baseball09.model.Match;
 import com.codesquad.baseball09.model.Player;
 import com.codesquad.baseball09.model.Score;
@@ -10,17 +11,19 @@ import java.util.List;
 
 public interface GameRepository {
 
-  List<Match> findAll();
+  List<Match> findAllMatches();
 
   void updateTeamStatus(TeamRequest request);
 
   GameResponse start(GameRequest request);
 
-  List<Score> getScoreByGameId(Long gameId);
+  List<DetailScore> findDetailScoreByGameId(Long gameId);
 
   Match findById(Long id);
 
-  List<Player> findAllByTeamId(Long id);
+  List<Player> findAllPlayersByTeamId(Long id);
 
-  void insertTeamScore(Score score);
+  void insertOrUpdateScore(DetailScore detailScore);
+
+  List<Score> findScoreByGameId(Long id);
 }
