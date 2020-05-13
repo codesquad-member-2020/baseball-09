@@ -2,13 +2,18 @@ package com.codesquad.baseball09.service;
 
 import static com.codesquad.baseball09.model.Pitch.rollDice;
 
+import com.codesquad.baseball09.model.BattingLog;
 import com.codesquad.baseball09.model.Board;
+import com.codesquad.baseball09.model.DetailPlayer;
 import com.codesquad.baseball09.model.DetailScore;
+import com.codesquad.baseball09.model.InningStatus;
 import com.codesquad.baseball09.model.Match;
 import com.codesquad.baseball09.model.Player;
 import com.codesquad.baseball09.model.Score;
-import com.codesquad.baseball09.model.State;
+import com.codesquad.baseball09.model.Status;
+import com.codesquad.baseball09.model.api.request.BattingLogRequest;
 import com.codesquad.baseball09.model.api.request.GameRequest;
+import com.codesquad.baseball09.model.api.request.PitchRequest;
 import com.codesquad.baseball09.model.api.request.TeamRequest;
 import com.codesquad.baseball09.model.api.response.GameResponse;
 import com.codesquad.baseball09.repository.JdbcGameRepository;
@@ -27,8 +32,6 @@ public class GameService {
 
   private static Board board;
 
-  private static State state;
-
   public GameService(JdbcGameRepository repository) {
     this.repository = repository;
   }
@@ -45,10 +48,10 @@ public class GameService {
 
   @Transactional
   public GameResponse start(GameRequest request) {
-    GameResponse response = repository.start(request);
-    board = new Board(response.getId());
-    getPlayer(response.getId());
-    return response;
+    return repository.startGame(request);
+//    board = new Board(response.getId());
+//    getPlayer(response.getId());
+//    return response;
   }
 
   @Transactional(readOnly = true)
@@ -75,53 +78,38 @@ public class GameService {
     return repository.findDetailScoreByGameId(gameId);
   }
 
-  public State pitch() {
-    if (!board.isBottom()) {
-      state = rollDice(board.getGame().getAway().getBattingAverage());
-      if (state.equals(State.OUT) || state.equals(State.HIT)) {
-        board.getGame().nextAway();
-      }
-    } else if (board.isBottom()) {
-      state = rollDice(board.getGame().getHome().getBattingAverage());
-      if (state.equals(State.OUT) || state.equals(State.HIT)) {
-        board.getGame().nextHome();
-      }
-    }
-    checkValue(addSBO(state));
+  @Transactional(readOnly = true)
+  public List<DetailPlayer> getDetailPlayer(Long gameId) {
+    return repository.findDetailPlayerStatusByGameId(gameId);
+  }
+
+
+  @Transactional(readOnly = true)
+  public List<BattingLog> getBattingLogs(BattingLogRequest request) {
+    return repository.findLogsByGameIdAndInning(request);
+  }
+
+  @Transactional
+  public void saveInningStatus(InningStatus status) {
+    repository.insertOrUpdateStrikeBallOutHitBoard(status);
+  }
+
+  @Transactional
+  public Status pitch(PitchRequest request) {
+    Status state = rollDice(request.getBattingAverage());
+    InningStatus status = repository.findStatusByGameId(request.getGameId());
+    status.plus(state);
+    saveInningStatus(status);
+    repository.insertBattingLog(createBattingLog(request, state));
     return state;
   }
 
-  private int addSBO(State state) {
-    return board.getSbo().plus(state);
-  }
-
-  private void checkValue(int value) {
-    if (value == 1) {
-      if (!board.isBottom()) {
-        board.addAwayScore();
-        DetailScore awayScore = new DetailScore(
-            board.getGameId(),
-            board.getGame().getAway().getTeamId(),
-            board.getInning(),
-            board.getAwayScore(),
-            board.isBottom()
-        );
-        repository.insertOrUpdateScore(awayScore);
-      }
-      if (board.isBottom()) {
-        board.addHomeScore();
-        DetailScore homeScore = new DetailScore(
-            board.getGameId(),
-            board.getGame().getHome().getTeamId(),
-            board.getInning(),
-            board.getHomeScore(),
-            board.isBottom()
-        );
-        repository.insertOrUpdateScore(homeScore);
-      }
-    }
-    if (value == -1) {
-      board.change();
-    }
+  private BattingLog createBattingLog(PitchRequest request, Status status) {
+    return new BattingLog.Builder()
+        .gameId(request.getGameId())
+        .playerId(request.getPlayerId())
+        .inning(request.getInning())
+        .status(status.getValue())
+        .build();
   }
 }
