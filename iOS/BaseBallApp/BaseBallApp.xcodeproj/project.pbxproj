@@ -11,7 +11,7 @@
 		ABE01FE224695220004A8BE3 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE01FE124695220004A8BE3 /* CircleView.swift */; };
 		ABE01FE6246966F7004A8BE3 /* GameInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE01FE5246966F7004A8BE3 /* GameInfoViewModel.swift */; };
 		ABE01FE824696ADA004A8BE3 /* GameScoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE01FE724696ADA004A8BE3 /* GameScoreViewModel.swift */; };
-		ABE01FEA24696B0F004A8BE3 /* CurrentPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE01FE924696B0F004A8BE3 /* CurrentPlayer.swift */; };
+		ABE01FEA24696B0F004A8BE3 /* CurrentPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE01FE924696B0F004A8BE3 /* CurrentPlayerViewModel.swift */; };
 		ABE01FEC246A8C89004A8BE3 /* MainGameList.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE01FEB246A8C89004A8BE3 /* MainGameList.swift */; };
 		ABE01FEE246AB32E004A8BE3 /* TeamSelectResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE01FED246AB32E004A8BE3 /* TeamSelectResult.swift */; };
 		ABE01FF0246AF421004A8BE3 /* GameProgressInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE01FEF246AF421004A8BE3 /* GameProgressInfo.swift */; };
@@ -42,7 +42,7 @@
 		ABE01FE124695220004A8BE3 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		ABE01FE5246966F7004A8BE3 /* GameInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfoViewModel.swift; sourceTree = "<group>"; };
 		ABE01FE724696ADA004A8BE3 /* GameScoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScoreViewModel.swift; sourceTree = "<group>"; };
-		ABE01FE924696B0F004A8BE3 /* CurrentPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentPlayer.swift; sourceTree = "<group>"; };
+		ABE01FE924696B0F004A8BE3 /* CurrentPlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentPlayerViewModel.swift; sourceTree = "<group>"; };
 		ABE01FEB246A8C89004A8BE3 /* MainGameList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameList.swift; sourceTree = "<group>"; };
 		ABE01FED246AB32E004A8BE3 /* TeamSelectResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamSelectResult.swift; sourceTree = "<group>"; };
 		ABE01FEF246AF421004A8BE3 /* GameProgressInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameProgressInfo.swift; sourceTree = "<group>"; };
@@ -200,7 +200,7 @@
 				ABF908EE2468188200F08D21 /* GameSelectViewModel.swift */,
 				ABE01FE5246966F7004A8BE3 /* GameInfoViewModel.swift */,
 				ABE01FE724696ADA004A8BE3 /* GameScoreViewModel.swift */,
-				ABE01FE924696B0F004A8BE3 /* CurrentPlayer.swift */,
+				ABE01FE924696B0F004A8BE3 /* CurrentPlayerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -286,7 +286,7 @@
 				ABF908A22461572400F08D21 /* GameSelectViewController.swift in Sources */,
 				ABF908EF2468188200F08D21 /* GameSelectViewModel.swift in Sources */,
 				ABF908C2246311E100F08D21 /* GameSelectView.swift in Sources */,
-				ABE01FEA24696B0F004A8BE3 /* CurrentPlayer.swift in Sources */,
+				ABE01FEA24696B0F004A8BE3 /* CurrentPlayerViewModel.swift in Sources */,
 				ABF908C72463C7A800F08D21 /* TeamSelectButton.swift in Sources */,
 				ABE01FF0246AF421004A8BE3 /* GameProgressInfo.swift in Sources */,
 				ABF9089E2461572400F08D21 /* AppDelegate.swift in Sources */,

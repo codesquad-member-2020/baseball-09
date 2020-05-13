@@ -534,6 +534,7 @@
                     <tabBarItem key="tabBarItem" title="Item 1" id="u6U-sW-8vw"/>
                     <connections>
                         <outlet property="currentPlayLog" destination="F7h-Wd-88E" id="A0s-xc-MOh"/>
+                        <outlet property="currentPlayerView" destination="rtC-HE-f6d" id="H8c-IK-zBI"/>
                         <outlet property="gameProgressView" destination="Fvw-E7-oUW" id="ywd-ni-yjV"/>
                         <outlet property="gameScoreView" destination="pmy-ei-Jjz" id="EQt-99-hkp"/>
                         <outlet property="gameScreenView" destination="sWN-QN-9ii" id="c5r-5V-vgU"/>

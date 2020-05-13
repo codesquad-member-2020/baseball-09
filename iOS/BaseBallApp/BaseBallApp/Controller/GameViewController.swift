@@ -12,12 +12,13 @@ class GameViewController: UIViewController {
     @IBOutlet weak var gameScoreView: TeamScoreView!
     @IBOutlet weak var gameScreenView: GameScreenTotalView!
     @IBOutlet weak var gameProgressView: GameProgressView!
-    
+    @IBOutlet weak var currentPlayerView: CurrentPlayerView!
     @IBOutlet weak var currentPlayLog: UITableView!
     
     private let dataUseCase = DataUseCase()
     private var scoreViewModel: GameScoreViewModel!
     private var infoViewModel: GameInfoViewModel!
+    private var currentPlayerViewModel: CurrentPlayerViewModel!
     
     public var gameId: Int?
     public var selectTeamId: Int?
@@ -31,11 +32,13 @@ class GameViewController: UIViewController {
             dataUseCase.requestGameProgress(manager: NetworkManager(), gameId: gameId!) { (gameInfo) in
                 self.scoreViewModel = GameScoreViewModel(gameInfo: gameInfo)
                 self.infoViewModel = GameInfoViewModel(gameInfo: gameInfo)
+                self.currentPlayerViewModel = CurrentPlayerViewModel(batterBoxInfo: gameInfo.game)
+                
                 DispatchQueue.main.async {
                     self.setUI()
                 }
                 
-                if gameInfo.inning == 13 {
+                if gameInfo.inning == 10 {
                     return
                 }
             }
@@ -82,5 +85,10 @@ class GameViewController: UIViewController {
         for index in 1...count {
             gameScreenView.outInfo.arrangedSubviews[index].backgroundColor = .red
         }
+    }
+    
+    private func setCurrentPlayer() {
+        currentPlayerView.batter.text = currentPlayerViewModel.batterName
+        currentPlayerView.pitcher.text = currentPlayerViewModel.pitcherName
     }
 }
