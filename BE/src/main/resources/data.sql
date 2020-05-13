@@ -53,3 +53,6 @@ INSERT INTO `player` (team_id, name, batting_average, is_pitcher)
 VALUES (2, '허경민', 288, false);
 INSERT INTO `player` (team_id, name, batting_average, is_pitcher)
 VALUES (2, '김재환', 283, false);
+
+INSERT INTO `strike_ball_out_hit_board` (`game_id`, `inning`, `strike`, `ball`, `out`, hit)
+VALUES (1, 1, 1, 1, 2, 3);

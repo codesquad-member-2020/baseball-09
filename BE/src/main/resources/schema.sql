@@ -4,6 +4,8 @@ DROP TABLE IF EXISTS `match`;
 DROP TABLE IF EXISTS `user`;
 DROP TABLE IF EXISTS `game`;
 DROP TABLE IF EXISTS `score_board`;
+DROP TABLE IF EXISTS `strike_ball_out_hit_board`;
+DROP TABLE IF EXISTS `batting_log`;
 
 CREATE TABLE `team`
 (
@@ -56,7 +58,30 @@ CREATE TABLE `score_board`
     `score`     INT,
     `is_bottom` BOOLEAN DEFAULT FALSE,
     PRIMARY KEY (`id`),
-    UNIQUE (`game_id`,`team_id`, `inning`)
+    UNIQUE (`game_id`, `team_id`, `inning`)
+);
+
+CREATE TABLE `batting_log`
+(
+    `id`        BIGINT NOT NULL AUTO_INCREMENT,
+    `game_id`   BIGINT,
+    `player_id` BIGINT,
+    `inning`    INT,
+    `status`    INT,
+    PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `strike_ball_out_hit_board`
+(
+    `id`      BIGINT NOT NULL AUTO_INCREMENT,
+    `game_id` BIGINT,
+    `inning`  INT,
+    `strike`  INT,
+    `ball`    INT,
+    `out`     INT,
+    `hit`     INT,
+    PRIMARY KEY (`id`),
+    UNIQUE (`game_id`, `inning`)
 );
 
 
