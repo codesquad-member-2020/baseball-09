@@ -323,6 +323,17 @@
                                             <constraint firstAttribute="width" secondItem="3cn-Wl-0CZ" secondAttribute="height" multiplier="1:0.7" id="Ku9-hU-ZKr"/>
                                         </constraints>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rye-fe-UmC" customClass="PtichButton" customModule="BaseBallApp" customModuleProvider="target">
+                                        <rect key="frame" x="124.33333333333334" y="132" width="126.33333333333334" height="36"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <state key="normal" title="PITCH">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="pitchingButton:" destination="hF2-pJ-EBv" eventType="touchUpInside" id="OvC-IZ-19e"/>
+                                        </connections>
+                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qx9-Qk-lry" customClass="GameScreenView" customModule="BaseBallApp" customModuleProvider="target">
                                         <rect key="frame" x="47" y="9.3333333333333428" width="281" height="281.33333333333326"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -360,11 +371,14 @@
                                     <constraint firstItem="3cn-Wl-0CZ" firstAttribute="leading" secondItem="sWN-QN-9ii" secondAttribute="leading" constant="15" id="0V1-C1-nuB"/>
                                     <constraint firstItem="qx9-Qk-lry" firstAttribute="centerX" secondItem="sWN-QN-9ii" secondAttribute="centerX" id="515-Zy-fyh"/>
                                     <constraint firstItem="qx9-Qk-lry" firstAttribute="centerY" secondItem="sWN-QN-9ii" secondAttribute="centerY" id="5dY-QJ-7qr"/>
+                                    <constraint firstItem="Rye-fe-UmC" firstAttribute="centerX" secondItem="sWN-QN-9ii" secondAttribute="centerX" id="8dR-sx-liT"/>
                                     <constraint firstItem="3cn-Wl-0CZ" firstAttribute="height" secondItem="sWN-QN-9ii" secondAttribute="height" multiplier="0.2" id="FFx-Nd-2x8"/>
                                     <constraint firstItem="Fvw-E7-oUW" firstAttribute="height" secondItem="sWN-QN-9ii" secondAttribute="height" multiplier="0.2" id="NBA-7h-5oI"/>
                                     <constraint firstItem="3cn-Wl-0CZ" firstAttribute="top" secondItem="sWN-QN-9ii" secondAttribute="top" constant="15" id="WPS-iy-GKQ"/>
+                                    <constraint firstItem="Rye-fe-UmC" firstAttribute="width" secondItem="qx9-Qk-lry" secondAttribute="width" multiplier="0.45" id="Z18-L3-4my"/>
                                     <constraint firstItem="qx9-Qk-lry" firstAttribute="width" secondItem="sWN-QN-9ii" secondAttribute="width" multiplier="0.75" id="eGx-6U-2ID"/>
                                     <constraint firstAttribute="trailing" secondItem="Fvw-E7-oUW" secondAttribute="trailing" constant="10" id="h9E-1l-oKF"/>
+                                    <constraint firstItem="Rye-fe-UmC" firstAttribute="centerY" secondItem="sWN-QN-9ii" secondAttribute="centerY" id="j0l-iV-S39"/>
                                     <constraint firstItem="Fvw-E7-oUW" firstAttribute="top" secondItem="sWN-QN-9ii" secondAttribute="top" constant="10" id="qvk-eS-KeL"/>
                                     <constraint firstAttribute="width" secondItem="sWN-QN-9ii" secondAttribute="height" multiplier="1:0.8" id="uSU-2u-B31"/>
                                 </constraints>
@@ -538,6 +552,7 @@
                         <outlet property="gameProgressView" destination="Fvw-E7-oUW" id="ywd-ni-yjV"/>
                         <outlet property="gameScoreView" destination="pmy-ei-Jjz" id="EQt-99-hkp"/>
                         <outlet property="gameScreenView" destination="sWN-QN-9ii" id="c5r-5V-vgU"/>
+                        <outlet property="pitchingButtonLabel" destination="Rye-fe-UmC" id="aYs-Rv-5lh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iVC-oE-wfM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

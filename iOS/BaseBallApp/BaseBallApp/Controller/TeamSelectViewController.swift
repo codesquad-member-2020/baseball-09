@@ -44,7 +44,11 @@ class TeamSelectViewController: UIViewController {
         gameView.homeTeamName = homeTeamButtonTitle
         gameView.gameId = gameId
         
-        gameView.selectTeamId = selectId
+        if selectId % 2 == 0 {
+            gameView.isAttackInning = true
+        } else {
+            gameView.isAttackInning = false
+        }
     }
     
     private func setModalUI() {

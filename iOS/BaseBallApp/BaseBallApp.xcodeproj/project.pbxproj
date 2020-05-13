@@ -16,6 +16,8 @@
 		ABE01FEE246AB32E004A8BE3 /* TeamSelectResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE01FED246AB32E004A8BE3 /* TeamSelectResult.swift */; };
 		ABE01FF0246AF421004A8BE3 /* GameProgressInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE01FEF246AF421004A8BE3 /* GameProgressInfo.swift */; };
 		ABE01FF2246C439D004A8BE3 /* CurrentPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE01FF1246C439D004A8BE3 /* CurrentPlayerView.swift */; };
+		ABE01FF4246C5DC4004A8BE3 /* PtichButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE01FF3246C5DC4004A8BE3 /* PtichButton.swift */; };
+		ABE01FF6246C6355004A8BE3 /* PitchingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE01FF5246C6355004A8BE3 /* PitchingResult.swift */; };
 		ABF9089E2461572400F08D21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF9089D2461572400F08D21 /* AppDelegate.swift */; };
 		ABF908A02461572400F08D21 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF9089F2461572400F08D21 /* SceneDelegate.swift */; };
 		ABF908A22461572400F08D21 /* GameSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908A12461572400F08D21 /* GameSelectViewController.swift */; };
@@ -47,6 +49,8 @@
 		ABE01FED246AB32E004A8BE3 /* TeamSelectResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamSelectResult.swift; sourceTree = "<group>"; };
 		ABE01FEF246AF421004A8BE3 /* GameProgressInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameProgressInfo.swift; sourceTree = "<group>"; };
 		ABE01FF1246C439D004A8BE3 /* CurrentPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentPlayerView.swift; sourceTree = "<group>"; };
+		ABE01FF3246C5DC4004A8BE3 /* PtichButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PtichButton.swift; sourceTree = "<group>"; };
+		ABE01FF5246C6355004A8BE3 /* PitchingResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchingResult.swift; sourceTree = "<group>"; };
 		ABF9089A2461572400F08D21 /* BaseBallApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseBallApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABF9089D2461572400F08D21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABF9089F2461572400F08D21 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +125,7 @@
 				ABE01FEB246A8C89004A8BE3 /* MainGameList.swift */,
 				ABE01FED246AB32E004A8BE3 /* TeamSelectResult.swift */,
 				ABE01FEF246AF421004A8BE3 /* GameProgressInfo.swift */,
+				ABE01FF5246C6355004A8BE3 /* PitchingResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -172,6 +177,7 @@
 				ABF908CF24669DC000F08D21 /* TeamScoreView.swift */,
 				ABE01FF1246C439D004A8BE3 /* CurrentPlayerView.swift */,
 				ABF908CD24669B3E00F08D21 /* GameLogCell.swift */,
+				ABE01FF3246C5DC4004A8BE3 /* PtichButton.swift */,
 			);
 			path = GameView;
 			sourceTree = "<group>";
@@ -299,6 +305,8 @@
 				ABE01FE824696ADA004A8BE3 /* GameScoreViewModel.swift in Sources */,
 				ABF908A02461572400F08D21 /* SceneDelegate.swift in Sources */,
 				ABE01FEE246AB32E004A8BE3 /* TeamSelectResult.swift in Sources */,
+				ABE01FF6246C6355004A8BE3 /* PitchingResult.swift in Sources */,
+				ABE01FF4246C5DC4004A8BE3 /* PtichButton.swift in Sources */,
 				ABF908D024669DC000F08D21 /* TeamScoreView.swift in Sources */,
 				ABF908B224625DA000F08D21 /* GameTabController.swift in Sources */,
 			);

@@ -13,6 +13,7 @@ class DataUseCase {
     private let gameList = "main"
     private let teamSelect = "team"
     private let gameProgress = "game/"
+    private let pitch = "pitch"
     
     func loadTeamList(manager: NetworkManager, completion: @escaping (MainGameList) -> ()) {
         manager.requestData(url: basicEndPoint + gameList, method: .get, contentType: nil, body: nil) { (data, error) in
@@ -48,6 +49,18 @@ class DataUseCase {
             guard let data = data else { return }
             do {
                 let json = try JSONDecoder().decode(GameProgressInfo.self, from: data)
+                completion(json.response)
+            } catch {
+                print("error: \(error)")
+            }
+        }
+    }
+    
+    func pitchingAction(manager: NetworkManager, completion: @escaping (String) -> ()) {
+        manager.requestData(url: basicEndPoint + pitch, method: .post, contentType: nil, body: nil) { (data, error) in
+            guard let data = data else { return }
+            do {
+                let json = try JSONDecoder().decode(PitchingResult.self, from: data)
                 completion(json.response)
             } catch {
                 print("error: \(error)")
