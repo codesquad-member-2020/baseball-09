@@ -18,13 +18,14 @@ class TeamSelectViewController: UIViewController {
     
     public var awayTeamId: Int?
     public var homeTeamId: Int?
+    private var selectId: Int!
+    public var gameId: Int?
     
     private let dataUseCase = DataUseCase()
     private var teamSelectAlert: UIAlertController!
     
     @IBAction func selectAwayTeam(_ sender: Any) {
         requestSelectTeam(selectTeamId: awayTeamId!)
-        
     }
     @IBAction func selectHomeTeam(_ sender: Any) {
         requestSelectTeam(selectTeamId: homeTeamId!)
@@ -34,6 +35,16 @@ class TeamSelectViewController: UIViewController {
         super.viewDidLoad()
         setModalUI()
         setAlertController()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let gameView = segue.destination as? GameViewController else { return }
+        
+        gameView.awayTeamName = awayTeamButtonTitle
+        gameView.homeTeamName = homeTeamButtonTitle
+        gameView.gameId = gameId
+        
+        gameView.selectTeamId = selectId
     }
     
     private func setModalUI() {
@@ -56,6 +67,7 @@ class TeamSelectViewController: UIViewController {
     }
     
     private func requestSelectTeam(selectTeamId: Int) {
+        selectId = selectTeamId
         dataUseCase.isTeamSelect(manager: NetworkManager(), selectTeamId: selectTeamId) { (result) in
             if result {
                 self.performSegue(withIdentifier: "gameScreen", sender: self)

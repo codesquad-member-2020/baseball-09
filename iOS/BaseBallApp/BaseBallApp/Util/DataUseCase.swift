@@ -11,7 +11,8 @@ import Foundation
 class DataUseCase {
     private let basicEndPoint = "http://18.213.230.151/api/"
     private let gameList = "main"
-    private let teamSelect = "/team"
+    private let teamSelect = "team"
+    private let gameProgress = "game/"
     
     func loadTeamList(manager: NetworkManager, completion: @escaping (MainGameList) -> ()) {
         manager.requestData(url: basicEndPoint + gameList, method: .get, contentType: nil, body: nil) { (data, error) in
@@ -38,6 +39,18 @@ class DataUseCase {
                 }
             } catch {
                 print("error : \(error)")
+            }
+        }
+    }
+    
+    func requestGameProgress(manager: NetworkManager, gameId: Int, completion: @escaping (GameTotalInfo) -> ()) {
+        manager.requestData(url: basicEndPoint + gameProgress + "\(gameId)", method: .get, contentType: nil, body: nil) { (data, error) in
+            guard let data = data else { return }
+            do {
+                let json = try JSONDecoder().decode(GameProgressInfo.self, from: data)
+                completion(json.response)
+            } catch {
+                print("error: \(error)")
             }
         }
     }

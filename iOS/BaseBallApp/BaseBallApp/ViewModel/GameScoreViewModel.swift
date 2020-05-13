@@ -9,5 +9,11 @@
 import Foundation
 
 class GameScoreViewModel {
+    let awayScore: String
+    let homeScore: String
     
+    init(gameInfo: GameTotalInfo) {
+        self.awayScore = String(gameInfo.awayScore)
+        self.homeScore = String(gameInfo.homeScore)
+    }
 }

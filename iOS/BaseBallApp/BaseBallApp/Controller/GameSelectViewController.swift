@@ -58,6 +58,8 @@ class GameSelectViewController: UIViewController {
         
         teamSelectView.awayTeamId = viewModel?.gameList[selectIndexPath.section].awayId
         teamSelectView.homeTeamId = viewModel?.gameList[selectIndexPath.section].homeId
+        
+        teamSelectView.gameId = viewModel?.gameList[selectIndexPath.section].id
     }
     
     private func setAlertController() {
