@@ -8,13 +8,17 @@ public class Board {
 
   private final Long gameId;
   private int inning;
+  private int homeScore;
+  private int awayScore;
+
+  @JsonIgnore
   private List<Score> scores;
   @JsonIgnore
-  private int homeScore;
+  private int homeInningScore;
   @JsonIgnore
-  private int awayScore;
+  private int awayInningScore;
   private boolean isBottom;
-  private SBO sbo;
+  private InningStatus inningStatus;
   private Game game;
 
   public Board(Long gameId) {
@@ -23,7 +27,9 @@ public class Board {
     this.isBottom = false;
     this.homeScore = 0;
     this.awayScore = 0;
-    this.sbo = new SBO(0, 0, 0, 0);
+    this.homeInningScore = 0;
+    this.awayInningScore = 0;
+    this.inningStatus = new InningStatus(0, 0, 0, 0);
   }
 
   public void change() {
@@ -33,8 +39,8 @@ public class Board {
     } else {
       this.isBottom = true;
     }
-    this.homeScore = 0;
-    this.awayScore = 0;
+    this.homeInningScore = 0;
+    this.awayInningScore = 0;
   }
 
 
@@ -50,20 +56,20 @@ public class Board {
     return isBottom;
   }
 
-  public SBO getSbo() {
-    return sbo;
+  public InningStatus getInningStatus() {
+    return inningStatus;
   }
 
   public Game getGame() {
     return game;
   }
 
-  public int getHomeScore() {
-    return homeScore;
+  public int getHomeInningScore() {
+    return homeInningScore;
   }
 
-  public int getAwayScore() {
-    return awayScore;
+  public int getAwayInningScore() {
+    return awayInningScore;
   }
 
   public List<Score> getScores() {
@@ -72,15 +78,15 @@ public class Board {
 
   public void addInning() {
     this.inning++;
-    this.sbo = new SBO(0, 0, 0, 0);
+    this.inningStatus = new InningStatus(0, 0, 0, 0);
   }
 
   public void addHomeScore() {
-    this.homeScore++;
+    this.homeInningScore++;
   }
 
   public void addAwayScore() {
-    this.awayScore++;
+    this.awayInningScore++;
   }
 
   public Board addScore(List<Score> score) {
@@ -99,10 +105,10 @@ public class Board {
         .append("gameId", gameId)
         .append("inning", inning)
         .append("score", scores)
-        .append("homeScore", homeScore)
-        .append("awayScore", awayScore)
+        .append("homeScore", homeInningScore)
+        .append("awayScore", awayInningScore)
         .append("isBottom", isBottom)
-        .append("sbo", sbo)
+        .append("sbo", inningStatus)
         .append("game", game)
         .toString();
   }
