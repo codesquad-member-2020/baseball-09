@@ -15,29 +15,40 @@ import java.util.List;
 
 public interface GameRepository {
 
-  List<Match> findAllMatches();
-
+  //team
   void updateTeamStatus(TeamRequest request);
+
+  List<Player> findAllPlayersByTeamId(Long teamId);
+
+  //match
+  List<Match> findAllMatches();
 
   Match findById(Long id);
 
+  //game
   GameResponse startGame(GameRequest request);
 
-  List<DetailScore> findDetailScoreByGameId(Long gameId);
+  //board
 
-  List<Player> findAllPlayersByTeamId(Long id);
+  //score
+  List<Score> findScoreByGameId(Long gameId);
 
   void insertOrUpdateScore(DetailScore detailScore);
 
-  List<Score> findScoreByGameId(Long id);
+  //inning
+  InningStatus findStatusByGameId(Long gameId);
 
   void insertOrUpdateStrikeBallOutHitBoard(InningStatus status);
 
-  InningStatus findStatusByGameId(Long gameId);
 
+  //battingLog
   void insertBattingLog(BattingLog log);
 
   List<BattingLog> findLogsByGameIdAndInning(BattingLogRequest request);
 
+  //detail
+  List<DetailScore> findDetailScoreByGameId(Long gameId);
+
   List<DetailPlayer> findDetailPlayerStatusByGameId(Long gameId);
+
 }
