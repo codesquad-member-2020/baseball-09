@@ -1,48 +1,35 @@
 package com.codesquad.baseball09.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import java.util.List;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-
 public class Board {
 
-  private final Long gameId;
+  private Long gameId;
   private int inning;
+
+  private String homeName;
   private int homeScore;
+
+  private String awayName;
   private int awayScore;
-
-  @JsonIgnore
-  private List<Score> scores;
-  @JsonIgnore
-  private int homeInningScore;
-  @JsonIgnore
-  private int awayInningScore;
   private boolean isBottom;
-  private InningStatus inningStatus;
+
   private Game game;
+  private InningStatus status;
+  private BattingLog log;
 
-  public Board(Long gameId) {
+  public Board(Long gameId, int inning, String homeName, int homeScore, String awayName,
+      int awayScore, boolean isBottom, Game game, InningStatus status,
+      BattingLog log) {
     this.gameId = gameId;
-    this.inning = 1;
-    this.isBottom = false;
-    this.homeScore = 0;
-    this.awayScore = 0;
-    this.homeInningScore = 0;
-    this.awayInningScore = 0;
-    this.inningStatus = new InningStatus(0, 0, 0, 0);
+    this.inning = inning;
+    this.homeName = homeName;
+    this.homeScore = homeScore;
+    this.awayName = awayName;
+    this.awayScore = awayScore;
+    this.isBottom = isBottom;
+    this.game = game;
+    this.status = status;
+    this.log = log;
   }
-
-  public void change() {
-    if (this.isBottom) {
-      this.isBottom = false;
-      this.inning++;
-    } else {
-      this.isBottom = true;
-    }
-    this.homeInningScore = 0;
-    this.awayInningScore = 0;
-  }
-
 
   public Long getGameId() {
     return gameId;
@@ -52,64 +39,112 @@ public class Board {
     return inning;
   }
 
-  public boolean isBottom() {
-    return isBottom;
+  public String getHomeName() {
+    return homeName;
   }
 
-  public InningStatus getInningStatus() {
-    return inningStatus;
+  public int getHomeScore() {
+    return homeScore;
+  }
+
+  public String getAwayName() {
+    return awayName;
+  }
+
+  public int getAwayScore() {
+    return awayScore;
+  }
+
+  public boolean isBottom() {
+    return isBottom;
   }
 
   public Game getGame() {
     return game;
   }
 
-  public int getHomeInningScore() {
-    return homeInningScore;
+  public InningStatus getStatus() {
+    return status;
   }
 
-  public int getAwayInningScore() {
-    return awayInningScore;
+  public BattingLog getLog() {
+    return log;
   }
 
-  public List<Score> getScores() {
-    return scores;
-  }
 
-  public void addInning() {
-    this.inning++;
-    this.inningStatus = new InningStatus(0, 0, 0, 0);
-  }
+  public static final class Builder {
 
-  public void addHomeScore() {
-    this.homeInningScore++;
-  }
+    private Long gameId;
+    private int inning;
+    private String homeName;
+    private int homeScore;
+    private String awayName;
+    private int awayScore;
+    private boolean isBottom;
+    private Game game;
+    private InningStatus status;
+    private BattingLog log;
 
-  public void addAwayScore() {
-    this.awayInningScore++;
-  }
+    private Builder() {
+    }
 
-  public Board addScore(List<Score> score) {
-    this.scores = score;
-    return this;
-  }
+    public static Builder aBoard() {
+      return new Builder();
+    }
 
-  public Board addPlayers(List<Player> home, List<Player> away) {
-    this.game = Game.of(home, away);
-    return this;
-  }
+    public Builder gameId(Long gameId) {
+      this.gameId = gameId;
+      return this;
+    }
 
-  @Override
-  public String toString() {
-    return new ToStringBuilder(this)
-        .append("gameId", gameId)
-        .append("inning", inning)
-        .append("score", scores)
-        .append("homeScore", homeInningScore)
-        .append("awayScore", awayInningScore)
-        .append("isBottom", isBottom)
-        .append("sbo", inningStatus)
-        .append("game", game)
-        .toString();
+    public Builder inning(int inning) {
+      this.inning = inning;
+      return this;
+    }
+
+    public Builder homeName(String homeName) {
+      this.homeName = homeName;
+      return this;
+    }
+
+    public Builder homeScore(int homeScore) {
+      this.homeScore = homeScore;
+      return this;
+    }
+
+    public Builder awayName(String awayName) {
+      this.awayName = awayName;
+      return this;
+    }
+
+    public Builder awayScore(int awayScore) {
+      this.awayScore = awayScore;
+      return this;
+    }
+
+    public Builder isBottom(boolean isBottom) {
+      this.isBottom = isBottom;
+      return this;
+    }
+
+    public Builder game(Game game) {
+      this.game = game;
+      return this;
+    }
+
+    public Builder status(InningStatus status) {
+      this.status = status;
+      return this;
+    }
+
+    public Builder log(BattingLog log) {
+      this.log = log;
+      return this;
+    }
+
+    public Board build() {
+      return new Board(gameId, inning, homeName, homeScore, awayName, awayScore, isBottom, game,
+          status, log);
+    }
   }
 }
