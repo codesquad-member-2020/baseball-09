@@ -1,6 +1,7 @@
 package com.codesquad.baseball09.repository;
 
 import com.codesquad.baseball09.model.BattingLog;
+import com.codesquad.baseball09.model.Board;
 import com.codesquad.baseball09.model.DetailPlayer;
 import com.codesquad.baseball09.model.DetailScore;
 import com.codesquad.baseball09.model.InningStatus;
@@ -29,9 +30,16 @@ public interface GameRepository {
   GameResponse startGame(GameRequest request);
 
   //board
+  void createBoard(Long gameId);
+
+  Board findBoardByGameId(Long gamId);
+
+  void insertOrUpdateBoard(Board board);
 
   //score
   List<Score> findScoreByGameId(Long gameId);
+
+  DetailScore findDetailScoreByGameIdAndTeamIdAndInning(Long gameId, Long teamId, int inning);
 
   void insertOrUpdateScore(DetailScore detailScore);
 

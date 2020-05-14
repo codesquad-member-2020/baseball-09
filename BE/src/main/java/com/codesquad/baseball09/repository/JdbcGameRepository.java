@@ -2,6 +2,7 @@ package com.codesquad.baseball09.repository;
 
 import com.codesquad.baseball09.error.AlreadySelectedException;
 import com.codesquad.baseball09.model.BattingLog;
+import com.codesquad.baseball09.model.Board;
 import com.codesquad.baseball09.model.DetailPlayer;
 import com.codesquad.baseball09.model.DetailScore;
 import com.codesquad.baseball09.model.InningStatus;
@@ -87,7 +88,6 @@ public class JdbcGameRepository implements GameRepository {
     );
   }
 
-
   @Override
   public Match findById(Long id) {
     return jdbcTemplate.queryForObject(
@@ -119,7 +119,7 @@ public class JdbcGameRepository implements GameRepository {
   public List<Score> findScoreByGameId(Long id) {
     return jdbcTemplate.query(
         "SELECT s.game_id ,s.team_id, t.name, sum(s.score) as score "
-            + "FROM `score_board` s "
+            + "FROM `score` s "
             + "LEFT JOIN `team` t ON t.id = s.team_id "
             + "WHERE s.game_id=? "
             + "GROUP BY team_id ", new Object[]{id}, (rs, rowNum) -> new Score(
@@ -131,16 +131,29 @@ public class JdbcGameRepository implements GameRepository {
   }
 
   @Override
+  public DetailScore findDetailScoreByGameIdAndTeamIdAndInning(Long gameId, Long teamId,
+      int inning) {
+    return jdbcTemplate.queryForObject("SELECT s.id, s.game_id, s.team_id, s.inning, s.score "
+            + "FROM `score` s "
+            + "WHERE s.game_id=? AND s.team_id=? AND s.inning=? ", new Object[]{gameId, teamId, inning},
+        (rs, rowNum) -> DetailScore.Builder.aDetailScore()
+            .id(rs.getLong("id"))
+            .gameId(rs.getLong("game_id"))
+            .teamId(rs.getLong("team_id"))
+            .score(rs.getInt("score"))
+            .build());
+  }
+
+  @Override
   public void insertOrUpdateScore(DetailScore detailScore) {
     jdbcTemplate.update(
-        "INSERT INTO `score_board` (game_id, team_id, inning, score, is_bottom) "
-            + "VALUES (?, ?, ?, ?, ?) "
+        "INSERT INTO `score` (game_id, team_id, inning, score) "
+            + "VALUES (?, ?, ?, ?) "
             + "ON DUPLICATE KEY UPDATE score=?",
         detailScore.getGameId(),
         detailScore.getTeamId(),
         detailScore.getInning(),
         detailScore.getScore(),
-        detailScore.getBottom(),
         detailScore.getScore()
     );
   }
@@ -149,7 +162,7 @@ public class JdbcGameRepository implements GameRepository {
   public List<DetailScore> findDetailScoreByGameId(Long gameId) {
     return jdbcTemplate.query(
         "SELECT s.id, s.game_id, s.team_id, s.inning, s.score, s.is_bottom "
-            + "FROM `score_board` s "
+            + "FROM `score` s "
             + "WHERE s.game_id=?",
         new Object[]{gameId}, (rs, rowNum) -> new DetailScore(
             rs.getLong("id"),
@@ -250,14 +263,38 @@ public class JdbcGameRepository implements GameRepository {
             .outs(rs.getInt("outs"))
             .build());
   }
+
+  @Override
+  public void createBoard(Long gameId) {
+    jdbcTemplate.update(
+        "INSERT INTO `board` (game_id)"
+            + " VALUES (?)", gameId);
+  }
+
+  @Override
+  public Board findBoardByGameId(Long gameId) {
+    return jdbcTemplate.queryForObject(
+        "SELECT b.game_id, b.inning, b.is_bottom "
+            + "FROM `board` b "
+            + "WHERE b.game_id=?",
+        new Object[]{gameId}, (rs, rowNum) -> Board.Builder.of()
+            .gameId(rs.getLong("game_id"))
+            .inning(rs.getInt("inning"))
+            .isBottom(rs.getBoolean("is_bottom"))
+            .build());
+  }
+
+  @Override
+  public void insertOrUpdateBoard(Board board) {
+    jdbcTemplate.update(
+        "UPDATE `board` "
+            + "SET inning=? , is_bottom=? "
+            + "WHERE game_id=? ",
+        board.getInning(),
+        board.isBottom(),
+        board.getGameId());
+  }
 }
-/*
-SELECT b.game_id, b.player_id, p.name, count(b.status) AS atBat,
-(SELECT count(status) FROM BATTING_LOG WHERE status=4 AND b.player_id=player_id ) AS hits,
-(SELECT count(status) FROM BATTING_LOG WHERE status=3 AND b.player_id=player_id ) AS outs,
-(SELECT count(status) FROM BATTING_LOG WHERE status=2 AND b.player_id=player_id ) AS balls,
-(SELECT count(status) FROM BATTING_LOG WHERE status=1 AND b.player_id=player_id ) AS strike
-FROM BATTING_LOG  b
-LEFT JOIN player p ON b.player_id=p.id
-GROUP BY b.player_id
-*/
+
+
+
