@@ -16,19 +16,39 @@ class TeamSelectViewController: UIViewController {
     public var awayTeamButtonTitle: String?
     public var homeTeamButtonTitle: String?
     
+    public var awayTeamId: Int?
+    public var homeTeamId: Int?
+    private var selectId: Int!
+    public var gameId: Int?
+    
+    private let dataUseCase = DataUseCase()
     private var teamSelectAlert: UIAlertController!
+    
     @IBAction func selectAwayTeam(_ sender: Any) {
-        performSegue(withIdentifier: "gameScreen", sender: self)
+        requestSelectTeam(selectTeamId: awayTeamId!)
     }
     @IBAction func selectHomeTeam(_ sender: Any) {
-        present(teamSelectAlert, animated: true, completion: nil)
-        //performSegue(withIdentifier: "gameScreen", sender: self)
+        requestSelectTeam(selectTeamId: homeTeamId!)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setModalUI()
         setAlertController()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let gameView = segue.destination as? GameViewController else { return }
+        
+        gameView.awayTeamName = awayTeamButtonTitle
+        gameView.homeTeamName = homeTeamButtonTitle
+        gameView.gameId = gameId
+        
+        if selectId % 2 == 0 {
+            gameView.isAttackInning = true
+        } else {
+            gameView.isAttackInning = false
+        }
     }
     
     private func setModalUI() {
@@ -48,5 +68,16 @@ class TeamSelectViewController: UIViewController {
         teamSelectAlert = UIAlertController(title: "팀 선택 불가", message: "이미 선점된 팀입니다.", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         teamSelectAlert.addAction(okAction)
+    }
+    
+    private func requestSelectTeam(selectTeamId: Int) {
+        selectId = selectTeamId
+        dataUseCase.isTeamSelect(manager: NetworkManager(), selectTeamId: selectTeamId) { (result) in
+            if result {
+                self.performSegue(withIdentifier: "gameScreen", sender: self)
+            } else {
+                self.present(self.teamSelectAlert, animated: true, completion: nil)
+            }
+        }
     }
 }

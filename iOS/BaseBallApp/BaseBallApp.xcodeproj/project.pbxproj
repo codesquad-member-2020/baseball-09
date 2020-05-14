@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ABE01FE024694875004A8BE3 /* GameScreenTotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE01FDF24694875004A8BE3 /* GameScreenTotalView.swift */; };
+		ABE01FE224695220004A8BE3 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE01FE124695220004A8BE3 /* CircleView.swift */; };
+		ABE01FE6246966F7004A8BE3 /* GameInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE01FE5246966F7004A8BE3 /* GameInfoViewModel.swift */; };
+		ABE01FE824696ADA004A8BE3 /* GameScoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE01FE724696ADA004A8BE3 /* GameScoreViewModel.swift */; };
+		ABE01FEA24696B0F004A8BE3 /* CurrentPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE01FE924696B0F004A8BE3 /* CurrentPlayerViewModel.swift */; };
+		ABE01FEC246A8C89004A8BE3 /* MainGameList.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE01FEB246A8C89004A8BE3 /* MainGameList.swift */; };
+		ABE01FEE246AB32E004A8BE3 /* TeamSelectResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE01FED246AB32E004A8BE3 /* TeamSelectResult.swift */; };
+		ABE01FF0246AF421004A8BE3 /* GameProgressInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE01FEF246AF421004A8BE3 /* GameProgressInfo.swift */; };
+		ABE01FF2246C439D004A8BE3 /* CurrentPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE01FF1246C439D004A8BE3 /* CurrentPlayerView.swift */; };
+		ABE01FF4246C5DC4004A8BE3 /* PtichButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE01FF3246C5DC4004A8BE3 /* PtichButton.swift */; };
+		ABE01FF6246C6355004A8BE3 /* PitchingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE01FF5246C6355004A8BE3 /* PitchingResult.swift */; };
 		ABF9089E2461572400F08D21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF9089D2461572400F08D21 /* AppDelegate.swift */; };
 		ABF908A02461572400F08D21 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF9089F2461572400F08D21 /* SceneDelegate.swift */; };
 		ABF908A22461572400F08D21 /* GameSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908A12461572400F08D21 /* GameSelectViewController.swift */; };
@@ -14,23 +25,32 @@
 		ABF908A72461572500F08D21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABF908A62461572500F08D21 /* Assets.xcassets */; };
 		ABF908AA2461572500F08D21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABF908A82461572500F08D21 /* LaunchScreen.storyboard */; };
 		ABF908B224625DA000F08D21 /* GameTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908B124625DA000F08D21 /* GameTabController.swift */; };
-		ABF908BD246279BD00F08D21 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908BC246279BD00F08D21 /* DataManager.swift */; };
 		ABF908C2246311E100F08D21 /* GameSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908C0246311E100F08D21 /* GameSelectView.swift */; };
 		ABF908C3246311E100F08D21 /* GameSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABF908C1246311E100F08D21 /* GameSelectView.xib */; };
 		ABF908C52463C5B300F08D21 /* TeamSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908C42463C5B300F08D21 /* TeamSelectViewController.swift */; };
 		ABF908C72463C7A800F08D21 /* TeamSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908C62463C7A800F08D21 /* TeamSelectButton.swift */; };
-		ABF908CC24669ADF00F08D21 /* CurrentPlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908CB24669ADF00F08D21 /* CurrentPlayerCell.swift */; };
 		ABF908CE24669B3E00F08D21 /* GameLogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908CD24669B3E00F08D21 /* GameLogCell.swift */; };
 		ABF908D024669DC000F08D21 /* TeamScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908CF24669DC000F08D21 /* TeamScoreView.swift */; };
 		ABF908D22466A02800F08D21 /* GameScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908D12466A02800F08D21 /* GameScreenView.swift */; };
-		ABF908D92466BEB200F08D21 /* PitchingResult.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABF908D82466BEB200F08D21 /* PitchingResult.xib */; };
-		ABF908DB2466C3FD00F08D21 /* PitchingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908DA2466C3FD00F08D21 /* PitchingResult.swift */; };
-		ABF908DD2466C70A00F08D21 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908DC2466C70A00F08D21 /* CircleView.swift */; };
 		ABF908E02466CFFC00F08D21 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908DF2466CFFC00F08D21 /* GameViewController.swift */; };
 		ABF908E42467DD1B00F08D21 /* GameProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908E32467DD1B00F08D21 /* GameProgressView.swift */; };
+		ABF908E62467E24600F08D21 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908E52467E24600F08D21 /* NetworkManager.swift */; };
+		ABF908E82467E25800F08D21 /* DataUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908E72467E25800F08D21 /* DataUseCase.swift */; };
+		ABF908EF2468188200F08D21 /* GameSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908EE2468188200F08D21 /* GameSelectViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ABE01FDF24694875004A8BE3 /* GameScreenTotalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreenTotalView.swift; sourceTree = "<group>"; };
+		ABE01FE124695220004A8BE3 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		ABE01FE5246966F7004A8BE3 /* GameInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfoViewModel.swift; sourceTree = "<group>"; };
+		ABE01FE724696ADA004A8BE3 /* GameScoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScoreViewModel.swift; sourceTree = "<group>"; };
+		ABE01FE924696B0F004A8BE3 /* CurrentPlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentPlayerViewModel.swift; sourceTree = "<group>"; };
+		ABE01FEB246A8C89004A8BE3 /* MainGameList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameList.swift; sourceTree = "<group>"; };
+		ABE01FED246AB32E004A8BE3 /* TeamSelectResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamSelectResult.swift; sourceTree = "<group>"; };
+		ABE01FEF246AF421004A8BE3 /* GameProgressInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameProgressInfo.swift; sourceTree = "<group>"; };
+		ABE01FF1246C439D004A8BE3 /* CurrentPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentPlayerView.swift; sourceTree = "<group>"; };
+		ABE01FF3246C5DC4004A8BE3 /* PtichButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PtichButton.swift; sourceTree = "<group>"; };
+		ABE01FF5246C6355004A8BE3 /* PitchingResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchingResult.swift; sourceTree = "<group>"; };
 		ABF9089A2461572400F08D21 /* BaseBallApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseBallApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABF9089D2461572400F08D21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABF9089F2461572400F08D21 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,20 +60,18 @@
 		ABF908A92461572500F08D21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ABF908AB2461572500F08D21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ABF908B124625DA000F08D21 /* GameTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTabController.swift; sourceTree = "<group>"; };
-		ABF908BC246279BD00F08D21 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		ABF908C0246311E100F08D21 /* GameSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSelectView.swift; sourceTree = "<group>"; };
 		ABF908C1246311E100F08D21 /* GameSelectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameSelectView.xib; sourceTree = "<group>"; };
 		ABF908C42463C5B300F08D21 /* TeamSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamSelectViewController.swift; sourceTree = "<group>"; };
 		ABF908C62463C7A800F08D21 /* TeamSelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamSelectButton.swift; sourceTree = "<group>"; };
-		ABF908CB24669ADF00F08D21 /* CurrentPlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentPlayerCell.swift; sourceTree = "<group>"; };
 		ABF908CD24669B3E00F08D21 /* GameLogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogCell.swift; sourceTree = "<group>"; };
 		ABF908CF24669DC000F08D21 /* TeamScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamScoreView.swift; sourceTree = "<group>"; };
 		ABF908D12466A02800F08D21 /* GameScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreenView.swift; sourceTree = "<group>"; };
-		ABF908D82466BEB200F08D21 /* PitchingResult.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PitchingResult.xib; sourceTree = "<group>"; };
-		ABF908DA2466C3FD00F08D21 /* PitchingResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchingResult.swift; sourceTree = "<group>"; };
-		ABF908DC2466C70A00F08D21 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		ABF908DF2466CFFC00F08D21 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		ABF908E32467DD1B00F08D21 /* GameProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameProgressView.swift; sourceTree = "<group>"; };
+		ABF908E52467E24600F08D21 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		ABF908E72467E25800F08D21 /* DataUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUseCase.swift; sourceTree = "<group>"; };
+		ABF908EE2468188200F08D21 /* GameSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSelectViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +104,7 @@
 		ABF9089C2461572400F08D21 /* BaseBallApp */ = {
 			isa = PBXGroup;
 			children = (
+				ABF908EB2467EE0C00F08D21 /* ViewModel */,
 				ABF908BB2462796B00F08D21 /* Controller */,
 				ABF908BA2462795300F08D21 /* View */,
 				ABF908B92462794D00F08D21 /* Model */,
@@ -103,7 +122,10 @@
 		ABF908B92462794D00F08D21 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				ABF908BC246279BD00F08D21 /* DataManager.swift */,
+				ABE01FEB246A8C89004A8BE3 /* MainGameList.swift */,
+				ABE01FED246AB32E004A8BE3 /* TeamSelectResult.swift */,
+				ABE01FEF246AF421004A8BE3 /* GameProgressInfo.swift */,
+				ABE01FF5246C6355004A8BE3 /* PitchingResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -132,6 +154,8 @@
 		ABF908CA24651E3200F08D21 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				ABF908E72467E25800F08D21 /* DataUseCase.swift */,
+				ABF908E52467E24600F08D21 /* NetworkManager.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -151,8 +175,9 @@
 			children = (
 				ABF908DE2466CEFD00F08D21 /* GameScreen */,
 				ABF908CF24669DC000F08D21 /* TeamScoreView.swift */,
-				ABF908CB24669ADF00F08D21 /* CurrentPlayerCell.swift */,
+				ABE01FF1246C439D004A8BE3 /* CurrentPlayerView.swift */,
 				ABF908CD24669B3E00F08D21 /* GameLogCell.swift */,
+				ABE01FF3246C5DC4004A8BE3 /* PtichButton.swift */,
 			);
 			path = GameView;
 			sourceTree = "<group>";
@@ -167,13 +192,23 @@
 		ABF908DE2466CEFD00F08D21 /* GameScreen */ = {
 			isa = PBXGroup;
 			children = (
+				ABE01FDF24694875004A8BE3 /* GameScreenTotalView.swift */,
 				ABF908D12466A02800F08D21 /* GameScreenView.swift */,
-				ABF908DA2466C3FD00F08D21 /* PitchingResult.swift */,
-				ABF908D82466BEB200F08D21 /* PitchingResult.xib */,
-				ABF908DC2466C70A00F08D21 /* CircleView.swift */,
 				ABF908E32467DD1B00F08D21 /* GameProgressView.swift */,
+				ABE01FE124695220004A8BE3 /* CircleView.swift */,
 			);
 			path = GameScreen;
+			sourceTree = "<group>";
+		};
+		ABF908EB2467EE0C00F08D21 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				ABF908EE2468188200F08D21 /* GameSelectViewModel.swift */,
+				ABE01FE5246966F7004A8BE3 /* GameInfoViewModel.swift */,
+				ABE01FE724696ADA004A8BE3 /* GameScoreViewModel.swift */,
+				ABE01FE924696B0F004A8BE3 /* CurrentPlayerViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,7 +269,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABF908D92466BEB200F08D21 /* PitchingResult.xib in Resources */,
 				ABF908C3246311E100F08D21 /* GameSelectView.xib in Resources */,
 				ABF908AA2461572500F08D21 /* LaunchScreen.storyboard in Resources */,
 				ABF908A72461572500F08D21 /* Assets.xcassets in Resources */,
@@ -249,21 +283,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABF908CC24669ADF00F08D21 /* CurrentPlayerCell.swift in Sources */,
 				ABF908C52463C5B300F08D21 /* TeamSelectViewController.swift in Sources */,
+				ABE01FEC246A8C89004A8BE3 /* MainGameList.swift in Sources */,
+				ABE01FE224695220004A8BE3 /* CircleView.swift in Sources */,
 				ABF908CE24669B3E00F08D21 /* GameLogCell.swift in Sources */,
+				ABF908E82467E25800F08D21 /* DataUseCase.swift in Sources */,
+				ABE01FE6246966F7004A8BE3 /* GameInfoViewModel.swift in Sources */,
 				ABF908A22461572400F08D21 /* GameSelectViewController.swift in Sources */,
-				ABF908BD246279BD00F08D21 /* DataManager.swift in Sources */,
+				ABF908EF2468188200F08D21 /* GameSelectViewModel.swift in Sources */,
 				ABF908C2246311E100F08D21 /* GameSelectView.swift in Sources */,
+				ABE01FEA24696B0F004A8BE3 /* CurrentPlayerViewModel.swift in Sources */,
 				ABF908C72463C7A800F08D21 /* TeamSelectButton.swift in Sources */,
+				ABE01FF0246AF421004A8BE3 /* GameProgressInfo.swift in Sources */,
 				ABF9089E2461572400F08D21 /* AppDelegate.swift in Sources */,
+				ABE01FF2246C439D004A8BE3 /* CurrentPlayerView.swift in Sources */,
+				ABE01FE024694875004A8BE3 /* GameScreenTotalView.swift in Sources */,
 				ABF908D22466A02800F08D21 /* GameScreenView.swift in Sources */,
-				ABF908DB2466C3FD00F08D21 /* PitchingResult.swift in Sources */,
+				ABF908E62467E24600F08D21 /* NetworkManager.swift in Sources */,
 				ABF908E02466CFFC00F08D21 /* GameViewController.swift in Sources */,
 				ABF908E42467DD1B00F08D21 /* GameProgressView.swift in Sources */,
+				ABE01FE824696ADA004A8BE3 /* GameScoreViewModel.swift in Sources */,
 				ABF908A02461572400F08D21 /* SceneDelegate.swift in Sources */,
+				ABE01FEE246AB32E004A8BE3 /* TeamSelectResult.swift in Sources */,
+				ABE01FF6246C6355004A8BE3 /* PitchingResult.swift in Sources */,
+				ABE01FF4246C5DC4004A8BE3 /* PtichButton.swift in Sources */,
 				ABF908D024669DC000F08D21 /* TeamScoreView.swift in Sources */,
-				ABF908DD2466C70A00F08D21 /* CircleView.swift in Sources */,
 				ABF908B224625DA000F08D21 /* GameTabController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
