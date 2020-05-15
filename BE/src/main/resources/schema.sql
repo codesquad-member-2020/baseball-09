@@ -51,11 +51,11 @@ CREATE TABLE `game`
 
 CREATE TABLE `score`
 (
-    `id`        BIGINT NOT NULL AUTO_INCREMENT,
-    `game_id`   BIGINT,
-    `team_id`   BIGINT,
-    `inning`    INT,
-    `score`     INT,
+    `id`      BIGINT NOT NULL AUTO_INCREMENT,
+    `game_id` BIGINT,
+    `team_id` BIGINT,
+    `inning`  INT,
+    `score`   INT,
     PRIMARY KEY (`id`),
     UNIQUE (`game_id`, `team_id`, `inning`)
 );
@@ -85,12 +85,12 @@ CREATE TABLE `strike_ball_out_hit_board`
 
 CREATE TABLE `board`
 (
-    `id`        BIGINT NOT NULL AUTO_INCREMENT,
-    `game_id`   BIGINT,
-    `inning`    INT     DEFAULT 1,
-    `homeOrder` INT     DEFAULT 1,
-    `awayOrder` INT     DEFAULT 1,
-    `is_bottom` BOOLEAN DEFAULT FALSE,
+    `id`         BIGINT NOT NULL AUTO_INCREMENT,
+    `game_id`    BIGINT,
+    `inning`     INT     DEFAULT 1,
+    `home_order` INT     DEFAULT 0,
+    `away_order` INT     DEFAULT 0,
+    `is_bottom`  BOOLEAN DEFAULT FALSE,
     PRIMARY KEY (`id`),
     UNIQUE (`game_id`)
 );
