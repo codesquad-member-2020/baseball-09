@@ -29,6 +29,7 @@ public interface GameRepository {
   //game
   GameResponse startGame(GameRequest request);
 
+
   //board
   void createBoard(Long gameId);
 
