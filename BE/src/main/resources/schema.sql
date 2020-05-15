@@ -3,9 +3,10 @@ DROP TABLE IF EXISTS `player`;
 DROP TABLE IF EXISTS `match`;
 DROP TABLE IF EXISTS `user`;
 DROP TABLE IF EXISTS `game`;
-DROP TABLE IF EXISTS `score_board`;
+DROP TABLE IF EXISTS `score`;
 DROP TABLE IF EXISTS `strike_ball_out_hit_board`;
 DROP TABLE IF EXISTS `batting_log`;
+DROP TABLE IF EXISTS `board`;
 
 CREATE TABLE `team`
 (

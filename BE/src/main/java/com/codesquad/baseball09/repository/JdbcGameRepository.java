@@ -196,9 +196,9 @@ public class JdbcGameRepository implements GameRepository {
   @Override
   public void insertOrUpdateStrikeBallOutHitBoard(InningStatus status) {
     jdbcTemplate.update(
-        "INSERT INTO `strike_ball_out_hit_board` (game_id, inning, strike, ball, out, hit) "
+        "INSERT INTO `strike_ball_out_hit_board` (game_id, inning, strike, ball, `out`, hit) "
             + "VALUES (?, ?, ?, ?, ?, ?) "
-            + "ON DUPLICATE KEY UPDATE inning=? ,strike=?, ball=?, out=?, hit=?",
+            + "ON DUPLICATE KEY UPDATE inning=? ,strike=?, ball=?, `out`=?, hit=?",
         status.getGameId(),
         status.getInning(),
         status.getStrike(),
@@ -248,9 +248,9 @@ public class JdbcGameRepository implements GameRepository {
         "SELECT b.game_id, p.team_id, b.player_id, p.name, count(b.status) AS atBat, "
             + "(SELECT count(status) FROM BATTING_LOG WHERE status=4 AND b.player_id=player_id ) AS hits, "
             + "(SELECT count(status) FROM BATTING_LOG WHERE status=3 AND b.player_id=player_id ) AS outs "
-            + "FROM BATTING_LOG  b "
+            + "FROM BATTING_LOG b "
             + "LEFT JOIN player p ON b.player_id=p.id "
-            + "WHERE b.game_id=?"
+            + "WHERE b.game_id=? "
             + "GROUP BY b.player_id ",
         new Object[]{gameId}, (rs, rowNum) -> DetailPlayer.Builder.of()
             .gameId(rs.getLong("game_id"))
