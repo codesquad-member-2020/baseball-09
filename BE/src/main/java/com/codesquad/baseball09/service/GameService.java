@@ -47,6 +47,7 @@ public class GameService {
 
   @Transactional
   public GameResponse start(GameRequest request) {
+
     GameResponse response = repository.startGame(request);
     createBoard(response.getId());
     saveInningStatus(new InningStatus.Builder().gameId(response.getId()).inning(1).build());

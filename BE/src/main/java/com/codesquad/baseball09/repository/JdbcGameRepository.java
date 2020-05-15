@@ -266,8 +266,9 @@ public class JdbcGameRepository implements GameRepository {
   @Override
   public void createBoard(Long gameId) {
     jdbcTemplate.update(
-        "INSERT INTO `board` (game_id)"
-            + " VALUES (?)", gameId);
+        "INSERT INTO `board` (game_id) "
+            + "VALUES (?) "
+            + "ON DUPLICATE KEY UPDATE game_id=?", gameId, gameId);
   }
 
   @Override
