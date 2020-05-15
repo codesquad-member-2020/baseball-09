@@ -2,13 +2,19 @@ package com.codesquad.baseball09.service;
 
 import static com.codesquad.baseball09.model.Pitch.rollDice;
 
+import com.codesquad.baseball09.model.BattingLog;
 import com.codesquad.baseball09.model.Board;
+import com.codesquad.baseball09.model.DetailPlayer;
 import com.codesquad.baseball09.model.DetailScore;
+import com.codesquad.baseball09.model.Game;
+import com.codesquad.baseball09.model.InningStatus;
 import com.codesquad.baseball09.model.Match;
 import com.codesquad.baseball09.model.Player;
 import com.codesquad.baseball09.model.Score;
-import com.codesquad.baseball09.model.State;
+import com.codesquad.baseball09.model.Status;
+import com.codesquad.baseball09.model.api.request.BattingLogRequest;
 import com.codesquad.baseball09.model.api.request.GameRequest;
+import com.codesquad.baseball09.model.api.request.PitchRequest;
 import com.codesquad.baseball09.model.api.request.TeamRequest;
 import com.codesquad.baseball09.model.api.response.GameResponse;
 import com.codesquad.baseball09.repository.JdbcGameRepository;
@@ -24,10 +30,6 @@ public class GameService {
   private final Logger logger = LoggerFactory.getLogger(GameService.class);
 
   private final JdbcGameRepository repository;
-
-  private static Board board;
-
-  private static State state;
 
   public GameService(JdbcGameRepository repository) {
     this.repository = repository;
@@ -45,24 +47,65 @@ public class GameService {
 
   @Transactional
   public GameResponse start(GameRequest request) {
-    GameResponse response = repository.start(request);
-    board = new Board(response.getId());
-    getPlayer(response.getId());
+    GameResponse response = repository.startGame(request);
+    createBoard(response.getId());
+    saveInningStatus(new InningStatus.Builder().gameId(response.getId()).inning(1).build());
+    Match match = repository.findById(response.getId());
+
+    DetailScore home = DetailScore.Builder.aDetailScore()
+        .gameId(response.getId())
+        .inning(1)
+        .teamId(match.getHomeId()).build();
+    repository.insertOrUpdateScore(home);
+
+    DetailScore away = DetailScore.Builder.aDetailScore()
+        .gameId(response.getId())
+        .inning(1)
+        .teamId(match.getAwayId()).build();
+
+    repository.insertOrUpdateScore(away);
+
     return response;
   }
 
   @Transactional(readOnly = true)
   public Board getBoard(Long gameId) {
-    board.addScore(getScore(gameId));
-    return board;
+    Board board = repository.findBoardByGameId(gameId);
+    logger.debug("board : {}", board);
+    Game game = getGame(board);
+
+    InningStatus status = repository.findStatusByGameId(gameId);
+    List<Score> scores = getScore(gameId);
+
+    return Board.Builder.of()
+        .gameId(board.getGameId())
+        .inning(board.getInning())
+        .homeId(board.getHomeId())
+        .homeName(board.getHomeName())
+        .homeScore(board.getHomeScore())
+        .homeOrder(board.getHomeOrder())
+        .awayId(board.getAwayId())
+        .awayName(board.getAwayName())
+        .isBottom(board.isBottom())
+        .game(game)
+        .score(scores)
+        .status(status)
+        .log(getBattingLogs(BattingLogRequest.of(gameId, board.getInning())))
+        .build();
   }
 
   @Transactional(readOnly = true)
-  public void getPlayer(Long gameId) {
-    Match match = repository.findById(gameId);
+  public Game getGame(Board board) {
+    Match match = repository.findById(board.getGameId());
     List<Player> home = repository.findAllPlayersByTeamId(match.getHomeId());
     List<Player> away = repository.findAllPlayersByTeamId(match.getAwayId());
-    board.addPlayers(home, away);
+
+    logger.debug("homePlayer : {}", board.getHomeOrder());
+    logger.debug("awayPlayer : {}", board.getAwayOrder());
+
+    Player homePlayer = home.get(board.getHomeOrder());
+    Player awayPlayer = away.get(board.getAwayOrder());
+    return Game.of(homePlayer, awayPlayer);
   }
 
   @Transactional(readOnly = true)
@@ -75,53 +118,78 @@ public class GameService {
     return repository.findDetailScoreByGameId(gameId);
   }
 
-  public State pitch() {
-    if (!board.isBottom()) {
-      state = rollDice(board.getGame().getAway().getBattingAverage());
-      if (state.equals(State.OUT) || state.equals(State.HIT)) {
-        board.getGame().nextAway();
-      }
-    } else if (board.isBottom()) {
-      state = rollDice(board.getGame().getHome().getBattingAverage());
-      if (state.equals(State.OUT) || state.equals(State.HIT)) {
-        board.getGame().nextHome();
+  @Transactional(readOnly = true)
+  public List<DetailPlayer> getDetailPlayer(Long gameId) {
+    return repository.findDetailPlayerStatusByGameId(gameId);
+  }
+
+  @Transactional(readOnly = true)
+  public List<BattingLog> getBattingLogs(BattingLogRequest request) {
+    return repository.findLogsByGameIdAndInning(request);
+  }
+
+  @Transactional
+  public void saveInningStatus(InningStatus status) {
+    repository.insertOrUpdateStrikeBallOutHitBoard(status);
+  }
+
+  @Transactional
+  public Status pitch(PitchRequest request) {
+    Status state = rollDice(request.getBattingAverage());
+    InningStatus status = repository.findStatusByGameId(request.getGameId());
+    int value = status.plus(state);
+
+    logger.debug("value : {}", value);
+
+    if (value == 1) {
+      DetailScore score = repository
+          .findDetailScoreByGameIdAndTeamIdAndInning(request.getGameId(), request.getTeamId(),
+              request.getInning());
+      score.addScore();
+      repository.insertOrUpdateScore(score);
+    }
+
+    if (value == -1) {
+      Board board = repository.findBoardByGameId(request.getGameId());
+      board.change();
+      repository.insertOrUpdateBoard(board);
+    }
+
+    if (value == 0) {
+      Board board = repository.findBoardByGameId(request.getGameId());
+
+      logger.debug("board : {}", board);
+
+      if (!board.isBottom()) {
+        int order = board.getAwayOrder();
+
+        Board away = new Board.Builder(board)
+            .awayOrder(++order).build();
+
+        logger.debug("away : {}", away);
+        repository.insertOrUpdateBoard(away);
+      } else {
+        int order = board.getHomeOrder();
+        repository.insertOrUpdateBoard(new Board.Builder(board)
+            .homeOrder(++order).build());
       }
     }
-    checkValue(addSBO(state));
+    saveInningStatus(status);
+    repository.insertBattingLog(createBattingLog(request, state));
     return state;
   }
 
-  private int addSBO(State state) {
-    return board.getSbo().plus(state);
+  private BattingLog createBattingLog(PitchRequest request, Status status) {
+    return new BattingLog.Builder()
+        .gameId(request.getGameId())
+        .playerId(request.getPlayerId())
+        .inning(request.getInning())
+        .status(status.getValue())
+        .build();
   }
 
-  private void checkValue(int value) {
-    if (value == 1) {
-      if (!board.isBottom()) {
-        board.addAwayScore();
-        DetailScore awayScore = new DetailScore(
-            board.getGameId(),
-            board.getGame().getAway().getTeamId(),
-            board.getInning(),
-            board.getAwayScore(),
-            board.isBottom()
-        );
-        repository.insertOrUpdateScore(awayScore);
-      }
-      if (board.isBottom()) {
-        board.addHomeScore();
-        DetailScore homeScore = new DetailScore(
-            board.getGameId(),
-            board.getGame().getHome().getTeamId(),
-            board.getInning(),
-            board.getHomeScore(),
-            board.isBottom()
-        );
-        repository.insertOrUpdateScore(homeScore);
-      }
-    }
-    if (value == -1) {
-      board.change();
-    }
+  private void createBoard(Long gameId) {
+    repository.createBoard(gameId);
   }
+
 }

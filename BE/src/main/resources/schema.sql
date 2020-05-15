@@ -4,6 +4,8 @@ DROP TABLE IF EXISTS `match`;
 DROP TABLE IF EXISTS `user`;
 DROP TABLE IF EXISTS `game`;
 DROP TABLE IF EXISTS `score_board`;
+DROP TABLE IF EXISTS `strike_ball_out_hit_board`;
+DROP TABLE IF EXISTS `batting_log`;
 
 CREATE TABLE `team`
 (
@@ -47,16 +49,50 @@ CREATE TABLE `game`
     PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `score_board`
+CREATE TABLE `score`
+(
+    `id`      BIGINT NOT NULL AUTO_INCREMENT,
+    `game_id` BIGINT,
+    `team_id` BIGINT,
+    `inning`  INT,
+    `score`   INT,
+    PRIMARY KEY (`id`),
+    UNIQUE (`game_id`, `team_id`, `inning`)
+);
+
+CREATE TABLE `batting_log`
 (
     `id`        BIGINT NOT NULL AUTO_INCREMENT,
     `game_id`   BIGINT,
-    `team_id`   BIGINT,
+    `player_id` BIGINT,
     `inning`    INT,
-    `score`     INT,
-    `is_bottom` BOOLEAN DEFAULT FALSE,
+    `status`    INT,
+    PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `strike_ball_out_hit_board`
+(
+    `id`      BIGINT NOT NULL AUTO_INCREMENT,
+    `game_id` BIGINT,
+    `inning`  INT DEFAULT 1,
+    `strike`  INT DEFAULT 0,
+    `ball`    INT DEFAULT 0,
+    `out`     INT DEFAULT 0,
+    `hit`     INT DEFAULT 0,
     PRIMARY KEY (`id`),
-    UNIQUE (`game_id`,`team_id`, `inning`)
+    UNIQUE (`game_id`, `inning`)
+);
+
+CREATE TABLE `board`
+(
+    `id`         BIGINT NOT NULL AUTO_INCREMENT,
+    `game_id`    BIGINT,
+    `inning`     INT     DEFAULT 1,
+    `home_order` INT     DEFAULT 0,
+    `away_order` INT     DEFAULT 0,
+    `is_bottom`  BOOLEAN DEFAULT FALSE,
+    PRIMARY KEY (`id`),
+    UNIQUE (`game_id`)
 );
 
 

@@ -35,13 +35,22 @@ VALUES (1);
 INSERT INTO player (`team_id`, `name`, `batting_average`, `is_pitcher`)
 VALUES (1, '양성우', 168, true);
 INSERT INTO `player` (`team_id`, `name`, `batting_average`, `is_pitcher`)
-VALUES (1, '손광민', 714, false);
+VALUES (1, '손광민', 214, false);
 INSERT INTO `player` (`team_id`, `name`, `batting_average`, `is_pitcher`)
 VALUES (1, '김태균', 400, false);
 INSERT INTO `player` (`team_id`, `name`, `batting_average`, `is_pitcher`)
 VALUES (1, '정진호', 167, false);
 INSERT INTO `player` (`team_id`, `name`, `batting_average`, `is_pitcher`)
 VALUES (1, '하주석', 167, false);
+INSERT INTO `player` (`team_id`, `name`, `batting_average`, `is_pitcher`)
+VALUES (1, '손광민', 214, false);
+INSERT INTO `player` (`team_id`, `name`, `batting_average`, `is_pitcher`)
+VALUES (1, '김태균', 400, false);
+INSERT INTO `player` (`team_id`, `name`, `batting_average`, `is_pitcher`)
+VALUES (1, '정진호', 167, false);
+INSERT INTO `player` (`team_id`, `name`, `batting_average`, `is_pitcher`)
+VALUES (1, '하주석', 167, false);
+
 
 INSERT INTO `player` (team_id, name, batting_average, is_pitcher)
 VALUES (2, '박건우', 319, true);
@@ -53,3 +62,11 @@ INSERT INTO `player` (team_id, name, batting_average, is_pitcher)
 VALUES (2, '허경민', 288, false);
 INSERT INTO `player` (team_id, name, batting_average, is_pitcher)
 VALUES (2, '김재환', 283, false);
+INSERT INTO `player` (team_id, name, batting_average, is_pitcher)
+VALUES (2, '오재일', 293, false);
+INSERT INTO `player` (team_id, name, batting_average, is_pitcher)
+VALUES (2, '허경민', 288, false);
+INSERT INTO `player` (team_id, name, batting_average, is_pitcher)
+VALUES (2, '김재환', 283, false);
+INSERT INTO `player` (team_id, name, batting_average, is_pitcher)
+VALUES (2, '오재일', 293, false);
