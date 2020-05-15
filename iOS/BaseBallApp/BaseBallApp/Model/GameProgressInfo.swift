@@ -17,20 +17,24 @@ struct GameProgressInfo: Codable {
 struct GameTotalInfo: Codable {
     let gameId: Int
     let inning: Int
+    let homeName: String
     let homeScore: Int
+    let awayName: String
     let awayScore: Int
-    let sbo: PitchStatus
     let game: BatterBox
+    let status: PitchStatus
+    let log: [BatterLog]
     let bottom: Bool
     
 }
 
 struct PitchStatus: Codable {
+    let gameId: Int
+    let inning: Int
     let strike: Int
     let ball: Int
     let out: Int
     let hit: Int
-    let game: BatterBox
 }
 
 struct BatterBox: Codable {
@@ -45,4 +49,12 @@ struct BatterInfo: Codable {
     let name: String
     let battingAverage: Int
     let pitcher: Bool
+}
+
+struct BatterLog: Codable {
+    let id: Int
+    let gameId: Int
+    let playerId: Int
+    let inning: Int
+    let status: String
 }
