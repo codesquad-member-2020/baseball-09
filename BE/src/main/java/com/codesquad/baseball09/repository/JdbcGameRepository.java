@@ -161,7 +161,7 @@ public class JdbcGameRepository implements GameRepository {
   @Override
   public List<DetailScore> findDetailScoreByGameId(Long gameId) {
     return jdbcTemplate.query(
-        "SELECT s.id, s.game_id, s.team_id, s.inning, s.score, s.is_bottom "
+        "SELECT s.id, s.game_id, s.team_id, s.inning, s.score "
             + "FROM `score` s "
             + "WHERE s.game_id=?",
         new Object[]{gameId}, (rs, rowNum) -> new DetailScore(
@@ -169,8 +169,7 @@ public class JdbcGameRepository implements GameRepository {
             rs.getLong("game_id"),
             rs.getLong("team_id"),
             rs.getInt("inning"),
-            rs.getInt("score"),
-            rs.getBoolean("is_bottom")
+            rs.getInt("score")
         )
     );
   }
@@ -274,12 +273,14 @@ public class JdbcGameRepository implements GameRepository {
   @Override
   public Board findBoardByGameId(Long gameId) {
     return jdbcTemplate.queryForObject(
-        "SELECT b.game_id, b.inning, b.is_bottom "
+        "SELECT b.game_id, b.inning, b.home_order, b.away_order, b.is_bottom "
             + "FROM `board` b "
             + "WHERE b.game_id=?",
         new Object[]{gameId}, (rs, rowNum) -> Board.Builder.of()
             .gameId(rs.getLong("game_id"))
             .inning(rs.getInt("inning"))
+            .homeOrder(rs.getInt("home_order"))
+            .awayOrder(rs.getInt("away_order"))
             .isBottom(rs.getBoolean("is_bottom"))
             .build());
   }
@@ -288,9 +289,11 @@ public class JdbcGameRepository implements GameRepository {
   public void insertOrUpdateBoard(Board board) {
     jdbcTemplate.update(
         "UPDATE `board` "
-            + "SET inning=? , is_bottom=? "
+            + "SET inning=? , home_order=? , away_order=? , is_bottom=? "
             + "WHERE game_id=? ",
         board.getInning(),
+        board.getHomeOrder(),
+        board.getAwayOrder(),
         board.isBottom(),
         board.getGameId());
   }

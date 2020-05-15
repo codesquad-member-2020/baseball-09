@@ -2,6 +2,8 @@ package com.codesquad.baseball09.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 public class Board {
 
@@ -49,10 +51,12 @@ public class Board {
   }
 
   public void change() {
-    this.inning++;
+    this.homeOrder = 0;
+    this.awayOrder = 0;
 
     if (isBottom) {
       isBottom = false;
+      this.inning++;
     } else {
       isBottom = true;
     }
@@ -114,6 +118,25 @@ public class Board {
     return log;
   }
 
+  @Override
+  public String toString() {
+    return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
+        .append("gameId", gameId)
+        .append("inning", inning)
+        .append("homeId", homeId)
+        .append("homeName", homeName)
+        .append("homeScore", homeScore)
+        .append("homeOrder", homeOrder)
+        .append("awayId", awayId)
+        .append("awayName", awayName)
+        .append("awayScore", awayScore)
+        .append("awayOrder", awayOrder)
+        .append("isBottom", isBottom)
+        .append("game", game)
+        .append("status", status)
+        .append("log", log)
+        .toString();
+  }
 
   public static final class Builder {
 
@@ -140,20 +163,20 @@ public class Board {
     }
 
     public Builder(Board board) {
-      this.gameId = board.getGameId();
-      this.inning = board.getInning();
-      this.homeId = board.getHomeId();
-      this.homeName = board.getHomeName();
-      this.homeScore = board.getHomeScore();
-      this.homeOrder = board.getHomeOrder();
-      this.awayId = board.getAwayId();
-      this.awayName = board.getAwayName();
-      this.awayScore = board.getAwayScore();
-      this.awayOrder = board.getAwayOrder();
-      this.isBottom = board.isBottom();
-      this.game = board.getGame();
-      this.status = board.getStatus();
-      this.log = board.getLog();
+      this.gameId = board.gameId;
+      this.inning = board.inning;
+      this.homeId = board.homeId;
+      this.homeName = board.homeName;
+      this.homeScore = board.homeScore;
+      this.homeOrder = board.homeOrder;
+      this.awayId = board.awayId;
+      this.awayName = board.awayName;
+      this.awayScore = board.awayScore;
+      this.awayOrder = board.awayOrder;
+      this.isBottom = board.isBottom;
+      this.game = board.game;
+      this.status = board.status;
+      this.log = board.log;
     }
 
     public Builder gameId(Long gameId) {
@@ -182,7 +205,11 @@ public class Board {
     }
 
     public Builder homeOrder(int homeOrder) {
-      this.homeOrder = homeOrder;
+      if (homeOrder > 8) {
+        this.homeOrder = 0;
+      } else {
+        this.homeOrder = homeOrder;
+      }
       return this;
     }
 
@@ -202,7 +229,11 @@ public class Board {
     }
 
     public Builder awayOrder(int awayOrder) {
-      this.awayOrder = awayOrder;
+      if (awayOrder > 8) {
+        this.awayOrder = 0;
+      } else {
+        this.awayOrder = awayOrder;
+      }
       return this;
     }
 

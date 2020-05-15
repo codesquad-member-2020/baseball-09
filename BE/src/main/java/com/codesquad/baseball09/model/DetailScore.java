@@ -10,16 +10,13 @@ public class DetailScore {
   private Long teamId;
   private int inning;
   private int score;
-  private Boolean isBottom;
 
-  public DetailScore(Long id, Long gameId, Long teamId, int inning, int score,
-      Boolean isBottom) {
+  public DetailScore(Long id, Long gameId, Long teamId, int inning, int score) {
     this.id = id;
     this.gameId = gameId;
     this.teamId = teamId;
     this.inning = inning;
     this.score = score;
-    this.isBottom = isBottom;
   }
 
   public DetailScore(Long gameId, Long teamId, int inning, int score,
@@ -28,7 +25,6 @@ public class DetailScore {
     this.teamId = teamId;
     this.inning = inning;
     this.score = score;
-    this.isBottom = isBottom;
   }
 
   public void addScore() {
@@ -55,10 +51,6 @@ public class DetailScore {
     return score;
   }
 
-  public Boolean getBottom() {
-    return isBottom;
-  }
-
 
   public static final class Builder {
 
@@ -67,7 +59,6 @@ public class DetailScore {
     private Long teamId;
     private int inning;
     private int score;
-    private Boolean isBottom;
 
     private Builder() {
     }
@@ -101,13 +92,8 @@ public class DetailScore {
       return this;
     }
 
-    public Builder isBottom(Boolean isBottom) {
-      this.isBottom = isBottom;
-      return this;
-    }
-
     public DetailScore build() {
-      return new DetailScore(id, gameId, teamId, inning, score, isBottom);
+      return new DetailScore(id, gameId, teamId, inning, score);
     }
   }
 }
