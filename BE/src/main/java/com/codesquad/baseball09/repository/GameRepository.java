@@ -1,6 +1,7 @@
 package com.codesquad.baseball09.repository;
 
 import com.codesquad.baseball09.model.BattingLog;
+import com.codesquad.baseball09.model.Board;
 import com.codesquad.baseball09.model.DetailPlayer;
 import com.codesquad.baseball09.model.DetailScore;
 import com.codesquad.baseball09.model.InningStatus;
@@ -15,29 +16,47 @@ import java.util.List;
 
 public interface GameRepository {
 
-  List<Match> findAllMatches();
-
+  //team
   void updateTeamStatus(TeamRequest request);
+
+  List<Player> findAllPlayersByTeamId(Long teamId);
+
+  //match
+  List<Match> findAllMatches();
 
   Match findById(Long id);
 
+  //game
   GameResponse startGame(GameRequest request);
 
-  List<DetailScore> findDetailScoreByGameId(Long gameId);
+  //board
+  void createBoard(Long gameId);
 
-  List<Player> findAllPlayersByTeamId(Long id);
+  Board findBoardByGameId(Long gamId);
+
+  void insertOrUpdateBoard(Board board);
+
+  //score
+  List<Score> findScoreByGameId(Long gameId);
+
+  DetailScore findDetailScoreByGameIdAndTeamIdAndInning(Long gameId, Long teamId, int inning);
 
   void insertOrUpdateScore(DetailScore detailScore);
 
-  List<Score> findScoreByGameId(Long id);
+  //inning
+  InningStatus findStatusByGameId(Long gameId);
 
   void insertOrUpdateStrikeBallOutHitBoard(InningStatus status);
 
-  InningStatus findStatusByGameId(Long gameId);
 
+  //battingLog
   void insertBattingLog(BattingLog log);
 
   List<BattingLog> findLogsByGameIdAndInning(BattingLogRequest request);
 
+  //detail
+  List<DetailScore> findDetailScoreByGameId(Long gameId);
+
   List<DetailPlayer> findDetailPlayerStatusByGameId(Long gameId);
+
 }

@@ -102,7 +102,7 @@ public class InningStatus {
       resetStrikeAndBall();
       plus(HIT);
     }
-    return 0;
+    return 2;
   }
 
   private int checkThreeStrike() {
@@ -110,7 +110,7 @@ public class InningStatus {
       resetStrikeAndBall();
       plus(OUT);
     }
-    return 0;
+    return 2;
   }
 
   public Long getId() {
