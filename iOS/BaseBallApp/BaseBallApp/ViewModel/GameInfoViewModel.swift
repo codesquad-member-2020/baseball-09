@@ -17,16 +17,16 @@ class GameInfoViewModel {
     var inningInfo: String?
     
     init(gameInfo: GameTotalInfo) {
-        self.strikeCount = gameInfo.sbo.strike
-        self.ballCount = gameInfo.sbo.ball
-        self.outCount = gameInfo.sbo.out
+        self.strikeCount = gameInfo.status.strike
+        self.ballCount = gameInfo.status.ball
+        self.outCount = gameInfo.status.out
         self.inning = gameInfo.inning
         
         self.inningInfo = setInningInfo(inning: gameInfo.inning, bottom: gameInfo.bottom)
     }
     
     private func setInningInfo(inning: Int, bottom: Bool) -> String {
-        let transBottom: String = bottom ? "초" : "말"
+        let transBottom: String = bottom ? "말" : "초"
         return "\(inning)회 \(transBottom)"
     }
 }

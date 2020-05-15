@@ -17,33 +17,40 @@ class GameViewController: UIViewController {
     @IBOutlet weak var pitchingButtonLabel: PtichButton!
     
     private let dataUseCase = DataUseCase()
+    private let dataSource = GameTableViewDataSource()
     private var scoreViewModel: GameScoreViewModel!
     private var infoViewModel: GameInfoViewModel!
     private var currentPlayerViewModel: CurrentPlayerViewModel!
+    private var currentPitchLog: CurrentPitchLogViewModel!
     
     public var gameId: Int!
     public var isAttackInning: Bool!
-    public var homeTeamName: String!
-    public var awayTeamName: String!
     
     private var isGameProgress = true
     private var pitchLog = [String]()
+    private var batterInfo: CurrentBatterInfo!
     
     @IBAction func pitchingButton(_ sender: Any) {
-        dataUseCase.pitchingAction(manager: NetworkManager()) { (result) in
+        dataUseCase.pitchingAction(manager: NetworkManager(), batterInfo: batterInfo) { (result) in
             self.pitchLog.append(result)
         }
         updateUIWithRequest()
         
         self.pitchingButtonLabel.isUserInteractionEnabled = false
-        Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { _ in
+        Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { _ in
             self.pitchingButtonLabel.isUserInteractionEnabled = true
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        gameControl()
+        
+        currentPlayLog.dataSource = dataSource
+        
+        DispatchQueue.global().async {
+            self.updateUIWithRequest()
+            self.gameControl()
+        }
     }
     
     private func gameControl() {
@@ -51,7 +58,7 @@ class GameViewController: UIViewController {
             if isAttackInning {
                 pitchingButtonLabel.isHidden = true
                 updateUIWithRequest()
-                sleep(10)
+                sleep(5)
             } else {
                 pitchingButtonLabel.isHidden = false
             }
@@ -59,10 +66,19 @@ class GameViewController: UIViewController {
     }
     
     private func updateUIWithRequest() {
-        dataUseCase.requestGameProgress(manager: NetworkManager(), gameId: gameId) { (gameInfo) in
+        dataUseCase.requestGameProgress(manager: NetworkManager(), gameId: gameId) {
+            (gameInfo) in
+            print(gameInfo)
             self.scoreViewModel = GameScoreViewModel(gameInfo: gameInfo)
             self.infoViewModel = GameInfoViewModel(gameInfo: gameInfo)
             self.currentPlayerViewModel = CurrentPlayerViewModel(batterBoxInfo: gameInfo.game)
+            self.currentPitchLog = CurrentPitchLogViewModel(gameLog: gameInfo)
+            
+            if gameInfo.game.away.pitcher {
+                self.batterInfo = CurrentBatterInfo(gameId: gameInfo.gameId, teamId: gameInfo.game.home.teamId, playerId: gameInfo.game.home.id, inning: gameInfo.inning, battingAverage: gameInfo.game.home.battingAverage, isBottom: gameInfo.bottom)
+            } else {
+                self.batterInfo = CurrentBatterInfo(gameId: gameInfo.gameId, teamId: gameInfo.game.away.teamId, playerId: gameInfo.game.away.id, inning: gameInfo.inning, battingAverage: gameInfo.game.away.battingAverage, isBottom: gameInfo.bottom)
+            }
             
             DispatchQueue.main.async {
                 self.setUI()
@@ -82,9 +98,14 @@ class GameViewController: UIViewController {
     private func setUI() {
         setGameScore()
         setGameInfo()
+        setCurrentPlayer()
+        
+        dataSource.logViewModel = currentPitchLog
         
         gameProgressView.gameProgress.text = infoViewModel.inningInfo
-        gameProgressView.gameRotate.text = isAttackInning ? "수비" : "공격"
+        gameProgressView.gameRotate.text = isAttackInning ? "공격" : "수비"
+        
+        currentPlayLog.reloadData()
     }
     
     private func setGameInfo() {
@@ -94,25 +115,46 @@ class GameViewController: UIViewController {
     }
     
     private func setGameScore() {
-        gameScoreView.awayTeamName.text = awayTeamName
-        gameScoreView.homeTeamName.text = homeTeamName
+        gameScoreView.awayTeamName.text = scoreViewModel.awayTeam
+        gameScoreView.homeTeamName.text = scoreViewModel.homeTeam
         gameScoreView.awayTeamScore.text = scoreViewModel.awayScore
         gameScoreView.homeTeamScore.text = scoreViewModel.homeScore
     }
     
     private func setStrikeInfo(count: Int) {
+        if count == 0 {
+            for index in 1...2 {
+                gameScreenView.strikeInfo.arrangedSubviews[index].backgroundColor = .white
+            }
+            return
+        }
+        
         for index in 1...count {
             gameScreenView.strikeInfo.arrangedSubviews[index].backgroundColor = .yellow
         }
     }
     
     private func setBallInfo(count: Int) {
+        if count == 0 {
+            for index in 1...3 {
+                gameScreenView.ballInfo.arrangedSubviews[index].backgroundColor = .white
+            }
+            return
+        }
+        
         for index in 1...count {
             gameScreenView.ballInfo.arrangedSubviews[index].backgroundColor = .green
         }
     }
     
     private func setOutInfo(count: Int) {
+        if count == 0 {
+            for index in 1...2 {
+                gameScreenView.outInfo.arrangedSubviews[index].backgroundColor = .white
+            }
+            return
+        }
+        
         for index in 1...count {
             gameScreenView.outInfo.arrangedSubviews[index].backgroundColor = .red
         }

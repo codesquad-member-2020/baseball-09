@@ -38,10 +38,9 @@ class TeamSelectViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let gameView = segue.destination as? GameViewController else { return }
+        guard let nextView = segue.destination as? GameTabController else { return }
+        guard let gameView = nextView.viewControllers?.first as? GameViewController else { return }
         
-        gameView.awayTeamName = awayTeamButtonTitle
-        gameView.homeTeamName = homeTeamButtonTitle
         gameView.gameId = gameId
         
         if selectId % 2 == 0 {
@@ -74,6 +73,7 @@ class TeamSelectViewController: UIViewController {
         selectId = selectTeamId
         dataUseCase.isTeamSelect(manager: NetworkManager(), selectTeamId: selectTeamId) { (result) in
             if result {
+                self.dataUseCase.postGameStart(manager: NetworkManager(), gameId: self.gameId!)
                 self.performSegue(withIdentifier: "gameScreen", sender: self)
             } else {
                 self.present(self.teamSelectAlert, animated: true, completion: nil)

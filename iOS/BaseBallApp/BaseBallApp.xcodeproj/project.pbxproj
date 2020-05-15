@@ -18,6 +18,10 @@
 		ABE01FF2246C439D004A8BE3 /* CurrentPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE01FF1246C439D004A8BE3 /* CurrentPlayerView.swift */; };
 		ABE01FF4246C5DC4004A8BE3 /* PtichButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE01FF3246C5DC4004A8BE3 /* PtichButton.swift */; };
 		ABE01FF6246C6355004A8BE3 /* PitchingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE01FF5246C6355004A8BE3 /* PitchingResult.swift */; };
+		ABE01FF8246E0826004A8BE3 /* CurrentBatterInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE01FF7246E0826004A8BE3 /* CurrentBatterInfo.swift */; };
+		ABE01FFA246E0DD7004A8BE3 /* PostGameStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE01FF9246E0DD7004A8BE3 /* PostGameStart.swift */; };
+		ABE01FFC246E6EE8004A8BE3 /* GameTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE01FFB246E6EE8004A8BE3 /* GameTableViewDataSource.swift */; };
+		ABE02000246E7012004A8BE3 /* CurrentPitchLogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE01FFF246E7012004A8BE3 /* CurrentPitchLogViewModel.swift */; };
 		ABF9089E2461572400F08D21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF9089D2461572400F08D21 /* AppDelegate.swift */; };
 		ABF908A02461572400F08D21 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF9089F2461572400F08D21 /* SceneDelegate.swift */; };
 		ABF908A22461572400F08D21 /* GameSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF908A12461572400F08D21 /* GameSelectViewController.swift */; };
@@ -51,6 +55,10 @@
 		ABE01FF1246C439D004A8BE3 /* CurrentPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentPlayerView.swift; sourceTree = "<group>"; };
 		ABE01FF3246C5DC4004A8BE3 /* PtichButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PtichButton.swift; sourceTree = "<group>"; };
 		ABE01FF5246C6355004A8BE3 /* PitchingResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchingResult.swift; sourceTree = "<group>"; };
+		ABE01FF7246E0826004A8BE3 /* CurrentBatterInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentBatterInfo.swift; sourceTree = "<group>"; };
+		ABE01FF9246E0DD7004A8BE3 /* PostGameStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostGameStart.swift; sourceTree = "<group>"; };
+		ABE01FFB246E6EE8004A8BE3 /* GameTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTableViewDataSource.swift; sourceTree = "<group>"; };
+		ABE01FFF246E7012004A8BE3 /* CurrentPitchLogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentPitchLogViewModel.swift; sourceTree = "<group>"; };
 		ABF9089A2461572400F08D21 /* BaseBallApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseBallApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABF9089D2461572400F08D21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABF9089F2461572400F08D21 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -126,6 +134,8 @@
 				ABE01FED246AB32E004A8BE3 /* TeamSelectResult.swift */,
 				ABE01FEF246AF421004A8BE3 /* GameProgressInfo.swift */,
 				ABE01FF5246C6355004A8BE3 /* PitchingResult.swift */,
+				ABE01FF7246E0826004A8BE3 /* CurrentBatterInfo.swift */,
+				ABE01FF9246E0DD7004A8BE3 /* PostGameStart.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -145,8 +155,8 @@
 			children = (
 				ABF908A12461572400F08D21 /* GameSelectViewController.swift */,
 				ABF908C42463C5B300F08D21 /* TeamSelectViewController.swift */,
-				ABF908B124625DA000F08D21 /* GameTabController.swift */,
 				ABF908DF2466CFFC00F08D21 /* GameViewController.swift */,
+				ABF908B124625DA000F08D21 /* GameTabController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -178,6 +188,7 @@
 				ABE01FF1246C439D004A8BE3 /* CurrentPlayerView.swift */,
 				ABF908CD24669B3E00F08D21 /* GameLogCell.swift */,
 				ABE01FF3246C5DC4004A8BE3 /* PtichButton.swift */,
+				ABE01FFB246E6EE8004A8BE3 /* GameTableViewDataSource.swift */,
 			);
 			path = GameView;
 			sourceTree = "<group>";
@@ -207,6 +218,7 @@
 				ABE01FE5246966F7004A8BE3 /* GameInfoViewModel.swift */,
 				ABE01FE724696ADA004A8BE3 /* GameScoreViewModel.swift */,
 				ABE01FE924696B0F004A8BE3 /* CurrentPlayerViewModel.swift */,
+				ABE01FFF246E7012004A8BE3 /* CurrentPitchLogViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -287,6 +299,7 @@
 				ABE01FEC246A8C89004A8BE3 /* MainGameList.swift in Sources */,
 				ABE01FE224695220004A8BE3 /* CircleView.swift in Sources */,
 				ABF908CE24669B3E00F08D21 /* GameLogCell.swift in Sources */,
+				ABE02000246E7012004A8BE3 /* CurrentPitchLogViewModel.swift in Sources */,
 				ABF908E82467E25800F08D21 /* DataUseCase.swift in Sources */,
 				ABE01FE6246966F7004A8BE3 /* GameInfoViewModel.swift in Sources */,
 				ABF908A22461572400F08D21 /* GameSelectViewController.swift in Sources */,
@@ -297,11 +310,14 @@
 				ABE01FF0246AF421004A8BE3 /* GameProgressInfo.swift in Sources */,
 				ABF9089E2461572400F08D21 /* AppDelegate.swift in Sources */,
 				ABE01FF2246C439D004A8BE3 /* CurrentPlayerView.swift in Sources */,
+				ABE01FFC246E6EE8004A8BE3 /* GameTableViewDataSource.swift in Sources */,
 				ABE01FE024694875004A8BE3 /* GameScreenTotalView.swift in Sources */,
+				ABE01FF8246E0826004A8BE3 /* CurrentBatterInfo.swift in Sources */,
 				ABF908D22466A02800F08D21 /* GameScreenView.swift in Sources */,
 				ABF908E62467E24600F08D21 /* NetworkManager.swift in Sources */,
 				ABF908E02466CFFC00F08D21 /* GameViewController.swift in Sources */,
 				ABF908E42467DD1B00F08D21 /* GameProgressView.swift in Sources */,
+				ABE01FFA246E0DD7004A8BE3 /* PostGameStart.swift in Sources */,
 				ABE01FE824696ADA004A8BE3 /* GameScoreViewModel.swift in Sources */,
 				ABF908A02461572400F08D21 /* SceneDelegate.swift in Sources */,
 				ABE01FEE246AB32E004A8BE3 /* TeamSelectResult.swift in Sources */,
