@@ -80,16 +80,4 @@ class DataUseCase {
             }
         }
     }
-    /*
-    func login(manager: NetworkManager) {
-        manager.requestData(url: loginUrl, method: .get, contentType: nil, body: nil) { (data, res, error) in
-            guard let data = data else { print("login error:\(error)"); return }
-            
-            if let response = res as? HTTPURLResponse, let headerField = response.allHeaderFields as? [String:String] {
-                let cookies = HTTPCookie.cookies(withResponseHeaderFields: headerField, for: response.url!)
-                print(cookies)
-            }
-        }
-    }
-     */
 }
