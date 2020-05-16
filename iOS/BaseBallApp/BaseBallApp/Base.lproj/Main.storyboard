@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hMS-WY-nAM">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -7,10 +7,58 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Login View Conrtoller-->
+        <scene sceneID="LmY-gm-b8e">
+            <objects>
+                <viewController id="hMS-WY-nAM" customClass="LoginViewConrtoller" customModule="BaseBallApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="E8e-40-FwT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fXR-sa-utH">
+                                <rect key="frame" x="112.66666666666669" y="390" width="150" height="42"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <state key="normal" title="Github Login">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="githubLogin:" destination="hMS-WY-nAM" eventType="touchUpInside" id="zVb-o8-PMn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WEo-8L-Tt0">
+                                <rect key="frame" x="121" y="462" width="133" height="42"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <state key="normal" title="Game Start">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="moveGameSelectView:" destination="hMS-WY-nAM" eventType="touchUpInside" id="dXe-XW-Ie1"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="fXR-sa-utH" firstAttribute="centerX" secondItem="TIi-wK-CQL" secondAttribute="centerX" id="LYd-mK-c3D"/>
+                            <constraint firstItem="fXR-sa-utH" firstAttribute="centerY" secondItem="TIi-wK-CQL" secondAttribute="centerY" id="RF7-A4-tXc"/>
+                            <constraint firstItem="WEo-8L-Tt0" firstAttribute="top" secondItem="fXR-sa-utH" secondAttribute="bottom" constant="30" id="i0e-K8-vKA"/>
+                            <constraint firstItem="WEo-8L-Tt0" firstAttribute="centerX" secondItem="TIi-wK-CQL" secondAttribute="centerX" id="pBy-ub-vks"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="TIi-wK-CQL"/>
+                    </view>
+                    <connections>
+                        <outlet property="gameStartButton" destination="WEo-8L-Tt0" id="iNL-fz-2ee"/>
+                        <outlet property="githubLoginButton" destination="fXR-sa-utH" id="a6s-mt-rfv"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="gameList" id="axE-R9-84O"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ggO-5K-1uz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1434" y="26"/>
+        </scene>
         <!--Game Select View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="GameSelectViewController" customModule="BaseBallApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="GameSelectViewController" customModule="BaseBallApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -39,6 +87,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="np4-ve-Zcn"/>
                     <connections>
                         <outlet property="GameListTableView" destination="V2B-J6-Y2N" id="Gy7-ag-2b1"/>
                         <segue destination="hnt-DZ-5fC" kind="show" identifier="teamSelect" id="Tzb-Aj-6cV"/>
@@ -46,7 +95,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-532" y="26"/>
+            <point key="canvasLocation" x="-591" y="26"/>
         </scene>
         <!--Team Select View Controller-->
         <scene sceneID="qyN-FS-llY">
