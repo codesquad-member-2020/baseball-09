@@ -16,7 +16,7 @@ class DataUseCase {
     private let pitch = "pitch"
     
     func loadTeamList(manager: NetworkManager, completion: @escaping (MainGameList) -> ()) {
-        manager.requestData(url: basicEndPoint + gameList, method: .get, contentType: nil, body: nil) { (data, error) in
+        manager.requestData(url: basicEndPoint + gameList, method: .get, contentType: nil, body: nil) { (data, _, error) in
             guard let data = data else { return }
             do {
                 let json = try JSONDecoder().decode(MainGameList.self, from: data)
@@ -31,7 +31,7 @@ class DataUseCase {
         let requestJson = ["id": selectTeamId, "isSelected": true] as [String : Any]
         let jsonData = try! JSONSerialization.data(withJSONObject: requestJson)
         
-        manager.requestData(url: basicEndPoint + teamSelect, method: .post, contentType: "application/json", body: jsonData) { (data, error) in
+        manager.requestData(url: basicEndPoint + teamSelect, method: .post, contentType: "application/json", body: jsonData) { (data, _,  error) in
             guard let data = data else { return }
             do {
                 let json = try JSONDecoder().decode(TeamSelectResult.self, from: data)
@@ -49,7 +49,7 @@ class DataUseCase {
         print(requestJson)
         let jsonData = try! JSONSerialization.data(withJSONObject: requestJson)
         
-        manager.requestData(url: basicEndPoint + gameProgress, method: .post, contentType: "application/json", body: jsonData) { (data, error) in
+        manager.requestData(url: basicEndPoint + gameProgress, method: .post, contentType: "application/json", body: jsonData) { (data, _, error) in
             // 리팩토링 예정
             guard let error = error else { return }
             print(error)
@@ -57,7 +57,7 @@ class DataUseCase {
     }
     
     func requestGameProgress(manager: NetworkManager, gameId: Int, completion: @escaping (GameTotalInfo) -> ()) {
-        manager.requestData(url: basicEndPoint + gameProgress + "/\(gameId)", method: .get, contentType: nil, body: nil) { (data, error) in
+        manager.requestData(url: basicEndPoint + gameProgress + "/\(gameId)", method: .get, contentType: nil, body: nil) { (data, _, error) in
             guard let data = data else { return }
             do {
                 let json = try JSONDecoder().decode(GameProgressInfo.self, from: data)
@@ -70,7 +70,7 @@ class DataUseCase {
     
     func pitchingAction(manager: NetworkManager, batterInfo: CurrentBatterInfo, completion: @escaping (String) -> ()) {
         let encodeJson = try! JSONEncoder().encode(batterInfo)
-        manager.requestData(url: basicEndPoint + pitch, method: .post, contentType: "application/json", body: encodeJson) { (data, error) in
+        manager.requestData(url: basicEndPoint + pitch, method: .post, contentType: "application/json", body: encodeJson) { (data, _, error) in
             guard let data = data else { return }
             do {
                 let json = try JSONDecoder().decode(PitchingResult.self, from: data)
@@ -80,4 +80,16 @@ class DataUseCase {
             }
         }
     }
+    /*
+    func login(manager: NetworkManager) {
+        manager.requestData(url: loginUrl, method: .get, contentType: nil, body: nil) { (data, res, error) in
+            guard let data = data else { print("login error:\(error)"); return }
+            
+            if let response = res as? HTTPURLResponse, let headerField = response.allHeaderFields as? [String:String] {
+                let cookies = HTTPCookie.cookies(withResponseHeaderFields: headerField, for: response.url!)
+                print(cookies)
+            }
+        }
+    }
+     */
 }
